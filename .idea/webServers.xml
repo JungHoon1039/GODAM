@@ -2,8 +2,13 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
+<<<<<<< HEAD
       <webServer id="ea397bf2-9e8a-4690-a94e-e8dc0a81900a" name="SSAC">
         <fileTransfer accessType="SFTP" host="52.79.227.191" port="22" sshConfigId="2ecabc06-5779-4d87-a1d9-ef8cc10cb66a" sshConfig="ubuntu@52.79.227.191:22 key" keyPair="true">
+=======
+      <webServer id="0e32e666-90d5-4b68-b025-5a259d9b00d3" name="StreetCat">
+        <fileTransfer accessType="SFTP" host="52.79.227.191" port="22" sshConfigId="e843764f-3386-4c9b-8b39-9e22ea1c7ad9" sshConfig="ubuntu@52.79.227.191:22 key" keyPair="true">
+>>>>>>> 2860e603029fa571ce17c088278c77d073fead63
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
