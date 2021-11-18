@@ -3,6 +3,7 @@ from .models import User
 from django.core.exceptions import ObjectDoesNotExist
 import os, torch
 from django.views.decorators.csrf import csrf_exempt
+from django.http.response import JsonResponse
 
 # 회원가입
 def signup(req):
@@ -35,5 +36,15 @@ def logged(req):
 def logout(req):
     req.session.pop('Userid')
     return render(req, 'logout.html')
+
+def check_id(req):
+    id = req.GET.get('id')
+    try:
+        id=User.objects.get(Userid = id)
+        duplicate = "fail"
+    except:
+        duplicate = "pass"
+    context = {'duplicate':duplicate}
+    return JsonResponse(context)
 
 # Create your views here. 

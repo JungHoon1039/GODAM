@@ -13,35 +13,85 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <form action="http://52.79.227.191:8000/user/signup_com" method="post">
+        <form name="form" action="http://52.79.227.191:8000/user/signup_com" method="post">
             <div class="container">    
                 <div class="row">
                     <div class="col-12 mb-2" style="text-align: center;">
                         {% csrf_token %}
                         <p>아이디</p>
-                        <input type="text" name="id" id="id" value="" size="30" required><br>
+                        <input type="text" name="id" id="id" value="" size="30"><!--박정훈님의 required--><br>
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>비밀번호</p>
-                        <input type="password" name="pw" id="pw" value="" size="30" required>
+                        <input type="password" name="pw" id="pw" value="" size="30"><!--required-->
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>닉네임</p>
-                        <input type="text" name="nick" value="" size="30" required>
+                        <input type="text" name="nick" value="" size="30"><!--required-->
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>이름</p>
-                        <input type="text" name="name" value="" size="30" required>
+                        <input type="text" name="name" value="" size="30"><!--required-->
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>연락처</p>
-                        <input type="text" name="phone" value="" size="30" required>
+                        <input type="text" name="phone" value="" size="30"><!--required-->
                     </div>
                 </div>
             </div>
             <div style="text-align: center;">
-                <button type="submit" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>가입</h5></button>
+                <button type="button" onclick="check()" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>가입</h5></button>
             </div>
         </form>
+        <!-- 진현성님의 방식-->
+        <script>
+            function check(){
+                var id = document.getElementsByName("id")[0];
+                var pw = document.getElementsByName("pw")[0];
+                var name = document.getElementsByName("name")[0];
+                var phone = document.getElementsByName("phone")[0];
+                var nick = document.getElementsByName("nick")[0];
+                if(!id.value){
+                    alert("아이디를 입력하세요");
+                    return false;
+                }else if(!pw.value){
+                    alert("비밀번호를 입력하세요");
+                    return false;
+                }else if (!nick.value){
+                    alert("닉네임을 입력하세요");
+                }else if (!name.value){
+                    alert("이름을 입력하세요");
+                    return false;
+                }else if (!phone.value){
+                    alert("전화번호를 입력하세요");
+                    return false;
+                }else{
+                    dupulicate();
+                }
+            }
+        </script>
+        <!-- ajax로 이용한 아이디 체크-->
+        <script>
+            function dupulicate(){
+                var id = $("#id").val();
+                $.ajax({
+                        url:'check_id',
+                        data:{'id': id },
+                        datatype:'json',
+                        success: function(data){
+                            if(data['duplicate']=="fail"){
+                                alert('존재하는 아이디');
+                                return false;
+                            }else{
+                                alert('사용가능한 아이디 입니다');
+                                var form = document.form;
+                                form.submit();
+                                return true;
+                            }
+                        }
+                    }
+                );
+            }
+        </script>
     </body>
 </html>
