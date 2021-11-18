@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0e32e666-90d5-4b68-b025-5a259d9b00d3" name="StreetCat">
+        <fileTransfer accessType="SFTP" host="52.79.227.191" port="22" sshConfigId="e843764f-3386-4c9b-8b39-9e22ea1c7ad9" sshConfig="ubuntu@52.79.227.191:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
