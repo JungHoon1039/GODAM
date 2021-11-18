@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Street Cat</title>
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet" type="text/css" />
+        <!-- 부트스트랩 CSS -->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <!-- 제이쿼리-->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form action="http://52.79.227.191:8000/homepage/catlogged" method="post">
+            {% csrf_token %}
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-12" style="text-align: center;">
+                        <h5>&nbsp;&nbsp; 아이디 : <input type="text" name="id" value="" size="30"></h5>
+                    </div>
+                    <div class="col-12 mt-2" style="text-align: center;">
+                        <h5>비밀번호 : <input type="password" name="pw" value="" size="30"></h5>
+                    </div>
+                </div>
+                <br>
+                <div class='col-12 mb-5' style="text-align: center;">
+                    <button type="submit" class="btn-l text-uppercase mb-3" style="color: black; text-align: center;"><h1>로그인</h1></button><br>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
