@@ -16,12 +16,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    {% for user in login_member %}
-                    <p style="font-size: 3rem;">{{ user.Nickname }}님 환영합니다</p>
-                    {% endfor %}
+                    <p style="font-size: 3rem;">{{ user.Nickname }}님</p>
+                    <p style="font-size: 3rem;">회원가입을 축하합니다!</p>
                 </div>
                 <div class="col-12 mt-3" >
-                    <button type="button" class="btn-xl text-uppercase mt-5" style="text-align: center;"><a href="http://52.79.227.191:8000/homepage/catlogout" target="_self" style="color: black;"><h5>로그아웃</h5></a></button>
+                    <button type="button" class="btn-xl text-uppercase mt-5" style="text-align: center;"><a href="http://52.79.227.191:8000/user/login" target="_self" style="color: black;"><h5>로그인</h5></a></button>
                 </div>
             </div>
         </div>
