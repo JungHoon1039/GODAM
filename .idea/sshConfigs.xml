@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="52.79.227.191" id="2ecabc06-5779-4d87-a1d9-ef8cc10cb66a" keyPath="C:\Users\somin\Desktop\AWS_KEY\AWS_key.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+    </configs>
+  </component>
+</project>
