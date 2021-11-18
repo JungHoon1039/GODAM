@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig host="52.79.227.191" id="e843764f-3386-4c9b-8b39-9e22ea1c7ad9" keyPath="$PROJECT_DIR$/../../SSAC/aws_junghoon.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
-    </configs>
-  </component>
-</project>
