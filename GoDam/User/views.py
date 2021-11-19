@@ -17,7 +17,11 @@ def signup_com(req):
 
 # 로그인
 def login(req):
-    return render (req, 'login.html')
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+    if logged_member :
+        return render (req, 'index.html', {'login_member' : logged_member})
+    else :
+        return render (req,'login.html')
 
 def index(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))

@@ -21,12 +21,16 @@
                         <p>아이디</p>
                         <input type="text" name="id" id="id" value="" size="30"><br>
 
-                        <button type="button" id="checked" onclick="duplicate()" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>중복체크</h5></button>
-
+                        <!--<button type="button" id="checked" onclick="duplicate()" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>중복체크</h5></button>
+-->
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>비밀번호</p>
                         <input type="password" name="pw" id="pw" value="" size="30"><!--required-->
+                    </div>
+                    <div class="col-12 mb-2" style="text-align: center;">
+                        <input type="password" id="pwd" value="" size="30"><br>
+                        <button type="button" class="btn btn-primary btn-xs text-uppercase my-3" onclick="pwdChk()">비밀번호 확인</button>
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>닉네임</p>
@@ -53,7 +57,7 @@
                 var name = document.getElementsByName("name")[0];
                 var phone = document.getElementsByName("phone")[0];
                 var nick = document.getElementsByName("nick")[0];
-                var checked = document.getElementById("checked");
+                //svar checked = document.getElementById("checked");
                 if(!id.value){
                     alert("아이디를 입력하세요");
                     return false;
@@ -65,16 +69,18 @@
                 }else if (!name.value){
                     alert("이름을 입력하세요");
                     return false;
-                }else if (!phone.value){
+                }else if (!phone.value) {
                     alert("전화번호를 입력하세요");
                     return false;
+                }else{
+                    duplicate()
                 //}else if(checked.clicked != true) {
                 //    alert("중복체크 확인하세요");
                 //    return false;
-                }else if(duplicate() == true){
-                    var form = document.form;
-                    form.submit();
-                    return true;
+                //}else if(duplicate() == true){
+                //    var form = document.form;
+                //    form.submit();
+                //    return true;
                 }
             }
         <!-- ajax로 이용한 아이디 체크-->
@@ -90,11 +96,28 @@
                                 return false;
                             }else{
                                 alert('사용가능한 아이디 입니다');
-                                return true;
+                                   var form = document.form;
+                                   form.submit();
+                                   return true;
                             }
                         }
                     }
                 );
+            }
+        </script>
+<!--        비밀번호 체크 -->
+        <script>
+            function pwdChk() {
+                var pw = document.getElementById('pw');
+                var check = document.getElementById('pwd');
+                if(check.value == pw.value) {
+                    alert('비밀번호가 일치합니다');
+                    return true;
+                }
+                else {
+                    alert('비밀번호가 다릅니다');
+                    return false;
+                }
             }
         </script>
     </body>
