@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>Street Cat</title>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet" type="text/css" />
+    <!-- 부트스트랩 CSS -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <!-- 제이쿼리-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+{% for user in login_member %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-5" style="text-align: center;">
+            아이디 : {{user.Userid}}
+        </div>
+        <div class="col-12 mb-5" style="text-align: center;">
+            닉네임 : {{user.Nickname}}
+        </div>
+        <div class="col-12 mb-5" style="text-align: center;">
+            이름 : {{user.Username}}
+        </div>
+        <div class="col-12 mb-5" style="text-align: center;">
+            연락처 : {{user.phonenumber}}
+        </div>
+        <div class="col-12 mb-5" style="text-align: center;">
+            <button type="button" class="btn-l text-uppercase" style="text-align: center;"><a href="http://52.79.227.191:8000/user/edit" target="_self" style="color: black;"><h5>비밀번호 변경</h5></a></button><br>
+        </div>
+        <div class="col-12 mb-5" style="text-align: center;">
+            <button type="button" class="btn-l text-uppercase" style="text-align: center;"><a href="http://52.79.227.191:8000/user/delete" target="_self" style="color: black;"><h5>회원탈퇴</h5></a></button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</body>
+</html>

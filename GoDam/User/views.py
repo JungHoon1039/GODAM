@@ -41,6 +41,7 @@ def logout(req):
     req.session.pop('Userid')
     return render(req, 'logout.html')
 
+# 아이디 중복체크
 def check_id(req):
     id = req.GET.get('id')
     try:
@@ -50,5 +51,42 @@ def check_id(req):
         duplicate = "pass"
     context = {'duplicate':duplicate}
     return JsonResponse(context)
+
+# 회원정보
+def userinfo(req):
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+    return render(req, 'info.html', {'login_member' : logged_member})
+
+# 비밀번호 변경
+def password_edit(req):
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+    return render(req, 'edit.html', {'login_member' : logged_member})
+
+# 비밀번호 변경 확인
+def password_edit_complete(req):
+    try:
+        user = User.objects.get(Userid=req.POST.get('id'), Password=req.POST.get('pw'))
+        if user:
+            user.Password = req.POST.get('new_pw')
+            user.save()
+            req.session.pop('Userid')
+            return render (req,'edit_com.html')
+    except ObjectDoesNotExist:
+        return redirect (password_edit)
+
+# 회원탈퇴
+def member_delete(req):
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+    return render (req, 'delete.html', {'login_member' : logged_member})
+
+# 회원탈퇴 완료
+def member_delete_complete(req):
+    try:
+        del_user = User.objects.get(Userid=req.POST.get('del_id'), Password=req.POST.get('del_pw'))
+        if del_user:
+            del_user.delete()
+            return render(req, 'delete_com.html')
+    except ObjectDoesNotExist:
+        return redirect (member_delete)
 
 # Create your views here. 
