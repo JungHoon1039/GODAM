@@ -21,7 +21,7 @@ def login(req):
     if logged_member :
         return render (req, 'index.html', {'login_member' : logged_member})
     else :
-        return render (req,'login.html')
+        return render (req,'godam.html')
 
 def index(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
