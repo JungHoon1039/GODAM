@@ -104,11 +104,10 @@
                     alert("한글만 사용 가능합니다");
                     return false;
                     //5.한글 자음 사용금지
-                }else if(char.match(/([^가-힣\x20])/i)){
+                }else if(char.match(/([^가-힣\x20])/i)) {
                     alert("이름을 정확히 입력해주세요")
                     return false;
-                    }
-                if (!phone.value) {
+                }else if (!phone.value) {
                     alert("전화번호를 입력하세요");
                     return false;
                 }else if(checked == false) {
