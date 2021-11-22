@@ -57,7 +57,7 @@
             var pwc;
             checked = false;
             pwc = false;
-
+            <!-- 아이디 textfield onchange -->
             function idchange(id){
                 if(checked == true){
                     checked = false;
@@ -71,7 +71,11 @@
                 var name = document.getElementsByName("name")[0];
                 var phone = document.getElementsByName("phone")[0];
                 var nick = document.getElementsByName("nick")[0];
-                if(!id.value){
+                <!-- 이름 각각 char 콕집어내기 -->
+                for(var i = 0; i<name.value.length; i++)
+                    var char = name.value.substring(i,i+1);
+
+                if(!id.value ){
                     alert("아이디를 입력하세요");
                     return false;
                 }else if(!pw.value){
@@ -82,10 +86,29 @@
                     return false;
                 }else if (!nick.value){
                     alert("닉네임을 입력하세요");
-                }else if (!name.value){
+                //이름 유효성검사
+                    //1.이름이 빈값일경우
+                }else if (!name.value) {
                     alert("이름을 입력하세요");
                     return false;
-                }else if (!phone.value) {
+                    //2.이름에 공백이 있는경우
+                }else if (name.value.indexOf(" ") >= 0){
+                    alert("이름의 공백을 지워주세요");
+                    return false;
+                    //3.이름이 2글자 미만이거나 6글자 이상인경우
+                }else if (name.value.length <= 1 || name.value.length >= 6){
+                    alert("이름 길이를 확인하세요");
+                    return false;
+                    //4.숫자 및 영문 사용금지
+                }else if (char.match(/[0-9]|[a-z]|[A-Z]/)) {
+                    alert("한글만 사용 가능합니다");
+                    return false;
+                    //5.한글 자음 사용금지
+                }else if(char.match(/([^가-힣\x20])/i)){
+                    alert("이름을 정확히 입력해주세요")
+                    return false;
+                    }
+                if (!phone.value) {
                     alert("전화번호를 입력하세요");
                     return false;
                 }else if(checked == false) {
@@ -126,6 +149,7 @@
                     );
                 }
             }
+            <!-- 비밀번호 일치하는지 확인-->
             $(function(){
                 $('#success').hide();
                 $('#danger').hide();
