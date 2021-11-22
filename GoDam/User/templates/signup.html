@@ -19,18 +19,20 @@
                     <div class="col-12 mb-2" style="text-align: center;">
                         {% csrf_token %}
                         <p>아이디</p>
-                        <input type="text" name="id" id="id" value="" size="30"><br>
-
-                        <!--<button type="button" id="checked" onclick="duplicate()" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>중복체크</h5></button>
--->
+                        <input type="text" name="id" id="id" value="" size="30" onchange="idchange(this)"><br>
+                        <div id="none" style="color:blue;display:none;">사용가능한 아이디 입니다</div>
+                        <div id="alex" style="color:red;display:none;";>이미 사용중인 아이디 입니다</div>
+                        <button type="button" id="checked" onclick="duplicate()" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>중복체크</h5></button>
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>비밀번호</p>
                         <input type="password" name="pw" id="pw" value="" size="30"><!--required-->
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
-                        <input type="password" id="pwd" value="" size="30"><br>
-                        <button type="button" class="btn btn-primary btn-xs text-uppercase my-3" onclick="pwdChk()">비밀번호 확인</button>
+                        <input type="password" id="pwd" value="" size="30">
+                        <div id="success" style="color:blue";>비밀번호가 일치합니다</div>
+                        <div id="danger" style="color:red";>비밀번호가 일치하지 않아요</div>
+                    <!--<button type="button" class="btn btn-primary btn-xs text-uppercase my-3" onclick="pwdChk()">비밀번호 확인</button>-->
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>닉네임</p>
@@ -51,18 +53,32 @@
             </div>
         </form>
         <script>
+            var checked;
+            var pwc;
+            checked = false;
+            pwc = false;
+
+            function idchange(id){
+                if(checked == true){
+                    checked = false;
+                }
+            }
+
             function check(){
                 var id = document.getElementsByName("id")[0];
-                var pw = document.getElementsByName("pw")[0];
+                var pw = document.getElementsByName("pw")[0]
+                var pwd = document.getElementById('pwd');
                 var name = document.getElementsByName("name")[0];
                 var phone = document.getElementsByName("phone")[0];
                 var nick = document.getElementsByName("nick")[0];
-                //svar checked = document.getElementById("checked");
                 if(!id.value){
                     alert("아이디를 입력하세요");
                     return false;
                 }else if(!pw.value){
                     alert("비밀번호를 입력하세요");
+                    return false;
+                }else if(!pwd.value){
+                    alert("비밀번호확인을 입력하세요");
                     return false;
                 }else if (!nick.value){
                     alert("닉네임을 입력하세요");
@@ -72,41 +88,67 @@
                 }else if (!phone.value) {
                     alert("전화번호를 입력하세요");
                     return false;
-                }else{
-                    duplicate()
-                //}else if(checked.clicked != true) {
-                //    alert("중복체크 확인하세요");
-                //    return false;
-                //}else if(duplicate() == true){
-                //    var form = document.form;
-                //    form.submit();
-                //    return true;
+                }else if(checked == false) {
+                    alert("중복체크 확인하세요");
+                    return false;
+                }else if(pwc == false) {
+                    alert("비밀번호를 확인하세요");
+                    return false;
+                }else if(checked == true && pwc == true){
+                    var form = document.form;
+                    form.submit();
+                    return true;
                 }
             }
         <!-- ajax로 이용한 아이디 체크-->
-            function duplicate(){
+            function duplicate() {
                 var id = $("#id").val();
-                $.ajax({
-                        url:'check_id',
-                        data:{'id': id },
-                        datatype:'json',
-                        success: function(data){
-                            if(data['duplicate']=="fail"){
-                                alert('존재하는 아이디');
+                if (id == "") {
+                    alert("아이디를 입력하세요")
+                }else{
+                    $.ajax({
+                        url: 'check_id',
+                        data: {'id': id},
+                        datatype: 'json',
+                        success: function (data) {
+                            if (data['duplicate'] == "fail") {
+                                $('#none').hide();
+                                $('#alex').show();
                                 return false;
-                            }else{
-                                alert('사용가능한 아이디 입니다');
-                                   var form = document.form;
-                                   form.submit();
-                                   return true;
+                            } else {
+                                $('#none').show();
+                                $('#alex').hide();
+                                checked = true;
+                                return true;
+                                }
                             }
                         }
-                    }
-                );
+                    );
+                }
             }
+            $(function(){
+                $('#success').hide();
+                $('#danger').hide();
+                $("input").keyup(function(){
+                    var pw=$("#pw").val();
+                    var pwd=$('#pwd').val();
+                    if(pw != '' || pwd != ""){
+                        if(pw == pwd){
+                            $('#success').show();
+                            $('#danger').hide();
+                            pwc = true;
+                        }else{
+                            $('#success').hide();
+                            $('#danger').show();
+                            pwc = false;
+                        }
+                    }
+                });
+            });
+
         </script>
-<!--        비밀번호 체크 -->
-        <script>
+<!--비밀번호 체크 -->
+        <!--<script>
             function pwdChk() {
                 var pw = document.getElementById('pw');
                 var check = document.getElementById('pwd');
@@ -119,6 +161,6 @@
                     return false;
                 }
             }
-        </script>
+        </script>-->
     </body>
 </html>
