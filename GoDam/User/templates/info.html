@@ -32,19 +32,9 @@
             <button type="button" class="btn-l text-uppercase" style="text-align: center;"><a href="http://52.79.227.191:8000/user/edit" target="_self" style="color: black;"><h5>비밀번호 변경</h5></button><br>
         </div>
         <div class="col-12 mb-5" style="text-align: center;">
-            <!--<a href="http://52.79.227.191:8000/user/delete" target="_self" style="color: black;"</a>>-->
-            <button type="button" class="btn-l text-uppercase" style="text-align: center;" onclick="showConfirm();"><h5>회원탈퇴</h5></a></button>
+            <button type="button" class="btn-l text-uppercase" style="text-align: center;"><a href="http://52.79.227.191:8000/user/delete" target="_self" style="color: black;"</a><h5>회원탈퇴</h5></a></button>
         </div>
     </div>
-    <script>
-        function showConfirm(){
-            if(confirm("정말로 회원 탈퇴 하시겠습니까?"))
-            {
-                alert("계정이 삭제 되었습니다");
-                window.location.href = 'http://52.79.227.191:8000/user/delete';
-            }
-        }
-    </script>
 </div>
 {% endfor %}
 </body>
