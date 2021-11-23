@@ -10,6 +10,11 @@ background-size: cover;}
 #sign{font-family: 'Noto Sans KR', sans-serif;
 font-weight: 300;}
 
+.signupForm{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
+
 .login input[type=text]{
 background: transparent;
 border: 1px solid rgba(255,255,255);
@@ -18,6 +23,16 @@ color: #fff;
 font-size: 16px;
 font-family: 'Montserrat', sans-serif;
 font-weight: 300;
+}
+
+.login input[type=password]{
+    background: transparent;
+    border: 1px solid rgba(255,255,255);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
 
 
@@ -61,4 +76,128 @@ a#btnhover:hover{
     position: z-index: 1;
     font-family: 'Gamja Flower', sans-serif;
     font-weight: 300;
+}
+
+.col-8 {
+    box-shadow: 0px 0px 30px rgb(201, 199, 199);
+    border-radius: 10px;
+
+}
+
+tr {
+    font-size: 16px;
+    color: black;
+}
+
+signupTitle {
+    font-size: 13px;
+    display: inline;
+}
+
+.signupinput {
+    border: 1px solid rgba(128, 128, 128, 0.473);
+    border-radius: 5px;
+}
+
+#btn_id {
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 2px;
+    background-color: #285e4f;
+    color: #fff;
+}
+
+#btn_id:hover {
+    border-radius: 2px;
+    border: 1.5px solid #1b3f36;
+    color: #1b3f36;
+    background-color: rgb(245, 247, 245);
+}
+
+.btn {
+    width: 115px;
+    height: 45px;
+}
+
+#cancel {
+    border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff;
+}
+
+#cancel:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.6;
+}
+
+#join {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#join:hover {
+    /* border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff; */
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}
+
+/*-----회원가입완료 페이지 signup_com.html---------------------------------------*/
+#com_row {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#com_icon {
+    font-size: 60px;
+}
+
+#com_h4 {
+    font-size: 40px;
+    /*width: 900px;*/
+}
+
+#com_p {
+    font-size: 38px;
+    color: gray;
+    font-family: 'Gamja Flower', sans-serif;
+}
+
+#com_p2 {
+    font-size: 26.5px;
+    color: gray;
+    font-family: 'Gamja Flower', sans-serif;
+}
+
+.com_hr{
+
+}
+
+#com_loginbtn {
+    width: 300px;
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    font-size: 20px;
+}
+
+#com_loginbtn:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}
+
+#com_a {
+    color:whitesmoke;
 }

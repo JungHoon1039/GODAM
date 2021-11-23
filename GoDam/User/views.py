@@ -39,7 +39,7 @@ def logged(req):
 # 세션삭제 - 로그아웃
 def logout(req):
     req.session.pop('Userid')
-    return render(req, 'logout.html')
+    return render(req, 'login.html')
 
 # 아이디 중복체크
 def check_id(req):
