@@ -4,7 +4,18 @@ from django.core.exceptions import ObjectDoesNotExist
 import os, torch
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
+import re
 
+#정규식 전역변수 설정해주기
+i = re.compile("[^a-zA-Z0-9!~@#$%^&*()_+-=\[\]\{\}<>:`?;'\ \/,.&quot]") #문자 와 숫자특수문자가 아닐때  match()로 받은값 처음부터 다 확인
+p = re.compile("[^a-zA-Z0-9]")#문자 와 숫자가 아닐떄 영문/숫자 중 2가지 이상 조합 영문 숫자 최소 1개, 6~12자 이상
+n = re.compile("[^0-9a-zA-Z가-힣]")#영어숫자한글이 아닐때 (ex: 중국어 특수문자 사용금지)
+na = re.compile("[^가-힣]")#한글이 아닐때
+#유효한 저나버노가 아닐떄 그딴거 없음 정신분열 일어남 ㅈㅈ 걍 알아서 치셈
+#소문자 모색 초기작업
+ps = '[a-z]+'
+#얘는 숫자
+pn = '[0-9]+'
 # 회원가입
 def signup(req):
     return render (req, 'signup.html')
@@ -12,11 +23,21 @@ def signup(req):
 # 회원가입 완료 
 def signup_com(req):
     new_member = User(Userid=req.POST.get('id'), Password=req.POST.get('pw'), Nickname=req.POST.get('nick'), Username=req.POST.get('name'), phonenumber=req.POST.get('phone'))
-    if new_member.Userid == "1":
-        return render(req,'login.html')
+    #소문자 존재하는지 확인(findall는 소문자 끄집어내서 리스트로 만들어버림)
+    resulta = re.findall(ps,new_member.Password)
+    #얘는 숫자
+    resultn = re.findall(pn,new_member.Password)
+    #서버 유효성 검사(오류시 폼 전송 안되게)
+    if new_member.Userid == "" or i.match(new_member.Userid) or len(new_member.Userid) <= 5 or len(new_member.Userid)>=13 or\
+       new_member.Password == "" or p.match(new_member.Password) or len(new_member.Password) <= 5 or len(new_member.Password)>=13 or\
+       len(resulta) < 1 or len(resultn) < 1 or\
+       new_member.Nickname == "" or n.match(new_member.Nickname) or len(new_member.Nickname) <= 1 or len(new_member.Nickname) >= 7 or\
+       new_member.Username == "" or na.match(new_member.Username) or len(new_member.Username) <= 1 or len(new_member.Username) >= 7 or\
+       new_member.phonenumber == "":
+       return render(req,'signup.html')
     else :
-        new_member.save()
-        return render (req, 'signup_com.html',{'user': new_member})
+       new_member.save()
+       return render (req, 'signup_com.html',{'user': new_member})
 
 # 로그인
 def login(req):
