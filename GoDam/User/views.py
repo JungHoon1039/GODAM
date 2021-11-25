@@ -12,8 +12,11 @@ def signup(req):
 # 회원가입 완료 
 def signup_com(req):
     new_member = User(Userid=req.POST.get('id'), Password=req.POST.get('pw'), Nickname=req.POST.get('nick'), Username=req.POST.get('name'), phonenumber=req.POST.get('phone'))
-    new_member.save()
-    return render (req, 'signup_com.html',{'user': new_member})
+    if new_member.Userid == "1":
+        return render(req,'login.html')
+    else :
+        new_member.save()
+        return render (req, 'signup_com.html',{'user': new_member})
 
 # 로그인
 def login(req):
@@ -21,7 +24,7 @@ def login(req):
     if logged_member :
         return render (req, 'index.html', {'login_member' : logged_member})
     else :
-        return render (req,'godam.html')
+        return render (req,'login.html')
 
 def index(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
@@ -39,7 +42,7 @@ def logged(req):
 # 세션삭제 - 로그아웃
 def logout(req):
     req.session.pop('Userid')
-    return render(req, 'logout.html')
+    return render(req, 'login.html')
 
 # 아이디 중복체크
 def check_id(req):

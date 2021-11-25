@@ -19,32 +19,41 @@
                     <div class="col-12 mb-2" style="text-align: center;">
                         {% csrf_token %}
                         <p>아이디</p>
-                        <input type="text" name="id" id="id" value="" size="30" onchange="idchange(this)"><br>
+                        <input type="text" name="id" id="id" value="" size="30" onchange="idchange(this)" required pattern="^[a-zA-Z0-9!~@#$%^&*()_+-=\[\]{}<>:`?;'\\/,.&quot]+$" minlength="6" maxlength="12" ><br>
                         <div id="none" style="color:blue;display:none;">사용가능한 아이디 입니다</div>
                         <div id="alex" style="color:red;display:none;";>이미 사용중인 아이디 입니다</div>
+                        <div id="idval" style="color:red;display:none;";>영문 대문자,소문자,숫자,특수문자를 이용해서 6~12자 이내여야합니다</div>
                         <button type="button" id="checked" onclick="duplicate()" class="btn-l text-uppercase mt-5" style="color: black; text-align: center;"><h5>중복체크</h5></button>
                     </div>
-                    <div class="col-12 mb-2" style="text-align: center;">
-                        <p>비밀번호</p>
-                        <input type="password" name="pw" id="pw" value="" size="30"><!--required-->
-                    </div>
-                    <div class="col-12 mb-2" style="text-align: center;">
-                        <input type="password" id="pwd" value="" size="30">
-                        <div id="success" style="color:blue";>비밀번호가 일치합니다</div>
-                        <div id="danger" style="color:red";>비밀번호가 일치하지 않아요</div>
-                    <!--<button type="button" class="btn btn-primary btn-xs text-uppercase my-3" onclick="pwdChk()">비밀번호 확인</button>-->
+                    <div id="pwvalidator">
+                        <div class="col-12 mb-2" style="text-align: center;">
+                            <p>비밀번호</p>
+                            <input type="password" name="pw" id="pw" value="" size="30" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">
+                            <div id="pwval" style="color:red; display:none;">영문 대문자 소문자 통합해서 최소1개 와 숫자 최소 1개로 이용해서 6~12자 이내여야합니다</div>
+                        </div>
+                        <div class="col-12 mb-2" style="text-align: center;">
+                            <input type="password" id="pwd" value="" size="30" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">
+                            <div id="success" style="color:blue; display:none;">비밀번호가 일치합니다</div>
+                            <div id="danger" style="color:red; display:none;">비밀번호가 일치하지 않아요</div>
+                            <div id="pwdval" style="color:red; display:none;">영문 대문자 소문자 통합해서 최소1개 와 숫자 최소 1개로 이용해서 6~12자 이내여야합니다</div>
+                        <!--<button type="button" class="btn btn-primary btn-xs text-uppercase my-3" onclick="pwdChk()">비밀번호 확인</button>-->
+                        </div>
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>닉네임</p>
-                        <input type="text" name="nick" value="" size="30"><!--required-->
+                        <input type="text" name="nick" id="nick" value="" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6">
+                        <div id="nickval" style="color:red; display:none;">특수문자를 제외한 2~6자를 입력해주세요</div>
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>이름</p>
-                        <input type="text" name="name" value="" size="30"><!--required-->
+                        <input type="text" name="name" id="name" value="" size="30" required pattern="^[가-힣]+$" minlength="2" maxlength="6">
+                        <div id="nameval" style="color:red; display:none;">옳바른 한글이름을 입력하세요</div>
                     </div>
                     <div class="col-12 mb-2" style="text-align: center;">
                         <p>연락처</p>
-                        <input type="text" name="phone" value="" size="30"><!--required-->
+                        <!-- 대시 존재할수 있고 안할수도 있음 -->
+                        <input type="text" name="phone" id="phone" value="" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$">
+                        <div id="phoneval" style="color:red; display:none;">옳바른 휴대폰 번호를 입력하세요(-없어도 무관)</div>
                     </div>
                 </div>
             </div>
@@ -65,68 +74,84 @@
             }
 
             function check(){
-                var id = document.getElementsByName("id")[0];
-                var pw = document.getElementsByName("pw")[0]
-                var pwd = document.getElementById('pwd');
-                var name = document.getElementsByName("name")[0];
-                var phone = document.getElementsByName("phone")[0];
-                var nick = document.getElementsByName("nick")[0];
-                <!-- 이름 각각 char 콕집어내기 -->
-                for(var i = 0; i<name.value.length; i++)
-                    var char = name.value.substring(i,i+1);
 
-                if(!id.value ){
-                    alert("아이디를 입력하세요");
-                    return false;
-                }else if(!pw.value){
-                    alert("비밀번호를 입력하세요");
-                    return false;
-                }else if(!pwd.value){
-                    alert("비밀번호확인을 입력하세요");
-                    return false;
-                }else if (!nick.value){
-                    alert("닉네임을 입력하세요");
+                var form = document.form;
+                    //폼에대한 유효성 확인
+                    if(!form.checkValidity()){
+                        form.reportValidity();
+                        return false;
+                    }else if(checked == false) {
+                        alert("중복체크 확인하세요");
+                        return false;
+                    //폼전송
+                    }else if(checked == true && pwc == true){
+                        form.submit();
+                        return true;
+                    }
+                //var id = document.getElementsByName("id")[0];
+                //var pw = document.getElementsByName("pw")[0]
+                //var pwd = document.getElementById('pwd');
+                //var name = document.getElementsByName("name")[0];
+                //var phone = document.getElementsByName("phone")[0];
+                //var nick = document.getElementsByName("nick")[0];
+                <!-- 이름 각각 char 콕집어내기 -->
+                //for(var i = 0; i<name.value.length; i++)
+                //    var char = name.value.substring(i,i+1);
+
+                //if(!id.value ){
+                //    alert("아이디를 입력하세요");
+                //    return false;
+                //}else if(!pw.value){
+                //    alert("비밀번호를 입력하세요");
+                //    return false;
+                //}else if(!pwd.value){
+                //   alert("비밀번호확인을 입력하세요");
+                //    return false;
+                //}else if (!nick.value){
+                //    alert("닉네임을 입력하세요");
                 //이름 유효성검사
                     //1.이름이 빈값일경우
-                }else if (!name.value) {
-                    alert("이름을 입력하세요");
-                    return false;
+                //}else if (!name.value) {
+                //    alert("이름을 입력하세요");
+                //    return false;
                     //2.이름에 공백이 있는경우
-                }else if (name.value.indexOf(" ") >= 0){
-                    alert("이름의 공백을 지워주세요");
-                    return false;
+                //}else if (name.value.indexOf(" ") >= 0){
+                //    alert("이름의 공백을 지워주세요");
+                //    return false;
                     //3.이름이 2글자 미만이거나 6글자 이상인경우
-                }else if (name.value.length <= 1 || name.value.length >= 6){
-                    alert("이름 길이를 확인하세요");
-                    return false;
+                //}else if (name.value.length <= 1 || name.value.length >= 6){
+                //    alert("이름 길이를 확인하세요");
+                //    return false;
                     //4.숫자 및 영문 사용금지
-                }else if (char.match(/[0-9]|[a-z]|[A-Z]/)) {
-                    alert("한글만 사용 가능합니다");
-                    return false;
+                //}else if (char.match(/[0-9]|[a-z]|[A-Z]/)) {
+                //    alert("한글만 사용 가능합니다");
+                //    return false;
                     //5.한글 자음 사용금지
-                }else if(char.match(/([^가-힣\x20])/i)) {
-                    alert("이름을 정확히 입력해주세요")
-                    return false;
-                }else if (!phone.value) {
-                    alert("전화번호를 입력하세요");
-                    return false;
-                }else if(checked == false) {
-                    alert("중복체크 확인하세요");
-                    return false;
-                }else if(pwc == false) {
-                    alert("비밀번호를 확인하세요");
-                    return false;
-                }else if(checked == true && pwc == true){
-                    var form = document.form;
-                    form.submit();
-                    return true;
-                }
+                //}else if(char.match(/([^가-힣\x20])/i)) {
+                //    alert("이름을 정확히 입력해주세요")
+                //    return false;
+                //}else if (!phone.value) {
+                //    alert("전화번호를 입력하세요");
+                //    return false;
+                //}else if(checked == false) {
+                //    alert("중복체크 확인하세요");
+                //    return false;
+                //}else if(pwc == false) {
+                //    alert("비밀번호를 확인하세요");
+                //    return false;
+                //}else if(checked == true && pwc == true){
+                //    var form = document.form;
+                //    form.submit();
+                //    return true;
+                //}
             }
         <!-- ajax로 이용한 아이디 체크-->
             function duplicate() {
                 var id = $("#id").val();
-                if (id == "") {
-                    alert("아이디를 입력하세요")
+                //id 유효성 checkvalidity jquery 버전 및 reportvalidity jquery
+                if (!$('#id')[0].validity.valid) {
+                    $('#id')[0].reportValidity()
+                    return false;
                 }else{
                     $.ajax({
                         url: 'check_id',
@@ -148,13 +173,35 @@
                     );
                 }
             }
-            <!-- 비밀번호 일치하는지 확인-->
-            $(function(){
-                $('#success').hide();
-                $('#danger').hide();
-                $("input").keyup(function(){
-                    var pw=$("#pw").val();
-                    var pwd=$('#pwd').val();
+            <!-- 아이디 알림 메세지,중복체크 메세지 관리-->
+                $("#id").keyup(function() {
+                    if ($('#none').show() || $('#alex').show()) {
+                        $('#none').hide();
+                        $('#alex').hide();
+                    }
+                    if (!$('#id')[0].validity.valid) {
+                        $('#idval').show();
+                    } else {
+                        $('#idval').hide();
+                    }
+                });
+
+            <!-- 비밀번호 알림 메세지 및 일치하는지 확인-->
+                $("#pwvalidator").keyup(function(){
+                    var pw = $("#pw").val();
+                    var pwd = $('#pwd').val();
+                    if(!$('#pw')[0].validity.valid){
+                        $('#pwval').show();
+                    }else{
+                        $('#pwval').hide();
+                    }
+
+                    if(!$('#pwd')[0].validity.valid){
+                        $('#pwdval').show();
+                    }else{
+                        $('#pwdval').hide();
+                    }
+
                     if(pw != '' || pwd != ""){
                         if(pw == pwd){
                             $('#success').show();
@@ -167,7 +214,31 @@
                         }
                     }
                 });
-            });
+                <!-- 닉네임 알림 메세지,중복체크 메세지 관리-->
+                $("#nick").keyup(function() {
+                    if (!$('#nick')[0].validity.valid) {
+                        $('#nickval').show();
+                    } else {
+                        $('#nickval').hide();
+                    }
+                });
+                <!-- 이름 알림 메세지,중복체크 메세지 관리-->
+                $("#name").keyup(function() {
+                    if (!$('#name')[0].validity.valid) {
+                        $('#nameval').show();
+                    } else {
+                        $('#nameval').hide();
+                    }
+                });
+                <!-- 전화번호 알림 메세지,중복체크 메세지 관리-->
+                $("#phone").keyup(function() {
+                    if (!$('#phone')[0].validity.valid) {
+                     $('#phoneval').show();
+                    } else {
+                        $('#phoneval').hide();
+                    }
+                });
+
 
         </script>
 <!--비밀번호 체크 -->
