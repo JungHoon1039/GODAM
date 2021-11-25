@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 html,body{ margin:0; padding:0; width:100%; height:100%;}
 .box{ width:100%; height:100%; position:relative; color:#ffffff; font-size:24pt;background-position: center;
 background-repeat: no-repeat;
@@ -121,6 +120,7 @@ signupTitle {
     height: 45px;
 }
 
+
 #cancel {
     border: 1px solid #1b3f36;
     color: #1b3f36;
@@ -133,6 +133,7 @@ signupTitle {
     color: #fff;
     opacity: 0.6;
 }
+
 
 #join {
     border: none;
@@ -150,6 +151,50 @@ signupTitle {
     opacity: 0.8;
 }
 
+/*info 페이지*/
+
+.info_btn {
+    border-radius: 3px;
+    width: 130px;
+    height: 45px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#change_pwd {
+    border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff;
+}
+
+#change_pwd:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.6;
+}
+
+#delete_id {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#delete_id:hover {
+    /* border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff; */
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.info_form{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
 /*-----회원가입완료 페이지 signup_com.html---------------------------------------*/
 #com_row {
     position: absolute;
