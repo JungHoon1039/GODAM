@@ -16,6 +16,7 @@ na = re.compile("[^가-힣]")#한글이 아닐때
 ps = '[a-z]+'
 #얘는 숫자
 pn = '[0-9]+'
+
 # 회원가입
 def signup(req):
     return render (req, 'signup.html')
@@ -39,6 +40,17 @@ def signup_com(req):
        new_member.save()
        return render (req, 'signup_com.html',{'user': new_member})
 
+# 아이디 중복체크
+def check_id(req):
+    id = req.GET.get('id')
+    try:
+        id=User.objects.get(Userid = id)
+        duplicate = "fail"
+    except:
+        duplicate = "pass"
+    context = {'duplicate':duplicate}
+    return JsonResponse(context)
+
 # 로그인
 def login(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
@@ -46,10 +58,6 @@ def login(req):
         return render (req, 'index.html', {'login_member' : logged_member})
     else :
         return render (req,'login.html')
-
-def index(req):
-    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-    return render (req, 'index.html', {'login_member' : logged_member})
 
 # 로그인 완료&실패
 def logged(req):
@@ -63,54 +71,58 @@ def logged(req):
 # 세션삭제 - 로그아웃
 def logout(req):
     req.session.pop('Userid')
-    return render(req, 'login.html')
-
-# 아이디 중복체크
-def check_id(req):
-    id = req.GET.get('id')
-    try:
-        id=User.objects.get(Userid = id)
-        duplicate = "fail"
-    except:
-        duplicate = "pass"
-    context = {'duplicate':duplicate}
-    return JsonResponse(context)
+    return redirect (login)
 
 # 회원정보
 def userinfo(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
     return render(req, 'info.html', {'login_member' : logged_member})
 
+# 회원탈퇴 완료
+def member_delete_complete(req):
+     del_user = User.objects.filter(Userid=req.session.get('Userid'))
+     del_user.delete()
+     req.session.pop('Userid')
+     return render(req, 'delete_com.html')
+
 # 비밀번호 변경
-def password_edit(req):
+def info_edit(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
     return render(req, 'edit.html', {'login_member' : logged_member})
 
 # 비밀번호 변경 확인
-def password_edit_complete(req):
+def info_edit_complete(req):
     try:
-        user = User.objects.get(Userid=req.POST.get('id'), Password=req.POST.get('pw'))
+        user = User.objects.get(Userid=req.POST.get('pw'))
         if user:
-            user.Password = req.POST.get('new_pw')
+            #user.Password = req.POST.get('new_pw')
+            logged_member.Password == user
             user.save()
             req.session.pop('Userid')
+            req.session['Userid'] = req.POST.get('id')
             return render (req,'edit_com.html')
     except ObjectDoesNotExist:
         return redirect (password_edit)
 
-# 회원탈퇴
-def member_delete(req):
-    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-    return render (req, 'delete.html', {'login_member' : logged_member})
+"""
+Id,Pw 정보를 받아 회원탈퇴 - Try문 활용
+        try:
+            del_user = User.objects.get(Userid=req.POST.get('del_id'), Password=req.POST.get('del_pw'))
+            if del_user:
+                del_user.delete()
+                return render(req, 'delete_com.html')
+        except ObjectDoesNotExist:
+            return redirect (member_delete)
 
-# 회원탈퇴 완료
-def member_delete_complete(req):
-    try:
-        del_user = User.objects.get(Userid=req.POST.get('del_id'), Password=req.POST.get('del_pw'))
-        if del_user:
-            del_user.delete()
-            return render(req, 'delete_com.html')
-    except ObjectDoesNotExist:
-        return redirect (member_delete)
+ Index 페이지 - Login 페이지로 통합됌
+ def index(req):
+     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+     return render (req, 'index.html', {'login_member' : logged_member})
+
+ 회원탈퇴 페이지 - Info 페이지로 통합됌
+ def member_delete(req):
+     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+     return render (req, 'delete.html', {'login_member' : logged_member})
+ """
 
 # Create your views here. 
