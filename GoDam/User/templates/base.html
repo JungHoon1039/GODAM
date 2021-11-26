@@ -26,13 +26,12 @@
     <link rel="stylesheet" href="{% static '../static/style.css' %}">
     <!--favicon-->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static '../static/favicon-32x32.png' %}">
+    <!--제이쿼리-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- title-->
     <title>고담 | {% block title %}{% endblock title %}</title>
 
-    {% block scripts %}
-
-    {% endblock scripts %}
 
 </head>
 
@@ -50,6 +49,10 @@
     {% block content %}
 
     {% endblock content %}
+
+    {% block scripts %}
+
+    {% endblock scripts %}
 </body>
 
 </html>
