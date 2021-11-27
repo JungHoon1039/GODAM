@@ -58,10 +58,17 @@
                             <td></td>
                             <td></td>
                         </tr>
+                        <tr>
+                            <td scope="row">거주지역</td>
+                            <td style="font-weight: 400;">{{user.Region}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                         </tbody>
                     </table>
                     <div class="row justify-content-center">
-                        <button type="button" class="info_btn me-2" id="change_pwd"><a href="http://52.79.227.191:8000/user/edit" target="_self" style="color: black;">비밀번호 변경</a></button>
+                        <button type="button" class="info_btn me-2" id="change_pwd"><a href="http://52.79.227.191:8000/user/edit" target="_self" style="color: black;">개인정보 변경</a></button>
+                        <button type="button" class="info_btn me-2" id="change_pwd"><a href="http://52.79.227.191:8000/user/password_edit" target="_self" style="color: black;">비밀번호 변경</a></button>
                         <button type="button" class="info_btn" id="delete_id" onClick=showConfirm()>회원탈퇴</button>
 <!--                        <button class="btn me-2" id="cancel">비밀번호 변경</button>-->
 <!--                        <button class="btn" id="join">회원탈퇴</button>-->
