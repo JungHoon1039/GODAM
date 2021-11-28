@@ -5,6 +5,7 @@ import os, torch
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 import re
+from django.contrib import messages
 
 #정규식 전역변수 설정해주기
 i = re.compile("[^a-zA-Z0-9!~@#$%^&*()_+-=\[\]\{\}<>:`?;'\ \/,.&quot]") #문자 와 숫자특수문자가 아닐때  match()로 받은값 처음부터 다 확인
@@ -139,8 +140,9 @@ def password_edit_complete(req):
           logged_member.save()
           req.session['Password'] = req.POST.get('pw')
           return render (req,'password_edit_com.html')
-    #안되면 리다이렉트
+    #안되면 리다이렉트(경고 메세지도 비밀번호 변경 페이지에 보내기)
     else:
+        messages.warning(req, '기존 비밀번호가 맞는지 확인하세요')
         return redirect (password_edit)
 
 
