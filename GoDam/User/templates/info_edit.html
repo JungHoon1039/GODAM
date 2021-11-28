@@ -17,21 +17,21 @@
             <div class="row">
                 <div class="col-12 mb-5" style="text-align: center;">
                     {% for user in login_member %}
-                    {{user.Username}}님의 현재 아이디 : {{ user.Userid }}
-                    {% endfor %}
+                    {{user.Username}} 님의 현재 아이디 : {{ user.Userid }}
                 </div>
                 <div class="col-12 mb-5" style="text-align: center;">
                     <label for="nick">닉네임</label><br><br>
-                    <input type="text" id="nick" name="nick" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6"><br>
+                    <input type="text" id="nick" name="nick" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6" value="{{user.Nickname}}"><br>
                     <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>
                 </div>
                     <div class="col-12 mb-5" style="text-align: center;">
                         <label for="phone">연락처</label><br><br>
-                        <input type="text" id="phone" name="phone" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$">
+                        <input type="text" id="phone" name="phone" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$" value="{{user.phonenumber}}">
                         <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>
                     </div>
                     <div class="col-12 mb-5" style="text-align: center;">
-                        <select name='region' required>\n
+                        <select name='region' required>
+                            <option selected = "selected">{{user.Region}}</option>
                             <option value="강동구">강동구</option>
                             <option value="송파구">송파구</option>
                             <option value="강남구">강남구</option>
@@ -62,6 +62,7 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </form>
 </div>
 <script>
