@@ -8,194 +8,119 @@
 
 
 {% block content %}
-<div class="box signupForm">
-    <form name="form" action="http://52.79.227.191:8000/user/signup_com" method="post">
-        {% csrf_token %}
-        <p class="signupTitle h4 fw-bold mb-3 d-flex justify-content-center" style="color:black;">회원가입</p>
-            <table class="table">
-                <thead>
-                <th scope="col">회원 정보 입력</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="col">아이디</th>
-                    <td scope="col">
-                        <input class="signupinput" type="text" name="id" id="id" onchange="idchange(this)" style="margin-bottom: 6px;" required
-                               pattern="^[a-zA-Z0-9!~@#$%^&*()_+-=\[\]{}<>:`?;'\\/,.&quot]+$" minlength="6"
-                               maxlength="12">
-                        <button class="checked_id ms-1" type="button" id="checked"
-                                onclick="duplicate()">중복확인</button>
-                        <div id="none" style="color:mediumblue; display:none; font-size: 13.5px;">사용가능한 아이디 입니다.</div>
-                        <div id="alex" style="color:red; display:none; font-size: 13.5px;">이미 사용중인 아이디 입니다.</div>
-                        <div id="idval" style="color:red; display:none; font-size: 13.5px;">영문 대/소문자, 숫자, 특수문자를 이용해서 6~12자 이내여야 합니다.
-                        </div>
-                    </td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                </tr>
-                <tr>
-                    <th scope="row">비밀번호</th>
-                    <td id="pwvalidator">
-                        <input class="signupinput" type="password" name="pw" id="pw" value="" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">
-                        <p style="font-size: 13px; display: block;">(영문/숫자 중 2가지 이상 조합, 6자 이상)</p>
-                        <input class="signupinput" type="password" name="pwd" id="pwd" value="" placeholder="비밀번호 확인" style="margin-bottom: 6px;" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">
-                        <div id="success" style="color:mediumblue; display:none; font-size: 13.5px;">비밀번호가 일치합니다.</div>
-                        <div id="danger" style="color:red; display:none; font-size: 13.5px;">비밀번호가 일치하지 않습니다.</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">닉네임</th>
-                    <td>
-                        <input class="signupinput" type="text" name="nick" id="nick" value="" style="margin-bottom: 6px;" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6">
-                        <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">이름</th>
-                    <td>
-                        <input class="signupinput" type="text" name="name" id="name" value="" style="margin-bottom: 6px;" required pattern="^[가-힣]+$" minlength="2" maxlength="6">
-                        <div id="nameval" style="color:red; display:none; font-size: 13.5px">올바른 한글 이름을 입력하세요.</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">휴대폰</th>
-                    <td>
-                        <input class="signupinput" type="text" name="phone" id="phone" value="" style="margin-bottom: 6px;" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$">
-                        <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">거주지역</th>
-                    <td>
-                        <select name='region' required>
-                            <option value="강동구" selected>강동구</option>
-                            <option value="송파구">송파구</option>
-                            <option value="강남구">강남구</option>
-                            <option value="서초구">서초구</option>
-                            <option value="관악구">관악구</option>
-                            <option value="동작구">동작구</option>
-                            <option value="금천구">금천구</option>
-                            <option value="영등포구">영등포구</option>
-                            <option value="구로구">구로구</option>
-                            <option value="양천구">양천구</option>
-                            <option value="강서구">강서구</option>
-                            <option value="마포구">마포구</option>
-                            <option value="은평구">은평구</option>
-                            <option value="종로구">종로구</option>
-                            <option value="중구">중구</option>
-                            <option value="강북구">강북구</option>
-                            <option value="성북구">성북구</option>
-                            <option value="동대문구">동대문구</option>
-                            <option value="성동구">성동구</option>
-                            <option value="도봉구">도봉구</option>
-                            <option value="노원구">노원구</option>
-                            <option value="중랑구">중랑구</option>
-                            <option value="광진구">광진구</option>
-                    </select>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="row justify-content-center">
-                <button class="btn me-2" id="cancel" onclick ="location.href = 'http://52.79.227.191:8000/user/login'">취소</button>
-                <button class="btn" id="join" type="button" onclick="check()">회원가입</button>
-            </div>
-        </div>
-    </form>
+
+<div class="box signupForm" style="padding-top: 110px">
+    <div class="container signupTable">
+        <form name="form" action="http://52.79.227.191:8000/user/signup_com" method="post">
+            {% csrf_token %}
+                <table class="table">
+                    <p class=" d-flex justify-content-center" style="color:black; font-size: 26px; font-weight: 500;">회원가입</p>
+                    <thead>
+                    <th colspan="2">회원 정보 입력</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="col">아이디</td>
+                        <td scope="col">
+                            <input class="signupinput" type="text" name="id" id="id" placeholder="아이디" onchange="idchange(this)" style="margin-bottom: 6px;" required
+                                   pattern="^[a-zA-Z0-9!~@#$%^&*()_+-=\[\]{}<>:`?;'\\/,.&quot]+$" minlength="6"
+                                   maxlength="12">
+                            <button class="checked_id ms-1" type="button" id="checked"
+                                    onclick="duplicate()">중복확인</button>
+                            <div id="none" style="color:mediumblue; display:none; font-size: 13.5px;">사용가능한 아이디 입니다.</div>
+                            <div id="alex" style="color:red; display:none; font-size: 13.5px;">이미 사용중인 아이디 입니다.</div>
+                            <div id="idval" style="color:red; display:none; font-size: 13.5px;">영문 대/소문자, 숫자, 특수문자를 이용해서 6~12자 이내여야 합니다.
+                            </div>
+                        </td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">비밀번호</td>
+                        <td id="pwvalidator">
+                            <input class="signupinput" type="password" name="pw" id="pw" value="" placeholder="비밀번호" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">
+                            <p style="font-size: 13px; display: block;">(영문/숫자 중 2가지 이상 조합, 6자 이상)</p>
+                            <input class="signupinput" type="password" name="pwd" id="pwd" value="" placeholder="비밀번호 확인" style="margin-bottom: 6px;" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">
+                            <div id="success" style="color:mediumblue; display:none; font-size: 13.5px;">비밀번호가 일치합니다.</div>
+                            <div id="danger" style="color:red; display:none; font-size: 13.5px;">비밀번호가 일치하지 않습니다.</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">닉네임</td>
+                        <td>
+                            <input class="signupinput" type="text" name="nick" id="nick" value="" placeholder="닉네임" style="margin-bottom: 6px;" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6">
+                            <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">이름</td>
+                        <td>
+                            <input class="signupinput" type="text" name="name" id="name" value="" placeholder="이름" style="margin-bottom: 6px;" required pattern="^[가-힣]+$" minlength="2" maxlength="6">
+                            <div id="nameval" style="color:red; display:none; font-size: 13.5px">올바른 한글 이름을 입력하세요.</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">연락처</td>
+                        <td>
+                            <input class="signupinput" type="text" name="phone" id="phone" value="" placeholder="휴대폰 번호" style="margin-bottom: 6px;" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$">
+                            <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">거주지역</td>
+                        <td>
+                            <select name='region' required>
+                                <option value="강동구" selected>강동구</option>
+                                <option value="송파구">송파구</option>
+                                <option value="강남구">강남구</option>
+                                <option value="서초구">서초구</option>
+                                <option value="관악구">관악구</option>
+                                <option value="동작구">동작구</option>
+                                <option value="금천구">금천구</option>
+                                <option value="영등포구">영등포구</option>
+                                <option value="구로구">구로구</option>
+                                <option value="양천구">양천구</option>
+                                <option value="강서구">강서구</option>
+                                <option value="마포구">마포구</option>
+                                <option value="은평구">은평구</option>
+                                <option value="종로구">종로구</option>
+                                <option value="중구">중구</option>
+                                <option value="강북구">강북구</option>
+                                <option value="성북구">성북구</option>
+                                <option value="동대문구">동대문구</option>
+                                <option value="성동구">성동구</option>
+                                <option value="도봉구">도봉구</option>
+                                <option value="노원구">노원구</option>
+                                <option value="중랑구">중랑구</option>
+                                <option value="광진구">광진구</option>
+                        </select>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row justify-content-center">
+                    <button class="btn me-2" id="cancel" onclick ="location.href = 'http://52.79.227.191:8000/user/login'">취소</button>
+                    <button class="btn" id="join" type="button" onclick="check()">회원가입</button>
+                </div>
+        </form>
+    </div>
 </div>
 
 
 
-<!--<div class="box signupForm">-->
-<!--    <form name="form" action="http://52.79.227.191:8000/user/signup_com" method="post">-->
-<!--        {% csrf_token %}-->
-<!--        <div class="container position-absolute top-50 start-50 translate-middle">-->
-<!--            <div class="row">-->
-<!--                <div class="col-8 offset-2 py-4" style="background-color: #fff; padding: 20px;">-->
-<!--                    <p class="signupTitle h4 fw-bold mb-3 d-flex justify-content-center" style="color:black;">회원가입</p>-->
-<!--                    <table class="table mb-4">-->
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th colspan="2">회원 정보 입력</th>-->
-<!--                            <th scope="col"></th>-->
-<!--                            <th scope="col"></th>-->
-<!--                            <th scope="col"></th>-->
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                            <td scope="row">아이디</td>-->
-<!--                            <td colspan="2">-->
-<!--                                <input class="signupinput" type="text" name="id" id="id" onchange="idchange(this)" required pattern="^[a-zA-Z0-9!~@#$%^&*()_+-=\[\]{}<>:`?;'\\/,.&quot]+$" minlength="6" maxlength="12">-->
-<!--                                <button class="checked_id ms-1" type="button" id="checked" onclick="duplicate()">중복확인</button>-->
-<!--                                <div id="text_id"></div>-->
-<!--                                <div id="none" style="color:mediumblue; display:none;">사용가능한 아이디 입니다</div>-->
-<!--                                <div id="alex" style="color:red; display:none;";>이미 사용중인 아이디 입니다</div>-->
-<!--                                <div id="idval" style="color:red; display:none;";>영문 대문자,소문자,숫자,특수문자를 이용해서 6~12자 이내여야합니다</div>-->
-<!--                            </td>-->
-<!--                            <td></td>-->
-<!--                            <td></td>-->
-<!--                        </tr>-->
-<!--                        <tr id="pwvalidator" rowspan="2">-->
-<!--                            <td scope="row">비밀번호</td>-->
-<!--                            <td>-->
-<!--                                <input class="signupinput" type="password" name="pw" id="pw" value="" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">-->
-<!--                                <p style="font-size: 13px; display: block;">(영문/숫자 중 2가지 이상 조합, 6자 이상)</p>-->
-<!--                            </td>-->
-<!--                            <td scope="row">비밀번호 확인</td>-->
-<!--                            <td id="text_pw" colspan="3">-->
-<!--                                <input class="signupinput" type="password" name="pwd" id="pwd" value="" style="margin-bottom: 6px;" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$">-->
-<!--                                <div id="success" style="color:mediumblue; display:none;">비밀번호가 일치합니다</div>-->
-<!--                                <div id="danger" style="color:red; display:none;">비밀번호가 일치하지 않습니다</div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td scope="row">닉네임</td>-->
-<!--                            <td><input class="signupinput" type="text" name="nick" id="nick" value="" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6"></td>-->
-<!--                            <td></td>-->
-<!--                            <td id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요</td>-->
-<!--                            <td colspan="2"></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td scope="row">이름</td>-->
-<!--                            <td><input class="signupinput" type="text" name="name" id="name" value="" required pattern="^[가-힣]+$" minlength="2" maxlength="6"></td>-->
-<!--                            <td></td>-->
-<!--                            <td id="nameval" style="color:red; display:none; font-size: 13.5px">올바른 한글이름을 입력하세요</td>-->
-<!--                            <td colspan="2"></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td scope="row">휴대폰 번호</td>-->
-<!--                            <td><input class="signupinput" type="text" name="phone" id="phone" value="" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$"></td>-->
-<!--                            <td></td>-->
-<!--                            <td id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요(-없어도 무관)</td>-->
-<!--                            <td colspan="2"></td>-->
-<!--                        </tr>-->
 
-
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                    <div class="row justify-content-center">-->
-<!--                        <button class="btn me-2" id="cancel">취소</button>-->
-<!--                        <button class="btn" id="join" type="button" onclick="check()">회원가입</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
 {% endblock content %}
 
 <!-- script -->

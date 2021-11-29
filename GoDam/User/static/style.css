@@ -1,32 +1,34 @@
-html,body{ margin:0; padding:0; width:100%; height:100%;}
-.box{ width:100%; height:100%; position:relative; color:#fff; font-size:24pt;background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-background-color: rgb(245, 245, 245);}
+html,body {
+    margin:0; padding:0; width:100%; height:100%;
+    background-color: rgb(245, 245, 245);
+}
 
+.box {
+    width:100%;
+    height:100%;
+    position:relative;
+    color:#fff;
+    font-size:24pt;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(245, 245, 245);
+}
 
-#logo{font-family: 'Black Han Sans', sans-serif;}
-#title{font-family: 'Black Han Sans', sans-serif;}
+#logo {
+    font-family: 'Black Han Sans', sans-serif;
+}
 
-#sign{font-family: 'Noto Sans KR', sans-serif;
-font-weight: 300;}
+#title {
+    font-family: 'Black Han Sans', sans-serif;
+}
 
-.signupForm{
+#sign {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
 }
 
-.login input[type=text]{
-background: transparent;
-border: 1px solid rgba(255,255,255);
-border-radius: 5px;
-color: #fff;
-font-size: 16px;
-font-family: 'Montserrat', sans-serif;
-font-weight: 300;
-}
-
-.login input[type=password]{
+.login input[type=text] {
     background: transparent;
     border: 1px solid rgba(255,255,255);
     border-radius: 5px;
@@ -36,45 +38,56 @@ font-weight: 300;
     font-weight: 300;
 }
 
-
-
-.loginbtn{
-background: #fff;
-border: 1px solid #fff;
-cursor: pointer;
-border-radius: 2px;
-color: #a18d6c;
-font-size: 16px;
-font-family: 'Montserrat', sans-serif;
-font-weight: 300;
+.login input[type=password] {
+    background: transparent;
+    border: 1px solid rgba(255,255,255);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
 
-.loginbtn:hover{
+.loginbtn {
+    background: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a18d6c;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.loginbtn:hover {
     opacity: 0.8;
 }
 
-.loginbtn:active{
+.loginbtn:active {
     opacity: 0.6;
 }
 
-
-#member_id::placeholder{
+#member_id::placeholder {
     color: whitesmoke;
 }
-#member_pwd::placeholder{
+#member_pwd::placeholder {
     color: whitesmoke;
 }
 
-a:link{
+a:link {
     text-decoration: none;
 }
 
-a#btnhover:hover{
-    color: whitesmoke;
+a#btnhover {
+    color:darkseagreen;
 }
 
-.slog{
-    position: z-index: 1;
+a#btnhover:hover {
+    color: yellowgreen;
+}
+
+.slog {
+    z-index: 1;
     font-family: 'Gamja Flower', sans-serif;
     font-weight: 300;
 }
@@ -82,13 +95,21 @@ a#btnhover:hover{
 .info_form {
     box-shadow: 0px 0px 30px rgb(201, 199, 199);
     border-radius: 10px;
-
 }
 
-/*------signup.html------*/
+/*------회원가입 페이지 signup.html------*/
 .signupForm {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    /*box-shadow: 0px 0px 30px rgb(201, 199, 199);*/
+    /*border-radius: 10px;*/
+}
+
+.signupTable {
     box-shadow: 0px 0px 30px rgb(201, 199, 199);
     border-radius: 10px;
+    padding:25px;
+    background-color: rgb(252,252,252);
 }
 
 tr {
@@ -96,17 +117,23 @@ tr {
     color: black;
 }
 
-signupTitle {
-    font-size: 13px;
-    display: inline;
-}
-
-.signupinput {
+tbody .signupinput {
+    font-size: 15px;
+    padding: 3px;
     border: 1px solid rgba(128, 128, 128, 0.473);
     border-radius: 5px;
 }
 
+tbody select {
+    border: 1px solid rgba(128, 128, 128, 0.473);
+    padding: 2px;
+    font-size: 15px;
+}
 
+tbody .signupinput:focus,
+tbody select:focus {
+    outline: 1px solid lightsteelblue;
+}
 
  /*--중복확인 버튼--*/
 #checked {
@@ -122,13 +149,11 @@ signupTitle {
 
 #checked:hover {
     border-radius: 2px;
-    border: 1.5px solid #1b3f36;
+    border: 1px solid #1b3f36;
     color: #1b3f36;
-    background-color: rgb(245, 247, 245);
+    background-color: #fff;
+    font-weight: 500;
 }
-
-
-
 
 .btn {
     width: 115px;
@@ -148,7 +173,6 @@ signupTitle {
     opacity: 0.6;
 }
 
-
 #join {
     border: none;
     background-color: #1b3f36;
@@ -166,7 +190,6 @@ signupTitle {
 }
 
 /*------info 페이지------*/
-
 .info_btn {
     border-radius: 3px;
     width: 130px;
@@ -209,6 +232,7 @@ signupTitle {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
 }
+
 /*------회원가입완료 페이지 signup_com.html------*/
 #com_row {
     position: absolute;
@@ -237,10 +261,6 @@ signupTitle {
     font-size: 26.5px;
     color: gray;
     font-family: 'Gamja Flower', sans-serif;
-}
-
-.com_hr{
-
 }
 
 #com_loginbtn {
