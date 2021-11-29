@@ -41,6 +41,12 @@ Main
 
 <!-- script -->
 {% block scripts %}
+{% if messages %}
+<script>
+    alert('{{ messages }}');
+</script>
+{% endif %}
+
 <script type="text/javascript">
     window.onload = function () {
         var elm = ".box";

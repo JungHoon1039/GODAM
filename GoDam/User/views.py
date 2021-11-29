@@ -1,11 +1,14 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect
 from .models import User
 from django.core.exceptions import ObjectDoesNotExist
 import os, torch
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 import re
-from django.contrib import messages
+from django.contrib import messages # messages.warning(req, 'Your account expires in three days.')
+from django.http import HttpResponse # return HttpResponse('적고싶은내용')
+
+
 
 #정규식 전역변수 설정해주기
 i = re.compile("[^a-zA-Z0-9!~@#$%^&*()_+-=\[\]\{\}<>:`?;'\ \/,.&quot]") #문자 와 숫자특수문자가 아닐때  match()로 받은값 처음부터 다 확인
@@ -64,12 +67,15 @@ def login(req):
 
 # 로그인 완료&실패
 def logged(req):
-    logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
-    if logged_member :
-        req.session['Userid'] = req.POST.get('id')
-        return render (req,'index.html', {'login_member' : logged_member})
+    if req.method == "POST":
+        logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
+        if logged_member :
+            return render (req,'index.html', {'login_member' : logged_member})
+        else :
+            return render (req,'login.html', {'messages' : '로그인에 실패하셨습니다.'})
+
     else :
-        return render (req,'fail.html')
+        return render(req, 'login.html')
 
 # 세션삭제 - 로그아웃
 def logout(req):
