@@ -151,8 +151,9 @@ def password_edit_complete(req):
     else:
         messages.warning(req, '기존 비밀번호가 맞는지 확인하세요')
         return redirect (password_edit)
-
-
+#about us
+def about(req):
+    return render (req, 'about.html')
 
 """
 Id,Pw 정보를 받아 회원탈퇴 - Try문 활용

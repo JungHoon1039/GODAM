@@ -1,0 +1,112 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+<!-- title -->
+{% block title %}
+About Us
+{% endblock title %}
+
+
+{% block content %}
+<div id="first" class="box" style="background-image:url('{% static '첫번째 스크롤 미정.jpeg' %}');">
+    <div class="slog">
+        <div class="top" style="height: 200px; width: auto;"><br></div>
+            <div class="container h-100 d-flex justify-content-center">
+                <div class="row my-auto">
+                    <div id="title" class="col-9 col-md-7 mx-4 pb-4" style="font-size: 90px; color: black;">저희는 고담입니다.<i class="fas fa-cat fs-1"></i></div>
+                    <div class="col-7 col-md-6 mx-4 mt-4" style="font-size: 32px; color: dimgrey">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam animi assumenda consectetur, consequuntur cumque ea eligendi et fugit harum hic iure iusto maiores molestias natus, quae sequi vero voluptatum.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="second" class="box" style="background-image:url('{% static '두번째 스크롤 미정.jpeg' %}');">
+    <div class="slog">
+        <div class="container h-100 d-flex justify-content-center" style="position: absolute;">
+            <div class="row my-auto">
+                <div id="title" class="col-9 col-md-7 mx-4" style="font-size: 90px; color: black;">고양이를 담다<i class="fas fa-cat fs-1"></i></div>
+                <div class="col-7 col-md-6 mx-4" style="font-size: 32px; color: dimgrey">우리 동네 고양이 정보를 확인하고, <br> 길고양이를 내 마음에 담아보세요.</div>
+            </div>
+        </div>
+        <div class="container h-100 d-flex justify-content-center" style="position: absolute;">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti ea error explicabo incidunt, ipsa, iste numquam praesentium provident quam reprehenderit soluta ullam unde velit vitae? Amet expedita porro quaerat!
+        </div>
+    </div>
+</div>
+
+<div id="second" class="box" style="background-image:url('{% static '세번째 스크롤 미정.jpeg' %}');">
+    <div class="slog">
+        <div class="container h-100 d-flex justify-content-center" style="position: absolute;">
+            <div class="row my-auto">
+                <div id="title" class="col-9 col-md-7 mx-4" style="font-size: 90px; color: black;">고양이를 담다<i class="fas fa-cat fs-1"></i></div>
+                <div class="col-7 col-md-6 mx-4" style="font-size: 32px; color: dimgrey">우리 동네 고양이 정보를 확인하고, <br> 길고양이를 내 마음에 담아보세요.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="second" class="box" style="background-image:url('{% static '네번째 스크롤 미정.jpeg' %}');">
+    <div class="slog">
+        <div class="container h-100 d-flex justify-content-center" style="position: absolute;">
+            <div class="row my-auto">
+                <div id="title" class="col-9 col-md-7 mx-4" style="font-size: 90px; color: black;">고양이를 담다<i class="fas fa-cat fs-1"></i></div>
+                <div class="col-7 col-md-6 mx-4" style="font-size: 32px; color: dimgrey">우리 동네 고양이 정보를 확인하고, <br> 길고양이를 내 마음에 담아보세요.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- script -->
+{% block scripts %}
+
+<script type="text/javascript">
+    window.onload = function () {
+        var elm = ".box";
+        $(elm).each(function (index) {
+            // 개별적으로 Wheel 이벤트 적용
+            $(this).on("mousewheel DOMMouseScroll", function (e) {
+                e.preventDefault();
+                var delta = 0;
+                if (!event) event = window.event;
+                if (event.wheelDelta) {
+                    delta = event.wheelDelta / 120;
+                    if (window.opera) delta = -delta;
+                }
+                else if (event.detail)
+                    delta = -event.detail / 3;
+                var moveTop = $(window).scrollTop();
+                var elmSelecter = $(elm).eq(index);
+                // 마우스휠을 위에서 아래로
+                if (delta < 0) {
+                    if ($(elmSelecter).next() != undefined) {
+                        try{
+                            moveTop = $(elmSelecter).next().offset().top;
+                        }catch(e){}
+                    }
+                    // 마우스휠을 아래에서 위로
+                } else {
+                    if ($(elmSelecter).prev() != undefined) {
+                        try{
+                            moveTop = $(elmSelecter).prev().offset().top;
+                        }catch(e){}
+                    }
+                }
+                // 화면 이동 0.3초(300)
+                $("html,body").stop().animate({
+                    scrollTop: moveTop + 'px'
+                }, {
+                    duration: 300, complete: function () {
+                    }
+                });
+            });
+        });
+    }
+
+</script>
+{% endblock scripts %}
+
+
+
