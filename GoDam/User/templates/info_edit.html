@@ -3,68 +3,157 @@
 
 <!-- title -->
 {% block title %}
-비밀번호 변경
+회원정보 수정
 {% endblock title %}
 
 
 
 {% block content %}
-
-<div>
-    <form name="form" action="http://52.79.227.191:8000/user/edit_com" method="POST">
-        {% csrf_token %}
-        <div class="container position-absolute top-50 start-50 translate-middle">
-            <div class="row">
-                <div class="col-12 mb-5" style="text-align: center;">
-                    {% for user in login_member %}
-                    {{user.Username}} 님의 현재 아이디 : {{ user.Userid }}
-                </div>
-                <div class="col-12 mb-5" style="text-align: center;">
-                    <label for="nick">닉네임</label><br><br>
-                    <input type="text" id="nick" name="nick" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6" value="{{user.Nickname}}"><br>
-                    <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>
-                </div>
-                    <div class="col-12 mb-5" style="text-align: center;">
-                        <label for="phone">연락처</label><br><br>
-                        <input type="text" id="phone" name="phone" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$" value="{{user.phonenumber}}">
-                        <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>
+<div class="box info_edit" style="padding-top: 190px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 infoEditTable">
+                <form name="form" action="http://52.79.227.191:8000/user/edit_com" method="post">
+                    {% csrf_token %}
+                    <table class="table">
+                        <p class=" d-flex justify-content-center" style="color:black; font-size: 26px; font-weight: 500;">회원정보 수정</p>
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in login_member %}
+                        <tr>
+                            <td><span style="font-weight: 500;">{{user.Username}}</span>님 아이디</td>
+                            <td style="font-weight: 400;">{{ user.Userid }}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>닉네임</td>
+                            <td>
+                                <input type="text" class="editinput" id="nick" name="nick" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6" value="{{user.Nickname}}">
+                                <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>연락처</td>
+                            <td>
+                                <input type="text" class="editinput" id="phone" name="phone" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$" value="{{user.phonenumber}}">
+                                <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>거주 지역</td>
+                            <td>
+                                <select name='region' required>
+                                    <option selected = "selected">{{user.Region}}</option>
+                                    <option value="강동구">강동구</option>
+                                    <option value="송파구">송파구</option>
+                                    <option value="강남구">강남구</option>
+                                    <option value="서초구">서초구</option>
+                                    <option value="관악구">관악구</option>
+                                    <option value="동작구">동작구</option>
+                                    <option value="금천구">금천구</option>
+                                    <option value="영등포구">영등포구</option>
+                                    <option value="구로구">구로구</option>
+                                    <option value="양천구">양천구</option>
+                                    <option value="강서구">강서구</option>
+                                    <option value="마포구">마포구</option>
+                                    <option value="은평구">은평구</option>
+                                    <option value="종로구">종로구</option>
+                                    <option value="중구">중구</option>
+                                    <option value="강북구">강북구</option>
+                                    <option value="성북구">성북구</option>
+                                    <option value="동대문구">동대문구</option>
+                                    <option value="성동구">성동구</option>
+                                    <option value="도봉구">도봉구</option>
+                                    <option value="노원구">노원구</option>
+                                    <option value="중랑구">중랑구</option>
+                                    <option value="광진구">광진구</option>
+                                </select>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="row justify-content-center">
+                        <button type="button" id="btn_infoEdit" onclick="update()">회원정보 수정</button>
                     </div>
-                    <div class="col-12 mb-5" style="text-align: center;">
-                        <select name='region' required>
-                            <option selected = "selected">{{user.Region}}</option>
-                            <option value="강동구">강동구</option>
-                            <option value="송파구">송파구</option>
-                            <option value="강남구">강남구</option>
-                            <option value="서초구">서초구</option>
-                            <option value="관악구">관악구</option>
-                            <option value="동작구">동작구</option>
-                            <option value="금천구">금천구</option>
-                            <option value="영등포구">영등포구</option>
-                            <option value="구로구">구로구</option>
-                            <option value="양천구">양천구</option>
-                            <option value="강서구">강서구</option>
-                            <option value="마포구">마포구</option>
-                            <option value="은평구">은평구</option>
-                            <option value="종로구">종로구</option>
-                            <option value="중구">중구</option>
-                            <option value="강북구">강북구</option>
-                            <option value="성북구">성북구</option>
-                            <option value="동대문구">동대문구</option>
-                            <option value="성동구">성동구</option>
-                            <option value="도봉구">도봉구</option>
-                            <option value="노원구">노원구</option>
-                            <option value="중랑구">중랑구</option>
-                            <option value="광진구">광진구</option>
-                        </select>
-                    </div>
-                <div class="col-12 mb-5" style="text-align: center;">
-                    <button type="button" onclick="update()" class="btn-l text-uppercase my-3" style="color: black; text-align: center;"><h5>변경</h5></button>
-                </div>
+                </form>
             </div>
         </div>
-        {% endfor %}
-    </form>
+
+    </div>
 </div>
+
+
+                        <!--<div class="box">-->
+<!--    <div class="container">-->
+<!--    <form name="form" action="http://52.79.227.191:8000/user/edit_com" method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <div class="container position-absolute top-50 start-50 translate-middle">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12 mb-5" style="text-align: center;">-->
+<!--                    {% for user in login_member %}-->
+<!--                    {{user.Username}} 님의 현재 아이디 : {{ user.Userid }}-->
+<!--                </div>-->
+<!--                <div class="col-12 mb-5" style="text-align: center;">-->
+<!--                    <label for="nick">닉네임</label><br><br>-->
+<!--                    <input type="text" id="nick" name="nick" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6" value="{{user.Nickname}}"><br>-->
+<!--                    <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>-->
+<!--                </div>-->
+<!--                    <div class="col-12 mb-5" style="text-align: center;">-->
+<!--                        <label for="phone">연락처</label><br><br>-->
+<!--                        <input type="text" id="phone" name="phone" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$" value="{{user.phonenumber}}">-->
+<!--                        <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>-->
+<!--                    </div>-->
+<!--                    <div class="col-12 mb-5" style="text-align: center;">-->
+<!--                        <select name='region' required>-->
+<!--                            <option selected = "selected">{{user.Region}}</option>-->
+<!--                            <option value="강동구">강동구</option>-->
+<!--                            <option value="송파구">송파구</option>-->
+<!--                            <option value="강남구">강남구</option>-->
+<!--                            <option value="서초구">서초구</option>-->
+<!--                            <option value="관악구">관악구</option>-->
+<!--                            <option value="동작구">동작구</option>-->
+<!--                            <option value="금천구">금천구</option>-->
+<!--                            <option value="영등포구">영등포구</option>-->
+<!--                            <option value="구로구">구로구</option>-->
+<!--                            <option value="양천구">양천구</option>-->
+<!--                            <option value="강서구">강서구</option>-->
+<!--                            <option value="마포구">마포구</option>-->
+<!--                            <option value="은평구">은평구</option>-->
+<!--                            <option value="종로구">종로구</option>-->
+<!--                            <option value="중구">중구</option>-->
+<!--                            <option value="강북구">강북구</option>-->
+<!--                            <option value="성북구">성북구</option>-->
+<!--                            <option value="동대문구">동대문구</option>-->
+<!--                            <option value="성동구">성동구</option>-->
+<!--                            <option value="도봉구">도봉구</option>-->
+<!--                            <option value="노원구">노원구</option>-->
+<!--                            <option value="중랑구">중랑구</option>-->
+<!--                            <option value="광진구">광진구</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                <div class="col-12 mb-5" style="text-align: center;">-->
+<!--                    <button type="button" onclick="update()" class="btn-l text-uppercase my-3" style="color: black; text-align: center;"><h5>변경</h5></button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        {% endfor %}-->
+<!--    </form>-->
+<!--</div>-->
 <script>
     function update(){
         var form = document.form;
