@@ -7,13 +7,26 @@ Home
 {% endblock title %}
 
 
+
 {% block content %}
-<div id="first" class="box" style="background-image: url({% static 'cat1.jpeg' %}); position: relative;">
-    <div class="slog">
-        <div class="container h-100 d-flex justify-content-center" style="position: absolute;">
-            <div class="row my-auto">
-                <div id="title" class="col-9 col-md-7 mx-4" style="font-size: 90px; color: black;">고양이를 담다<i class="fas fa-cat fs-1"></i></div>
-                <div class="col-9 col-md-6 mx-4" style="font-size: 32px; color: rgb(129, 129, 129);">우리 동네 고양이 정보를 확인하고, <br> 길고양이를 내 마음에 담아보세요.</div>
+<div class="box" id="search" style="background-image:url('{% static 'bg-cat.jpg' %}');">
+    <div class="container position-absolute top-50 start-50 translate-middle" >
+        <div class="row align-items-center mx-3">
+            <div class="col-5">
+                <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
+                    <option selected>서울특별시</option>
+                </select>
+            </div>
+            <div class="col-5">
+                <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
+                    <option selected>강북구</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary mb-3 btn-lg;" style="border-radius: 30px; background-color: #1b3f36; border: none;"><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     </div>

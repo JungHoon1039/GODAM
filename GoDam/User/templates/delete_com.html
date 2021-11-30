@@ -1,27 +1,28 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8" />
-    <title>Street Cat</title>
-    <!-- Google fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet" type="text/css" />
-    <!-- 부트스트랩 CSS -->
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    <!-- 제이쿼리-->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h2>회원탈퇴가 완료되었습니다</h2>
-        </div>
-        <div class="col-12 mt-3">
-            <button class="btn-l text-uppercase mt-3"><a href="http://52.79.227.191:8000/user/signup" style="color: black; text-align: center;"><h5>회원가입</h5></a></button>
+
+<!-- title -->
+{% block title %}
+회원탈퇴 완료
+{% endblock title %}
+
+<!-- script -->
+{% block scripts %}
+
+{% endblock scripts %}
+
+
+{% block content %}
+<div class="container h-100 d-flex justify-content-center">
+    <div class="row my-auto" id="com_row">
+        <div class="text-center">
+            <i class="fas fa-cat" id="com_icon"></i>
+            <h4 class="fw-bold mt-4 pb-5" id="com_h4">회원탈퇴 완료</h4>
+            <hr>
+            <p class="mt-5" id="com_p">회원탈퇴가 완료되었습니다.</p>
+            <p class="pt-2 mb-5" id="com_p2">다시 함께 고양이 볼 날을 기다릴게요&nbsp;<i class="fas fa-paw"></i></p>
+            <button type="button" class="btn btn-lg" id="com_loginbtn"><a href="http://52.79.227.191:8000/user/login" target="_self" id="com_a">메인으로 돌아가기</a></button>
         </div>
     </div>
 </div>
-</body>
-</html>
+{% endblock content %}
