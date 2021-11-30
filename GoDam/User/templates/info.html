@@ -6,20 +6,15 @@
 회원정보
 {% endblock title %}
 
-<!-- script -->
-{% block scripts %}
-
-{% endblock scripts %}
-
 
 {% block content %}
 {% for user in login_member %}
 <div class="box info_form">
         <div class="container position-absolute top-50 start-50 translate-middle">
             <div class="row">
-                <div class="col-8 offset-2 py-4" style="background-color: #fff; padding: 20px;">
-                    <p class="signupTitle h4 fw-bold mb-3 d-flex justify-content-center" style="color:black;">회원정보</p>
+                <div class="col-md-8 offset-md-2 infoTable">
                     <table class="table mb-4">
+                        <p class="mb-3 d-flex justify-content-center" style="color:black; font-size: 26px; font-weight: 500;">회원정보</p>
                         <thead>
                         <tr>
                             <th scope="col"></th>
@@ -32,8 +27,7 @@
                         <tr>
                             <td scope="row">아이디</td>
                             <td style="font-weight: 400;">
-                                {{user.Userid}}</p>
-                            </button>
+                                {{user.Userid}}
                             </td>
                             <td></td>
                             <td></td>
@@ -67,17 +61,20 @@
                         </tbody>
                     </table>
                     <div class="row justify-content-center">
-                        <button type="button" class="info_btn me-2" id="change_pwd"><a href="http://52.79.227.191:8000/user/edit" target="_self" style="color: black;">개인정보 변경</a></button>
-                        <button type="button" class="info_btn me-2" id="change_pwd"><a href="http://52.79.227.191:8000/user/password_edit" target="_self" style="color: black;">비밀번호 변경</a></button>
+                        <button type="button" class="info_btn me-2" id="change_userinfo" onclick ="location.href = 'http://52.79.227.191:8000/user/edit'">회원정보 수정</button>
+                        <button type="button" class="info_btn me-2" id="change_pwd" onclick ="location.href = 'http://52.79.227.191:8000/user/password_edit'">비밀번호 변경</button>
                         <button type="button" class="info_btn" id="delete_id" onClick=showConfirm()>회원탈퇴</button>
-<!--                        <button class="btn me-2" id="cancel">비밀번호 변경</button>-->
-<!--                        <button class="btn" id="join">회원탈퇴</button>-->
                     </div>
                 </div>
             </div>
 </div>
 </div>
 </div>
+{% endfor %}
+{% endblock content %}
+
+
+{% block scripts %}
 <script>
     function showConfirm(){
         if(confirm("정말로 회원 탈퇴 하시겠습니까?"))
@@ -87,7 +84,8 @@
         }
     }
 </script>
-{% endfor %}
-{% endblock content %}
+{% endblock scripts %}
+
+
 
 

@@ -70,6 +70,7 @@ def logged(req):
     if req.method == "POST":
         logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
         if logged_member :
+            req.session['Userid'] = req.POST.get('id')
             return render (req,'index.html', {'login_member' : logged_member})
         else :
             return render (req,'login.html', {'messages' : '로그인에 실패하셨습니다.'})
@@ -144,7 +145,7 @@ def password_edit_complete(req):
        else:
           logged_member.Password = new_pw
           logged_member.save()
-          req.session['Password'] = req.POST.get('pw')
+          req.session.pop('Userid')
           return render (req,'password_edit_com.html')
     #안되면 리다이렉트(경고 메세지도 비밀번호 변경 페이지에 보내기)
     else:

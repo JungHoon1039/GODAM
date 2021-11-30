@@ -15,6 +15,11 @@ html,body {
     background-color: rgb(245, 245, 245);
 }
 
+#search{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
+
 #logo {
     font-family: 'Black Han Sans', sans-serif;
 }
@@ -92,17 +97,28 @@ a#btnhover:hover {
     font-weight: 300;
 }
 
-.info_form {
-    box-shadow: 0px 0px 30px rgb(201, 199, 199);
-    border-radius: 10px;
+#aboutus_img {
+    width: 500px;
+    height: 240px;
 }
 
+@media (min-width:800px) and (max-width:1610px) {
+    #aboutus_img {
+        width: 450px;
+        height: 200px;
+    }
+}
+
+@media (min-width:480px) and (max-width:800px) {
+    #aboutus_img {
+        width: 290px;
+        height: 170px;
+    }
+}
 /*------회원가입 페이지 signup.html------*/
 .signupForm {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
-    /*box-shadow: 0px 0px 30px rgb(201, 199, 199);*/
-    /*border-radius: 10px;*/
 }
 
 .signupTable {
@@ -117,7 +133,8 @@ tr {
     color: black;
 }
 
-tbody .signupinput {
+tbody .signupinput,
+tbody .editinput {
     font-size: 15px;
     padding: 3px;
     border: 1px solid rgba(128, 128, 128, 0.473);
@@ -131,11 +148,11 @@ tbody select {
 }
 
 tbody .signupinput:focus,
-tbody select:focus {
+tbody select:focus,
+tbody .editinput:focus {
     outline: 1px solid lightsteelblue;
 }
 
- /*--중복확인 버튼--*/
 #checked {
     width: 70px;
     height: 30px;
@@ -155,9 +172,13 @@ tbody select:focus {
     font-weight: 500;
 }
 
-.btn {
-    width: 115px;
+.btnSignup {
+    border-radius: 3px;
+    width: 130px;
     height: 45px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 #cancel {
@@ -190,6 +211,22 @@ tbody select:focus {
 }
 
 /*------info 페이지------*/
+.info_form {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+}
+
+.infoTable {
+    box-shadow: 0px 0px 30px rgb(201, 199, 199);
+    border-radius: 10px;
+    background-color: rgb(252,252,252);
+    padding: 40px;
+}
+
+.infoTable tbody td {
+    padding: 15px;
+}
+
 .info_btn {
     border-radius: 3px;
     width: 130px;
@@ -197,6 +234,19 @@ tbody select:focus {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: 16px;
+}
+
+#change_userinfo {
+    border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff;
+}
+
+#change_userinfo:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.6;
 }
 
 #change_pwd {
@@ -228,9 +278,46 @@ tbody select:focus {
     opacity: 0.8;
 }
 
-.info_form{
+/*------회원정보변경 페이지 info_edit.html------*/
+.info_edit,
+.pwd_edit {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
+}
+
+.infoEditTable,
+.pwdEditTable {
+    box-shadow: 0px 0px 30px rgb(201, 199, 199);
+    border-radius: 10px;
+    background-color: rgb(252,252,252);
+    padding: 40px;
+}
+
+.infoEditTable tbody td {
+    padding: 9px;
+}
+
+.pwdEditTable tbody td {
+    padding: 9px;
+}
+
+#btn_infoEdit,
+#btn_pwdEdit {
+    width: 130px;
+    height: 45px;
+    border-radius: 3px;
+    font-size: 16px;
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#btn_infoEdit:hover,
+#btn_pwdEdit:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
 }
 
 /*------회원가입완료 페이지 signup_com.html------*/
@@ -280,4 +367,24 @@ tbody select:focus {
 
 #com_a {
     color:whitesmoke;
+}
+
+/*어바웃어스 버튼*/
+.aboutusBtn{
+    width: 250px;
+    border-radius: 30px;
+    font-size: 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.aboutusBtn:hover {
+    background-color: #1b3f36;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.search-form{
+    background-color: rgba(255, 255, 255, 0.51);
+    border: none;
 }
