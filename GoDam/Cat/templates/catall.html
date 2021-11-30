@@ -1,0 +1,6 @@
+{% block content %}
+    {%for i in cat%}
+        <img src ="{{i.Catimage.url}}" width="100px" height="100px">
+        <a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a>
+    {%endfor%}
+{% endblock content %}
