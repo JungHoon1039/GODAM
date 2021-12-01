@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="font-size: 1.5rem;">
+                <p>제목 : {{ board.Title }}</p>
+                <p>고양이 : {{ board.Catid }}</p>
+                <p>내용 : {{ board.Content }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <button type="button">
+                    <a href="{% url 'modify_contentView' id=board.id %}">수정</a>
+                </button>
+            </div>
+            <div class="col-12">
+                <button type="button">
+                    <a href="{% url 'delete_contentView' id=board.id %}">삭제</a>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Cat#Board
+from .models import Cat, Board
 from User.models import User
 
 class CatForm(ModelForm):
@@ -7,7 +7,7 @@ class CatForm(ModelForm):
         model = Cat
         fields = ['Catid','Catimage','Catname','Catage','Neutering','Region']
 
-#class BaseBulletinBoard(ModelForm):
-#    class Meta:
-#        model = Board
-#        fields = '__all__'
+class BaseBulletinBoard(ModelForm):
+   class Meta:
+       model = Board
+       fields = '__all__'

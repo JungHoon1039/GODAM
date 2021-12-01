@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% for board in boardobject %}
+            <a href="{% url 'show_contentView' id=board.id %}"><p>제목 : {{ board.Title }}</p></a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}
+

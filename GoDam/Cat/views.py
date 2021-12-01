@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
-from .forms import CatForm
-from .models import Cat
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import CatForm, BaseBulletinBoard
+from .models import Cat, Board
+import os
 from User.models import User
 
 # Create your views here.
@@ -71,6 +71,67 @@ def catdelete(req,Catid):
        else:
           cat.delete()
           return redirect(catall)
+
+# 글 작성
+def writePage(req):
+    template_name = 'write_page.html'
+    if req.method == 'POST':
+        form = BaseBulletinBoard(req.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(listPage)
+    else:
+        form = BaseBulletinBoard()
+        context = {
+            'form':form,
+        }
+    return render(req, template_name, context)
+    # req.method 가 POST면,
+    # form에 req.POST를 이용해 데이터를 집어넣고
+    # form을 검증한 뒤, 이게 맞다면 form을 저장해라.
+    # 아니면(req.method 가 GET 등)
+    # form을 불러오고 context에 넣어서 페이지를 불러오자.
+
+# 글 내용
+def showContent(req, id):
+    template_name = 'show_content.html'
+    board_object = Board.objects.get(id=id)
+    context = {
+        'board':board_object
+    }
+    return render(req, template_name, context)
+
+# 글 목록
+def listPage(req):
+    template_name = 'list_board.html'
+    board_object = Board.objects.all()
+    context = {
+        'boardobject':board_object
+    }
+    return render(req, template_name, context)
+
+def options(req):
+    return render(req, 'options.html')
+
+# 글 수정
+def modifyContent(req, id):
+    template_name = 'write_page.html'
+    instance = get_object_or_404(Board, id=id)
+    form = BaseBulletinBoard(req.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+        return redirect (listPage)
+    context = {
+        'form':form
+    }
+    return render(req, template_name, context)
+
+# 글 삭제
+def deleteContent(req, id):
+    instance = get_object_or_404(Board, id=id)
+    instance.delete()
+    return redirect(listPage)
+
 
 
 
