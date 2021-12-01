@@ -4,4 +4,17 @@
 중성화:{{i.Neutering}}
 지역:{{i.Region}}
 작성자:{{i.User.Username}}
-<button name="change">수정</button>
+<!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
+{%if i.User.Userid == owner.Userid%}
+<button type="button" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
+<button type="button" onclick="showConfirm()">삭제</button>
+{%endif%}
+<script>
+        function showConfirm(){
+        if(confirm("정말로 고양이를 삭제하겠습니까?"))
+    {
+        alert("고양이를 삭제했습니다");
+        window.location.href = '{%url "catdelete" i.Catid%}';
+    }
+    }
+</script>

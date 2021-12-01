@@ -33,11 +33,44 @@ def catuploaded(req):
 def catall(req):
        logged_member = User.objects.filter(Userid=req.session.get('Userid'))
        cat = Cat.objects.all()
-       return render(req,'catall.html',{'cat': cat,'logged_member':logged_member})
+       return render(req,'catall.html',{'cat': cat})
 #404 에러 기능으로 그 고양이 정보 가져오기
 def cat(req,Catid):
-       logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+       logged_member = User.objects.get(Userid=req.session.get('Userid'))
        cat = get_object_or_404(Cat,pk=Catid)
-       return render(req,'catcontent.html',{'i':cat})
+       return render(req,'catcontent.html',{'i':cat,'owner':logged_member})
+#404 에러 기능으로 가져온 고양이 정보 수정
+def catedit(req,Catid):
+       logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       cat = get_object_or_404(Cat,pk=Catid)
+       #백앤드 유효성 접근 허용여부
+       if logged_member.Userid != cat.User.Userid:
+       #이유는 모르겠는데 pathconverter 정의된 def는 리다이렉트 안됨 ㅠㅠ
+          return render(req,'catcontent.html',{'i':cat,'owner':logged_member})
+       else:
+          if req.method == "POST":
+          #instance는 저장된걸 의미한다
+             form = CatForm(req.POST,req.FILES,instance = cat)
+             if form.is_valid():
+                form.save()
+                return redirect(cateditok)
+          else:
+                form = CatForm()
+          return render(req,'catedit.html', {'form':form,'cat':cat})
+#수정완성
+def cateditok(req):
+       logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       return render(req,'cateditok.html')
+#404 에러 기능으로 가져온 고양이 정보 삭제
+def catdelete(req,Catid):
+       logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       cat = get_object_or_404(Cat,pk=Catid)
+       #백앤드 유효성 접근 허용여부
+       if logged_member.Userid != cat.User.Userid:
+          return render(req,'catcontent.html',{'i':cat,'owner':logged_member})
+       else:
+          cat.delete()
+          return redirect(catall)
+
 
 
