@@ -20,15 +20,12 @@ def catupload(req):
             new_cat.User = logged_member
             #이제 진짜 저장
             new_cat.save()
-            return redirect(catuploaded)
+            return redirect(catall)
     #아닐 경우 submit 안됨
     else:
         form = CatForm()
     return render(req,'upload.html', {'form': form})
-#만들어진거 확인
-def catuploaded(req):
-    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-    return render(req,'uploaded.html')
+
 #모든 캣 보이게
 def catall(req):
        logged_member = User.objects.filter(Userid=req.session.get('Userid'))
@@ -53,14 +50,11 @@ def catedit(req,Catid):
              form = CatForm(req.POST,req.FILES,instance = cat)
              if form.is_valid():
                 form.save()
-                return redirect(cateditok)
+                return redirect(catall)
           else:
                 form = CatForm()
           return render(req,'catedit.html', {'form':form,'cat':cat})
-#수정완성
-def cateditok(req):
-       logged_member = User.objects.get(Userid=req.session.get('Userid'))
-       return render(req,'cateditok.html')
+
 #404 에러 기능으로 가져온 고양이 정보 삭제
 def catdelete(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
