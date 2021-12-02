@@ -28,8 +28,15 @@ def catupload(req):
 
 #모든 캣 보이게
 def catall(req):
-       logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-       cat = Cat.objects.all()
+       logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       #index 페이지에서 저장된 지역 값 가져오기
+       region = req.GET.get('region')
+       #최초 로그인시 고양이 내용을 사용자가 설정한 지역에만 팝업하도록 함
+       if region is None:
+          cat = Cat.objects.filter(Region = logged_member.Region)
+       #index페이지에서 지정한 주소로 고양이들을 팝업하게함
+       else:
+          cat = Cat.objects.filter(Region = region)
        #post 방식으로 폼을 가져온 경우
        if req.method == "POST":
          #내용물 가져오기

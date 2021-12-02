@@ -18,15 +18,42 @@ Home
                 </select>
             </div>
             <div class="col-5">
-                <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
-                    <option selected>강북구</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-primary mb-3 btn-lg;" style="border-radius: 30px; background-color: #1b3f36; border: none;"><i class="fas fa-arrow-right"></i></button>
+                <form action = "http://52.79.227.191:8000/cat/allcat" method="get">
+                    <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;" name='region' required>
+                        {% if region == null%}
+                        <option selected = "selected">{{login_member.Region}}</option>
+                        {%endif%}
+                        {% if region != null%}
+                        <option selected = "selected">{{region}}</option>
+                        {%endif%}
+                        <option value="강동구">강동구</option>
+                        <option value="송파구">송파구</option>
+                        <option value="강남구">강남구</option>
+                        <option value="서초구">서초구</option>
+                        <option value="관악구">관악구</option>
+                        <option value="동작구">동작구</option>
+                        <option value="금천구">금천구</option>
+                        <option value="영등포구">영등포구</option>
+                        <option value="구로구">구로구</option>
+                        <option value="양천구">양천구</option>
+                        <option value="강서구">강서구</option>
+                        <option value="마포구">마포구</option>
+                        <option value="은평구">은평구</option>
+                        <option value="종로구">종로구</option>
+                        <option value="중구">중구</option>
+                        <option value="강북구">강북구</option>
+                        <option value="성북구">성북구</option>
+                        <option value="동대문구">동대문구</option>
+                        <option value="성동구">성동구</option>
+                        <option value="도봉구">도봉구</option>
+                        <option value="노원구">노원구</option>
+                        <option value="중랑구">중랑구</option>
+                        <option value="광진구">광진구</option>
+                    </select>
+                    <div class="col-2">
+                        <button class="btn btn-primary mb-3 btn-lg;" style="border-radius: 30px; background-color: #1b3f36; border: none;"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

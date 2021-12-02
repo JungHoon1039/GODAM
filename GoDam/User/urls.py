@@ -14,5 +14,6 @@ urlpatterns = [
         path('edit_com',views.info_edit_complete),
         path('password_edit',views.password_edit),
         path('password_edit_com',views.password_edit_complete),
-        path('about', views.about)
+        path('about', views.about),
+        path('index', views.index)
 ]

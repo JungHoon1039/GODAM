@@ -7,6 +7,8 @@ from django.http.response import JsonResponse
 import re
 from django.contrib import messages # messages.warning(req, 'Your account expires in three days.')
 from django.http import HttpResponse # return HttpResponse('적고싶은내용')
+from Cat.models import Cat
+from Cat.views import catall
 
 
 
@@ -71,7 +73,8 @@ def logged(req):
         logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
         if logged_member :
             req.session['Userid'] = req.POST.get('id')
-            return render (req,'index.html', {'login_member' : logged_member})
+            #return render (req,'index.html', {'login_member' : logged_member})
+            return redirect(catall)
         else :
             return render (req,'login.html', {'messages' : '로그인에 실패하셨습니다.'})
 
@@ -154,6 +157,12 @@ def password_edit_complete(req):
 #about us
 def about(req):
     return render (req, 'about.html')
+#길고양이 지역 변경
+def index(req):
+    logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
+    #allcat 페이지에서 저장 되어있는 지역값 가져오기(작은 폼이 있음)
+    region = req.GET.get('region')
+    return render (req,'index.html',{'login_member' : logged_member,'region':region})
 
 """
 Id,Pw 정보를 받아 회원탈퇴 - Try문 활용
