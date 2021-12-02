@@ -1,7 +1,7 @@
 from django.db import models
  
 class User(models.Model):
-#     Userkey = models.AutoField(primary_key=True, default=0, null = True)
+    Id = models.AutoField(primary_key=True)
     Userid = models.CharField(max_length=64, verbose_name='아이디',unique=True)
     Password = models.CharField(max_length=64, verbose_name='비밀번호')
     Nickname = models.CharField(max_length=64, verbose_name='닉네임')

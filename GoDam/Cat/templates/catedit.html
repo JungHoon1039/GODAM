@@ -17,6 +17,13 @@
                 {%if field.label == "나이"%}
                     <input type="number" name="Catage" required="" id="id_Catage" value="{{cat.Catage}}">
                 {%endif%}
+                {%if field.label == "성별"%}
+                <select class="newcatInput" name="Gender" required="" id="id_Gender">
+                    <option value = "------" selected>------</option>
+                    <option value="수컷">수컷</option>
+                    <option value="암컷">암컷</option>
+                </select>
+                {%endif%}
                 {%if field.label == "중성화"%}
                      <select name="Neutering" required="" id="id_Neutering">
                          <option selected = "selected">{{cat.Neutering}}</option>
@@ -53,6 +60,9 @@
                         <option value="중랑구">중랑구</option>
                         <option value="광진구">광진구</option>
                     </select>
+                {%endif%}
+                {%if field.label == "설명"%}
+                <input type="text">
                 {%endif%}
             {%endfor%}
         </p>
