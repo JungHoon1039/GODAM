@@ -302,7 +302,8 @@ tbody .editinput:focus {
 }
 
 #btn_infoEdit,
-#btn_pwdEdit {
+#btn_pwdEdit,
+#btn_newcat {
     width: 130px;
     height: 45px;
     border-radius: 3px;
@@ -313,7 +314,8 @@ tbody .editinput:focus {
 }
 
 #btn_infoEdit:hover,
-#btn_pwdEdit:hover {
+#btn_pwdEdit:hover,
+#btn_newcat:hover {
     border: none;
     background-color: #1b3f36;
     color: #fff;
@@ -388,3 +390,70 @@ tbody .editinput:focus {
     background-color: rgba(255, 255, 255, 0.51);
     border: none;
 }
+
+/* About us 페이지 */
+
+.title {
+    width: 300px;
+}
+
+/*고양이 등록 모달*/
+.form_newcat {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.newCatInput {
+    font-size: 15px;
+    padding: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.473);
+    border-radius: 5px;
+}
+
+p select {
+    border: 1px solid rgba(128, 128, 128, 0.473);
+    padding: 3px;
+    font-size: 15px;
+}
+
+.newCatInput:focus,
+p select:focus {
+    outline: 1px solid lightsteelblue;
+}
+
+/*모달-버튼*/
+.btn_newcat {
+    border-radius: 3px;
+    width: 110px;
+    height: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#btn_save {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#btn_save:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}
+
+#btn_close {
+    border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff;
+}
+
+#btn_close:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.6;
+}
+
+
