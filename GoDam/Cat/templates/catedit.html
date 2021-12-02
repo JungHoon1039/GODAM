@@ -8,7 +8,7 @@
             {%for field in form%}
         <p>
             <labl for="{{ field.id_for_label }}">{{ field.label }}</labl>
-                {%if field.label == "Catimage"%}
+                {%if field.label == "사진"%}
                     <input type="file" name="Catimage" accept="image/*" required="" id="id_Catimage">
                 {%endif%}
                 {%if field.label == "이름"%}
