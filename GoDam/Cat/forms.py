@@ -5,9 +5,9 @@ from User.models import User
 class CatForm(ModelForm):
     class Meta:
         model = Cat
-        fields = ['Catid','Catimage','Catname','Catage','Neutering','Region']
+        fields = ['Catid','Catimage','Catname','Catage', 'Gender', 'Neutering','Region', 'Discribtion']
 
 class BaseBulletinBoard(ModelForm):
    class Meta:
        model = Board
-       fields = '__all__'
+       fields = ['Content']

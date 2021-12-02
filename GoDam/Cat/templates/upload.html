@@ -1,16 +1,94 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
+{% load static %}
+
+<!-- title -->
+{% block title %}
+고양이 등록
+{% endblock title %}
 
 {% block content %}
 
-<div>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" onClick='alert("고양이 등록이 완료되었습니다");'>저장</button>
-    </form>
+<div class="container">
+    <div class="row">
+        <h5 class="d-flex justify-content-center mt-5">고양이 등록하기<i class="fs-1 fas fa-paw"></i></h5>
+        <div class="col d-flex justify-content-center mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {%for field in form%}
+                            <p class="form_newcat">
+                                <labl for="{{ field.id_for_label }}">{{ field.label }}</labl>
+                                {%if field.label == "사진"%}
+                                <input type="file" name="Catimage" accept="image/*" required="" id="id_Catimage">
+                                {%endif%}
+                                {%if field.label == "이름"%}
+                                <input class="newCatInput ms-4" type="text" name="Catname" maxlength="64" required="" id="id_Catname">
+                                {%endif%}
+                                {%if field.label == "나이"%}
+                                <input class="newCatInput ms-4" type="number" name="Catage" required="" id="id_Catage">
+                                {%endif%}
+                                {%if field.label == "성별"%}
+<!--                                <select class="ms-4" name="Gender" required="" id="id_Gender">-->
+                                    <input class="ms-4 me-1" type="radio" name="Gender" value="수컷" required="" id="id_Gender">수컷
+                                    <input class="ms-2 me-1" type="radio" name="Gender" value="암컷" required="" id="id_Gender">암컷
+<!--                                    <option value = "&#45;&#45;&#45;&#45;&#45;&#45;" selected>&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--                                    <option value="수컷">수컷</option>-->
+<!--                                    <option value="암컷">암컷</option>-->
+                                </select>
+                                {%endif%}
+                                {%if field.label == "중성화"%}
+<!--                                <select class="ms-2" name="Neutering" required="" id="id_Neutering">-->
+                                    <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="예" id="id_Neutering">O
+                                    <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="id_Neutering">X
+<!--                                    <option value = "&#45;&#45;&#45;&#45;&#45;&#45;" selected>&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+<!--                                    <option value="예">예</option>-->
+<!--                                    <option value="아니오">아니오</option>-->
+                                </select>
+                                {%endif%}
+                                {%if field.label == "지역"%}
+                                <select class="ms-4" name="Region" required="" id="id_Region">
+                                    <option value="------" selected = "selected">------</option>
+                                    <option value="강동구">강동구</option>
+                                    <option value="송파구">송파구</option>
+                                    <option value="강남구">강남구</option>
+                                    <option value="서초구">서초구</option>
+                                    <option value="관악구">관악구</option>
+                                    <option value="동작구">동작구</option>
+                                    <option value="금천구">금천구</option>
+                                    <option value="영등포구">영등포구</option>
+                                    <option value="구로구">구로구</option>
+                                    <option value="양천구">양천구</option>
+                                    <option value="강서구">강서구</option>
+                                    <option value="마포구">마포구</option>
+                                    <option value="은평구">은평구</option>
+                                    <option value="서대문구">서대문구</option>
+                                    <option value="종로구">종로구</option>
+                                    <option value="중구">중구</option>
+                                    <option value="용산구">용산구</option>
+                                    <option value="강북구">강북구</option>
+                                    <option value="성북구">성북구</option>
+                                    <option value="동대문구">동대문구</option>
+                                    <option value="성동구">성동구</option>
+                                    <option value="도봉구">도봉구</option>
+                                    <option value="노원구">노원구</option>
+                                    <option value="중랑구">중랑구</option>
+                                    <option value="광진구">광진구</option>
+                                </select>
+                                {%endif%}
+                                {%if field.label == "설명"%}
+                                <input class="newCatInput ms-4" type="text">
+                                {%endif%}
+                            </p>
+                {%endfor%}
+                <button id="btn_newcat" type="submit" onClick='alert("고양이 등록이 완료되었습니다");'>등록하기</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 
 {% endblock content %}
 
+<!--        {{ form.as_p }}-->
 <!-- form.as_p는 장고의 폼의 일종의 고정 약속 명령어, p 태그입력으로 웹페이지가 알아서 각 field 태그 생성해서 웹에 띄워줌, 만약에 각 field tag 수술 할 일있으면
 form.as_p 버리고 form을 customizing 해야함-->
