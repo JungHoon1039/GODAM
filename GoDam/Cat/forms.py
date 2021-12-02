@@ -10,4 +10,4 @@ class CatForm(ModelForm):
 class BaseBulletinBoard(ModelForm):
    class Meta:
        model = Board
-       fields = '__all__'
+       fields = ['Content']
