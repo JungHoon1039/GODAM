@@ -2,7 +2,7 @@
 
 <!-- title -->
 {% block title %}
-
+고양이를 담다
 {% endblock title %}
 
 {% block content %}
@@ -27,7 +27,7 @@
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title ms-1" id="exampleModalLabel">고양이 등록하기&nbsp;<i class="fas fa-paw"></i></h5>
@@ -37,21 +37,21 @@
                             <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {%for field in form%}
-                                <p class="form_newcat">
+                                <p class="form_newCat">
                                     <labl for="{{ field.id_for_label }}">{{ field.label }}</labl>
                                     {%if field.label == "사진"%}
-                                    <input type="file" name="Catimage" accept="image/*" required="" id="id_Catimage">
+                                    <input class="newCatInput ms-5" type="file" name="Catimage" accept="image/*" required="" id="id_Catimage" style="border: none;">
                                     {%endif%}
                                     {%if field.label == "이름"%}
-                                    <input class="newCatInput ms-4" type="text" name="Catname" maxlength="64" required="" id="id_Catname">
+                                    <input class="newCatInput ms-5" type="text" name="Catname" maxlength="64" required="" id="id_Catname">
                                     {%endif%}
                                     {%if field.label == "나이"%}
-                                    <input class="newCatInput ms-4" type="number" name="Catage" required="" id="id_Catage">
+                                    <input class="newCatInput ms-5" type="number" name="Catage" required="" id="id_Catage">
                                     {%endif%}
                                     {%if field.label == "성별"%}
                                     <!--                                <select class="ms-4" name="Gender" required="" id="id_Gender">-->
-                                    <input class="ms-4 me-1" type="radio" name="Gender" value="수컷" required="" id="id_Gender">수컷
-                                    <input class="ms-2 me-1" type="radio" name="Gender" value="암컷" required="" id="id_Gender">암컷
+                                    <input class="ms-5 me-1" type="radio" name="Gender" value="수컷" required="" id="id_Gender">수컷
+                                    <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" required="" id="id_Gender">암컷
                                     <!--                                    <option value = "&#45;&#45;&#45;&#45;&#45;&#45;" selected>&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
                                     <!--                                    <option value="수컷">수컷</option>-->
                                     <!--                                    <option value="암컷">암컷</option>-->
@@ -59,15 +59,15 @@
                                     {%endif%}
                                     {%if field.label == "중성화"%}
                                     <!--                                <select class="ms-2" name="Neutering" required="" id="id_Neutering">-->
-                                    <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="예" id="id_Neutering">O
-                                    <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="id_Neutering">X
+                                    <input class="ms-5 me-1" type="radio" name="Neutering" required="" value="예" id="id_Neutering">O
+                                    <input class="ms-4 me-1" type="radio" name="Neutering" required="" value="아니오" id="id_Neutering">X
                                     <!--                                    <option value = "&#45;&#45;&#45;&#45;&#45;&#45;" selected>&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
                                     <!--                                    <option value="예">예</option>-->
                                     <!--                                    <option value="아니오">아니오</option>-->
                                     </select>
                                     {%endif%}
                                     {%if field.label == "지역"%}
-                                    <select class="ms-4" name="Region" required="" id="id_Region">
+                                    <select class="ms-5" name="Region" required="" id="id_Region">
                                         <option value="------" selected = "selected">------</option>
                                         <option value="강동구">강동구</option>
                                         <option value="송파구">송파구</option>
@@ -97,11 +97,10 @@
                                     </select>
                                     {%endif%}
                                     {%if field.label == "설명"%}
-                                    <input class="newCatInput ms-4" type="text">
+                                    <textarea class="newCatInput ms-5" style="width: 300px; height: 90px;"></textarea>
                                     {%endif%}
                                 </p>
                                 {%endfor%}
-                                <button id="btn_newcat" type="submit" onClick='alert("고양이 등록이 완료되었습니다");'>등록하기</button>
                             </form>
                         </div>
                         <div class="modal-footer">

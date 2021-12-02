@@ -398,22 +398,23 @@ tbody .editinput:focus {
 }
 
 /*고양이 등록 모달*/
-.form_newcat {
+.form_newCat {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.newCatInput {
+.newCatInput,
+p select {
     font-size: 15px;
     padding: 4px;
     border: 1px solid rgba(128, 128, 128, 0.473);
     border-radius: 5px;
 }
 
-p select {
-    border: 1px solid rgba(128, 128, 128, 0.473);
-    padding: 3px;
-    font-size: 15px;
-}
+/*p select {*/
+/*    border: 1px solid rgba(128, 128, 128, 0.473);*/
+/*    padding: 3px;*/
+/*    font-size: 15px;*/
+/*}*/
 
 .newCatInput:focus,
 p select:focus {
