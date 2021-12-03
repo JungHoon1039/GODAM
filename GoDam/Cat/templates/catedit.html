@@ -19,7 +19,7 @@
                 {%endif%}
                 {%if field.label == "성별"%}
                 <select class="newcatInput" name="Gender" required="" id="id_Gender">
-                    <option value = "------" selected>------</option>
+                    <option selected = "selected">{{cat.Gender}}</option>
                     <option value="수컷">수컷</option>
                     <option value="암컷">암컷</option>
                 </select>
@@ -62,7 +62,7 @@
                     </select>
                 {%endif%}
                 {%if field.label == "설명"%}
-                <input type="text">
+                <textarea name="Discribtion"class="newCatInput ms-5" style="width: 300px; height: 90px;" required="" id="id_Discribtion">{{cat.Discribtion}}</textarea>
                 {%endif%}
             {%endfor%}
         </p>
