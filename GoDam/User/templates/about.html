@@ -8,150 +8,168 @@ About Us
 
 
 {% block content %}
-<div id="first" class="box" style="background-image:url('{% static '첫번째 스크롤 미정.jpeg' %}');">
+<div id="first" class="box" style="background-color: rgba(255,249,194,0.44)">
     <div class="slog">
-        <div class="top" style="height: 75px; width: auto;"><br></div>
-
-        <div class="container h-100 justify-content-center">
-            <div class="row my-auto">
-                <div id="title" class="col-9 col-md-7 mx-4 pb-4" style="font-size: 90px; color: black;">저희는 고담입니다.<i
+        <div class="container position-absolute top-50 start-50 translate-middle" style="padding-top: 100px;">
+            <div class="row" style="position: relative;">
+                <div id="title" class="" style="font-size: 90px; color: black;">저희는 고담입니다.<i
                         class="fas fa-cat fs-1"></i></div>
-                <div class="col-3 col-md-8 mx-4 mt-4" style="font-size: 30px; color: dimgrey">
-                   <span>우리 주위에 항상 가까이 있고,<br>
-                    또 그만큼 자주 접하게 되는 스마트폰과 pc.<br>
-                    그리고 또 그만큼 우리가 관심을 가지지만 닿지 못하는 그대, 길냥이.<br><br>
-                    이 둘이 만난다면 어떻게 될까요?<br>
-                    여러분의 스마트폰에, pc에 우리동네 길냥이들을 담아두고<br>
-                    정보를 나눠보세요.<br><br>
-                    아주 귀엽고, 또 그만큼 편리한 서비스,<br>
-                    <big>'고담'</big> 이 함께합니다!</span>
-                </div>
-                <div><img src="https://i.pinimg.com/originals/26/dd/89/26dd89c41a054e1c712fed2732443bf1.gif"></div>
-<!--                <div class="row">-->
-<!--                    <div class="col-6">-->
-<!--                    </div>-->
-<!--                    <div class="col-2">-->
-<!--                    </div>-->
-<!--                    <div class="col-3">-->
-<!--                        -->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
+            <div class="row d-flex">
+                <div class="col-5" style="font-size: 25px; color: dimgrey;">
+                    <div>우리 주위에 항상 가까이 있고,<br>
+                        자주 접하게 되는 스마트폰과 pc.<br>
+                        그리고 또 그만큼 우리가 관심을 가지지만 닿지 못하는 그대, 길냥이.<br><br>
+                        이 둘이 만난다면 어떻게 될까요?<br>
+                        여러분의 스마트폰에, pc에 우리동네 길냥이들을 담아두고<br>
+                        정보를 나눠보세요.<br><br>
+                        아주 귀엽고, 또 그만큼 편리한 서비스,<br>
+                        <big>'고담'</big> 이 함께합니다!
+                    </div>
+                </div>
+                <div class="offset-2 col-5 d-flex justify-content-center">
+                    <img
+                            class="img-fluid"
+                            src="https://i.pinimg.com/originals/26/dd/89/26dd89c41a054e1c712fed2732443bf1.gif"
+                            height="300px;" width="500px;">
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
 <div id="second" class="box" style="background-image:url('{% static '두번째 스크롤 미정.jpeg' %}');">
+    <!--background-color: rgb(189, 182, 200, 0.4)">-->
     <div class="slog">
-        <div class="top" style="height: 75px; width: auto;"><br></div>
-
-        <div class="container h-100 justify-content-center">
-            <div class="row my-auto">
-                <div id="title" class="col-md-9 mx-4" style="font-size: 90px; color: black;">고담은 무슨 일을 할까요?<i
+        <div class="container position-absolute top-50 start-50 translate-middle" style="padding-top: 100px;">
+            <div class="row" style="position: relative;">
+                <div id="title" class="" style="font-size: 90px; color: black;">고담은 무슨 일을 할까요?<i
                         class="fas fa-cat fs-1"></i></div>
-                <div class="col-md-7 ms-auto" style="font-size: 30px; margin-top: 50px; color: dimgrey">Lorem ipsum
-                    dolor sit amet,
-                    consectetur adipisicing elit. A aliquam animi assumenda consectetur, consequuntur cumque ea
-                    eligendi et fugit harum hic iure iusto maiores molestias natus, quae sequi vero voluptatum.<br><br>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur culpa debitis doloribus
-                    esse illum maiores maxime minus quisquam sit. Animi dolor fugit maxime perspiciatis quibusdam quod
-                    voluptatem. Facilis, temporibus?
+                <div class="row">
+                    <div class="col-5">
+                        <img src="{% static 'catpic-2.jpg' %}"
+                             style="width: 400px; height: 480px; border-radius: 0% 30% 0% 0%;">
+                    </div>
+                    <div class="col-6 text-end"
+                         style="font-size: 30px; margin-top: 80px; color: dimgrey;">
+                        내가 돌보는 길냥이 혹은 외출냥이들의 은밀한 일상을<br>
+                        휴대폰, pc에 담아 간편하게 확인할 수 있는<br>
+                        서비스를 제공하고 있습니다.<br>
+                        <br>
+                        고담은 '고양이를 담다' 라는 뜻으로,<br>
+                        늘 여러분의 가까이에 있는<br>
+                        pc와 스마트폰에 여러분의 주위에 숨어있는<br>
+                        길냥이들의 일상을 포착해보세요!
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="third" class="box" style="background-image:url('{% static '세번째 스크롤 미정.jpeg' %}');">
+<div id="third" class="box" style="background-color: rgba(255,249,194,0.44)">
+    <!--background-color: rgb(189, 182, 200, 0.4)">-->
     <div class="slog">
-        <div class="top" style="height: 75px; width: auto;"><br></div>
-
-        <div class="container h-100 justify-content-center">
-            <div class="row my-auto">
-                <div id="title" class="col-9 col-md-8 mx-4 pb-4" style="font-size: 90px; color: black;">고담과 함께할 때<br>이것만은
-                    지켜주세요.<i
-                            class="fas fa-cat fs-1"></i></div>
-                <div class="col-7 col-md-6 mx-4 mt-4" style="font-size: 30px; color: dimgrey">Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit. A aliquam animi assumenda consectetur, consequuntur cumque
-                    ea
-                    eligendi et fugit harum hic iure iusto maiores molestias natus, quae sequi vero voluptatum.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="fourth" class="box" style="background-image:url('{% static '네번째 스크롤 미정.jpeg' %}');">
-    <div class="slog">
-        <div class="top" style="height: 75px; width: auto;"><br></div>
-
-        <div class="container h-100 justify-content-center">
-            <div class="row my-auto">
-                <div id="title" class="col-9 col-md-9 mx-4"
-                     style="font-size: 90px; padding-bottom: 90px; color: black;">고담은 누가 만들었나요?<i
+        <div class="container position-absolute top-50 start-50 translate-middle" style="padding-top: 100px;">
+            <div class="row" style="position: relative;">
+                <div id="title" class="" style="font-size: 90px; color: black;">고담에서 이것만은 지켜주세요<i
                         class="fas fa-cat fs-1"></i></div>
-                <div class="row my-auto mt-3">
-
-                    <div class="card ms-3" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">카드카드카아아아드</p>
-                        </div>
+                <div class="row" style="">
+                    <div class="col-6"
+                         style="font-size: 25px; margin-top: 80px; color: dimgrey;">
+                        고담에서 사용되는 길냥이의 정보들을 악용하지 말아주세요.<br>
+                        고담은 많은 사람들이 소중하게 생각하는<br>
+                        동네 고양이들의 케어를 위한 서비스입니다.<br>
+                        <br>
+                        우리 주변에 보이지 않는, 하지만 언제나 존재하는<br>
+                        길고양이들에게 고담은 보다 더 따뜻한 관심을 바랍니다.<br>
+                        <br>
+                        길고양이들을 케어해주시는 캣맘, 캣대디 여러분도<br>
+                        다른 분들께 피해가 가지 않도록 유의해주시면<br>
+                        모두에게 도움이 되는 길냥이 케어가 될거에요 :)
                     </div>
-                    <div class="card ms-3" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">카드카드카아아아드</p>
-                        </div>
+                    <div class="offset-2 col-5 ms-auto">
+                        <img class="float-end" src="{% static 'catpic-1.jpg' %}"
+                             style="width: 400px; height: 500px; border-radius: 30% 0% 0% 0%;">
                     </div>
-                    <div class="card ms-3" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">카드카드카아아아드</p>
-                        </div>
-                    </div>
-                    <div class="card ms-3" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">카드카드카아아아드</p>
-                        </div>
-                    </div>
-                    <div class="card ms-3" style="width: 15rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">카드카드카아아아드</p>
-                        </div>
-                    </div>
-                    <!---- 카드----->
-                </div>
-            </div>
-            <div class="row my-auto">
-                <div class="col-7 col-md-12 mx-4" style="font-size: 30px; margin-top: 100px; color: dimgrey">Lorem ipsum
-                    dolor
-                    sit
-                    amet, consectetur adipisicing elit. A aliquam animi assumenda consectetur, consequuntur
-                    cumque ea
-                    eligendi et fugit harum hic iure iusto maiores molestias natus, quae sequi vero voluptatum. Lorem
-                    ipsum dolor sit amet, consectetur adipisicing elit. Alias blanditiis doloremque id minus neque
-                    nobis, quos sequi! Ad enim non omnis possimus rem? Aspernatur assumenda atque inventore, labore nemo
-                    nostrum
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="fifth" class="box" style="background-image:url('{% static '다섯번째 스크롤 미정.jpeg' %}');">
-    <div class="slog">
-        <div class="top" style="height: 75px; width: auto;"><br></div>
 
-        <div class="container h-100 justify-content-center">
-            <div class="row my-auto">
-                <div id="title" class="col-9 col-md-7 mx-4 pb-4" style="font-size: 90px; color: black;">당신도 '고담',<br>함께
+
+<div id="fourth" class="box"
+     style="background-image:url('{% static '네번째 스크롤 미정.jpeg' %}');>
+    <div class=" slog">
+<div class="container container position-absolute top-50 start-50 translate-middle" style="padding-top: 100px;">
+    <div class="row">
+        <div id="title" class="mb-4"
+             style="font-size: 90px; color: black;">고담은 누가 만들었나요?<i
+                class="fas fa-cat fs-1"></i></div>
+        <div class="row my-auto mt-3" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">
+            <div class="card ms-3" style="width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199);">
+                <img src="{% static 'JH.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center" style="color: black;">박정훈</h5>
+                    <p class="card-text" style="color: black; font-size: 17px;">Web Developer</p>
+                </div>
+            </div>
+            <div class="card ms-3" style="width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199);">
+                <img src="{% static 'HS.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center" style="color: black;">진현성</h5>
+                    <p class="card-text" style="color: black; font-size: 17px;">Web Developer</p>
+                </div>
+            </div>
+            <div class="card ms-3" style="width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199);">
+                <img src="{% static 'GY.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center" style="color: black;">백가연</h5>
+                    <p class="card-text" style="color: black; font-size: 17px;">Web Developer</p>
+                </div>
+            </div>
+            <div class="card ms-3" style="width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199);">
+                <img src="{% static 'YB.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center" style="color: black;">김소민</h5>
+                    <p class="card-text" style="color: black; font-size: 17px;">Web Developer</p>
+                </div>
+            </div>
+            <div class="card ms-3" style="width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199);">
+                <img src="{% static 'YB.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center" style="color: black;">육은별</h5>
+                    <p class="card-text" style="color: black; font-size: 17px;">Web Developer</p>
+                </div>
+            </div>
+            <!---- 카드----->
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div id="fifth" class="box"
+     style="background-color: rgba(255,249,194,0.44)">
+    <div class="slog">
+        <div class="container container position-absolute top-50 start-50 translate-middle" style="padding-top: 100px;">
+            <div class="row">
+                <div id="title" class="col-6" style="font-size: 90px; color: black;">당신도 '고담',<br>함께
                     하실래요?<i
                             class="fas fa-cat fs-1"></i></div>
-                <div class="col-7 col-md-7 mx-4 mt-4" style="font-size: 30px; color: dimgrey">고담에 가입하고
+                <div class="col-6">
+                    <a href="http://52.79.227.191:8000/user/signup" target="_self"><img
+                            src="{% static 'joinus_icon.PNG' %}" style="width: 650px; height: 380px;"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6" style="font-size: 30px; color: dimgrey;">고담에 가입하고
                     항상 곁에 두는 스마트폰과 여러분의 pc에 우리 동네 고양이를 담아보세요!
                 </div>
+
             </div>
         </div>
     </div>
@@ -207,6 +225,5 @@ About Us
 
 </script>
 {% endblock scripts %}
-
 
 

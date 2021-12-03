@@ -24,6 +24,19 @@ html,body {
     font-family: 'Black Han Sans', sans-serif;
 }
 
+#base2_logo {
+    color: black;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+#nav_base2 li a {
+    color: black;
+}
+
+#nav_base2 li a:hover {
+    color: slategrey;
+}
+
 #title {
     font-family: 'Black Han Sans', sans-serif;
 }
@@ -97,24 +110,6 @@ a#btnhover:hover {
     font-weight: 300;
 }
 
-#aboutus_img {
-    width: 500px;
-    height: 240px;
-}
-
-@media (min-width:800px) and (max-width:1610px) {
-    #aboutus_img {
-        width: 450px;
-        height: 200px;
-    }
-}
-
-@media (min-width:480px) and (max-width:800px) {
-    #aboutus_img {
-        width: 290px;
-        height: 170px;
-    }
-}
 /*------회원가입 페이지 signup.html------*/
 .signupForm {
     font-family: 'Noto Sans KR', sans-serif;
