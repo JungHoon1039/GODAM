@@ -54,11 +54,14 @@ def catall(req):
            #아닐 경우 submit 안됨
        else:
             form = CatForm()
+
+       # pagination
+
+       page = int(req.GET.get('page', 1))
        paginator = Paginator(cat, 6)
-       page = req.GET.get('page', 1)
        posts = paginator.get_page(page)
 
-       page_numbers_range = 10
+       page_numbers_range = 5
        max_index = paginator.num_pages
        current_page = int(page) if page else 1
        start_index=int((current_page-1)/page_numbers_range)*page_numbers_range
@@ -67,7 +70,8 @@ def catall(req):
        if (end_index >= max_index) :
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
-       return render(req,'catall.html',{'cat': cat,'form':form,'posts':posts, 'paginator_range':paginator_range})
+
+       return render(req,'catall.html',{'cat': cat, 'form':form, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
 #404 에러 기능으로 그 고양이 정보 가져오기
