@@ -33,6 +33,7 @@
         {% for comment in cat.board_set.all %}
             작성자 : {{ comment.Usernum.Nickname }} <br>
             댓글 : {{ comment.Content }} <br>
+            <button type="button"><a href="">댓글삭제</a></button>
             <br>
         {% endfor %}
         </div>

@@ -3,6 +3,7 @@ from .forms import CatForm, BaseBulletinBoard
 from .models import Cat, Board
 import os
 from User.models import User
+from django.core.paginator import Paginator
 
 # Create your views here.
 #cat create
@@ -53,7 +54,22 @@ def catall(req):
            #아닐 경우 submit 안됨
        else:
             form = CatForm()
-       return render(req,'catall.html',{'cat': cat,'form':form})
+       paginator = Paginator(cat, 6)
+       page = req.GET.get('page', 1)
+       posts = paginator.get_page(page)
+
+       page_numbers_range = 10
+       max_index = paginator.num_pages
+       current_page = int(page) if page else 1
+       start_index=int((current_page-1)/page_numbers_range)*page_numbers_range
+       end_index = start_index + page_numbers_range
+
+       if (end_index >= max_index) :
+           end_index = max_index
+       paginator_range = paginator.page_range[start_index : end_index]
+       return render(req,'catall.html',{'cat': cat,'form':form,'posts':posts, 'paginator_range':paginator_range})
+
+
 #404 에러 기능으로 그 고양이 정보 가져오기
 def cat(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
@@ -71,12 +87,6 @@ def cat(req,Catid):
        else:
              form = BaseBulletinBoard()
        return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : Notice})
-
-# 글 삭제
-# def deleteContent(req, id):
-#     instance = get_object_or_404(Board, id=id)
-#     instance.delete()
-#     return return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : Notice})
 
 #404 에러 기능으로 가져온 고양이 정보 수정
 def catedit(req,Catid):

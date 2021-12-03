@@ -189,6 +189,27 @@
             </nav>
         </div>
         <div class="col">
+            <div class="pagination">
+                <p class="page">
+                    {% if posts.has_previous %}
+                    <a href="?page=1">&laquo;</a>
+                    <a href="?page={{ posts.previous_page_number}}">&lt;</a>
+                    {% endif %}
+                    {% for page in paginator_range %}
+                    {% if posts.number == page %}
+                    <a class="current_page"> {{ page }}</a>
+                    {% else %}
+                    <a href="?page={{ page }}">{{ page }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">&gt;</a>
+                    <a href="?page={{ posts.paginator.num_pages}}">&raquo;</a>
+                    {% endif %}
+
+                </p>
+
+            </div>
 
         </div>
     </div>
