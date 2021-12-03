@@ -26,6 +26,7 @@ class Cat(models.Model):
 # Create your models here.
 
 class Board(models.Model):
+    Boardid = models.AutoField(primary_key=True)
     Catnum = models.ForeignKey("Cat", on_delete=models.CASCADE,db_column="cat", verbose_name='고양이')
     Usernum = models.ForeignKey("User.User", on_delete=models.CASCADE,db_column="user", verbose_name='회원')
     Content = models.TextField(verbose_name='내용')

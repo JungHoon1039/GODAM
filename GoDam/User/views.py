@@ -63,7 +63,7 @@ def check_id(req):
 def login(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
     if logged_member :
-        return render (req, 'index.html', {'login_member' : logged_member})
+        return redirect(catall)
     else :
         return render (req,'login.html')
 
