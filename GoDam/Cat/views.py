@@ -7,25 +7,6 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 #cat create
-def catupload(req):
-    #post 방식으로 폼을 가져온 경우
-    if req.method == "POST":
-    #내용물 가져오기
-        logged_member = User.objects.get(Userid=req.session.get('Userid'))
-        form = CatForm(req.POST,req.FILES)
-    #내용물 존재 유무 유효성 검사,확인되면 db저장
-        if form.is_valid():
-            #form.save(commit=false) 의미는 폼의 내용물을 저장하는데 바로 db에 저장하지 않음,그러니까 완전히 저장하기 전에 사전작업이 있다는 의미
-            new_cat = form.save(commit=False)
-            #사전작업 = Cat.User 왜래필드를 User 세션에 투입
-            new_cat.User = logged_member
-            #이제 진짜 저장
-            new_cat.save()
-            return redirect(catall)
-    #아닐 경우 submit 안됨
-    else:
-        form = CatForm()
-    return render(req,'upload.html', {'form': form})
 
 #모든 캣 보이게
 def catall(req):
@@ -54,11 +35,14 @@ def catall(req):
            #아닐 경우 submit 안됨
        else:
             form = CatForm()
+
+       # pagination
+
+       page = int(req.GET.get('page', 1))
        paginator = Paginator(cat, 6)
-       page = req.GET.get('page', 1)
        posts = paginator.get_page(page)
 
-       page_numbers_range = 10
+       page_numbers_range = 5
        max_index = paginator.num_pages
        current_page = int(page) if page else 1
        start_index=int((current_page-1)/page_numbers_range)*page_numbers_range
@@ -67,26 +51,39 @@ def catall(req):
        if (end_index >= max_index) :
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
-       return render(req,'catall.html',{'cat': cat,'form':form,'posts':posts, 'paginator_range':paginator_range})
+
+       return render(req,'catall.html',{'cat': cat, 'form':form, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
 #404 에러 기능으로 그 고양이 정보 가져오기
 def cat(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
        cat = get_object_or_404(Cat,pk=Catid)
-       Notice = BaseBulletinBoard()
+       board = Board.objects.filter(Catnum=cat)
        if req.method == "POST":
        #instance는 저장된걸 의미한다
           form = BaseBulletinBoard(req.POST)
           if form.is_valid():
-             Board=form.save(commit=False)
-             Board.Catnum = cat
-             Board.Usernum = logged_member
-             Board.save()
-             return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : Notice})
+             Boardform=form.save(commit=False)
+             Boardform.Catnum = cat
+             Boardform.Usernum = logged_member
+             Boardform.save()
+             return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : board})
        else:
              form = BaseBulletinBoard()
-       return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : Notice})
+       return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : board})
+
+def bd(req,Catid,Boardid):
+       logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       cat = get_object_or_404(Cat,pk=Catid)
+       board = get_object_or_404(Board, pk=Boardid)
+       if board.Usernum.Userid != logged_member.Userid:
+          return redirect(catall)
+       else:
+          board.delete()
+          return redirect('cat',Catid=cat.Catid)
+
+
 
 #404 에러 기능으로 가져온 고양이 정보 수정
 def catedit(req,Catid):

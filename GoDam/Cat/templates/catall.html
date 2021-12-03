@@ -6,19 +6,21 @@
 {% endblock title %}
 
 {% block content %}
-{%for i in cat%}
 <div class="container h-100 d-flex justify-content-center" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">
     <div class="row row-cols-1 row-cols-md-3 g-4" style="padding: 60px;">
         <div>
         </div>
         <form action = "http://52.79.227.191:8000/user/index" method="get">
             <div class="text-center mt-5 mb-5" style="padding-top: 100px;">
-                <span style="font-family: 'Black Han Sans', sans-serif; font-size: 45px">{{i.Region}}<i class="fas fa-cat"></i></span>
-                <input type="text" name="region" value="{{i.Region}}" style="display:none">
+                <span style="font-family: 'Black Han Sans', sans-serif; font-size: 45px">{{user.Region}}<i class="fas fa-cat"></i></span>
+                <input type="text" name="region" value="{{user.Region}}" style="display:none">
                 <button>지역 변경</button>
                 <hr class="my-5">
             </div>
         </form>
+
+
+
         <div style="position: relative;">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-secondary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:absolute; bottom:0; right:0; border-radius: 30px;">
@@ -111,86 +113,22 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-                <img class="img-fluid" src ="{{i.Catimage.url}}">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="img-fluid" src ="{{i.Catimage.url}}">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="img-fluid" src ="{{i.Catimage.url}}">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="img-fluid" src ="{{i.Catimage.url}}">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="img-fluid" src ="{{i.Catimage.url}}">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img class="img-fluid" src ="{{i.Catimage.url}}">
-                <div class="card-body">
-                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
 
+        {%for i in posts %}
+        <div class="col">
+            <div class="card">
+                <img class="img-fluid" src ="{{i.Catimage.url}}">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
         </div>
-        <div class="col d-flex justify-content-center mt-5 mb-3">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        {%endfor%}
         <div class="col">
             <div class="pagination">
                 <p class="page">
+                    {{ page }}
                     {% if posts.has_previous %}
                     <a href="?page=1">&laquo;</a>
                     <a href="?page={{ posts.previous_page_number}}">&lt;</a>
@@ -206,15 +144,12 @@
                     <a href="?page={{ posts.next_page_number }}">&gt;</a>
                     <a href="?page={{ posts.paginator.num_pages}}">&raquo;</a>
                     {% endif %}
-
                 </p>
-
             </div>
-
         </div>
     </div>
 </div>
-{%endfor%}
+
 {% endblock content %}
 
 <!-- script -->
