@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CatForm, BaseBulletinBoard
 from .models import Cat, Board
 import os
+import json
 from User.models import User
 from django.core.paginator import Paginator
+from django.http import HttpResponse
 
 # Create your views here.
 #cat create
@@ -114,6 +116,21 @@ def catdelete(req,Catid):
        else:
           cat.delete()
           return redirect(catall)
+#좋아요 +1 -1하기!
+def catlike(req):
+    #cat objects 받는데 이미 ajax로 통해서 캣에 아이디로 받아옴, Catid로 저장
+    logged_member = User.objects.get(Userid=req.session.get('Userid'))
+    Catid = req.POST.get('Catid',None)
+    cat = get_object_or_404(Cat,pk=Catid)
+    #좋아요가 눌러졌다면 빼고
+    if cat.Like_user.filter(Userid = logged_member.Userid).exists():
+       cat.Like_user.remove(logged_member)
+    #아니면 추가
+    else:
+       cat.Like_user.add(logged_member)
+    #위에서 했던거 다시 ajax로 보내주기
+    context = {'likes_count':cat.count_Like_user()}
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 
 
