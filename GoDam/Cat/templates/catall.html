@@ -9,7 +9,7 @@
 <div class="container" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">
 
     <div class="row text-center" style="padding-top: 200px;">
-        <span style="font-family: 'Black Han Sans', sans-serif; font-size: 60px">{{user.Region}}<i class="fas fa-cat"></i></span>
+        <span style="font-family: 'Black Han Sans', sans-serif; font-size: 60px">{{region}}<i class="fas fa-cat"></i></span>
         <div>
             <hr class="mt-5 mb-5">
         </div>
@@ -19,6 +19,10 @@
 
     <div class="row d-flex mb-2">
             <div class="col-md-1 p-2 me-auto">
+                <form method ="get" action ="{% url 'catlist' %}">
+                    <input type = "hidden" id = "page" name = "page" value = "{{ page }}">
+                    <input type = "hidden" id = "so" name = "so" value = "{{ so }}">
+                </form>
                 <select class="form-select">
                     <option value="Catid" {% if so == 'Catid' %}selected{% endif %}>최신순</option>
                     <option value="Catage" {% if so == 'Catage' %}selected{% endif %}>나이순</option>
@@ -30,7 +34,7 @@
             <div class="col-md-5 p-2">
                 <div class="ms-3" style="float: right;">
                     <form action = "http://52.79.227.191:8000/user/index" method="get">
-                        <input type="text" name="region" value="{{user.Region}}" style="display:none">
+                        <input type="text" name="region" value="{{region}}" style="display:none">
                         <button class="btn btn-outline-secondary" style="font-size: 20px">지역 변경</button>
                     </form>
                 </div>
@@ -157,10 +161,6 @@
 
 
 
-            <form method ="get" action ="{% url 'catlist' %}">
-                <input type = "hidden" id = "page" name = "page" value = "{{ page }}">
-                <input type = "hidden" id = "so" name = "so" value = "{{ so }}">
-            </form>
 
     </div>
 

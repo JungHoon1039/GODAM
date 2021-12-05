@@ -18,6 +18,7 @@ def catall(req):
        #최초 로그인시 고양이 내용을 사용자가 설정한 지역에만 팝업하도록 함
        if region is None:
           cat = Cat.objects.filter(Region = logged_member.Region)
+          region = logged_member.Region
        #index페이지에서 지정한 주소로 고양이들을 팝업하게함
        else:
           cat = Cat.objects.filter(Region = region)
@@ -54,13 +55,13 @@ def catall(req):
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
 
-       so = req.GET.get('so', 'recent')
+       so = req.GET.get('so', 'Catid')
        if so == 'Catage':
            cat = Cat.objects.order_by('-Catage', 'Catid') # annotate(num_Like_user=Count('Like_user'))
        else:  # recent
            cat = Cat.objects.order_by('Catid')
 
-       return render(req,'catall.html',{'cat': cat, 'form':form, 'so':so, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
+       return render(req,'catall.html',{'cat': cat, 'form':form, 'region':region, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
 #404 에러 기능으로 그 고양이 정보 가져오기
