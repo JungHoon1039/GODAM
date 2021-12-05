@@ -55,10 +55,10 @@ def catall(req):
        paginator_range = paginator.page_range[start_index : end_index]
 
        so = req.GET.get('so', 'recent')
-       if so == 'recommend':
-           cat = Cat.objects.annotate(num_Like_user=Count('Like_user')).order_by('-num_Like_user', '-Catupload')
+       if so == 'Catage':
+           cat = Cat.objects.order_by('-Catage', 'Catid') # annotate(num_Like_user=Count('Like_user'))
        else:  # recent
-           cat = Cat.objects.order_by('-Catupload')
+           cat = Cat.objects.order_by('Catid')
 
        return render(req,'catall.html',{'cat': cat, 'form':form, 'so':so, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 

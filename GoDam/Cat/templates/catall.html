@@ -17,20 +17,18 @@
                 <button>지역 변경</button>
                 <hr class="my-5">
             </div>
-        </form>
+            <select>
+                <option value="Catid" {% if so == 'Catid' %}selected{% endif %}>최신순</option>
+                <option value="Catage" {% if so == 'Catage' %}selected{% endif %}>나이순</option>
+            </select>
+            <form method ="get" action ="{% url 'catlist' %}">
+                <input type = "hidden" id = "page" name = "page" value = "{{ page }}">
+                <input type = "hidden" id = "so" name = "so" value = "{{ so }}">
+            </form>
+
+
 
         <div style="position: relative;">
-            <div class=" my-3 col-2">
-
-                <form id="getForm" method ="get" action ="{% url 'catlist' %}">
-                    <input type = "hidden" id = "page" name = "page" value = "{{ page }}">
-                    <input type = "hidden" id = "so" name = "so" value = "{{ so }}">
-                    <select>
-                        <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
-                        <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>좋아요순</option>
-                    </select>
-                </form>
-            </div>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-secondary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:absolute; bottom:0; right:0; border-radius: 30px;">
                 고양이 등록
