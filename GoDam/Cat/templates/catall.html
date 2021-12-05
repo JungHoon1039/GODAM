@@ -63,36 +63,36 @@
                                     <p class="form_newCat">
                                         <labl for="{{ field.id_for_label }}" style="display:none">{{ field.label }}</labl>
                                         {%if field.label == "사진"%}
-                                        <labl>사진:</labl>
+                                        <labl>사진</labl>
                                         <input class="newCatInput ms-5" type="file" name="Catimage" accept="image/*" required="" id="id_Catimage" style="border: none;">
                                         {%endif%}
                                         {%if field.label == "이름"%}
-                                        <labl>이름:</labl>
+                                        <labl>이름</labl>
                                         <input class="newCatInput ms-5" type="text" name="Catname" maxlength="64" required="" id="id_Catname">
                                         {%endif%}
                                         {%if field.label == "나이"%}
-                                        <labl>나이:</labl>
+                                        <labl>나이</labl>
                                         <input class="newCatInput ms-5" type="number" name="Catage" required="" id="id_Catage">
                                         {%endif%}
                                         {%if field.label == "성별"%}
-                                        <labl>나이:</labl>
+                                        <labl>성별</labl>
                                         <!--<select class="newcatInput" name="Gender" required="" id="id_Gender">
                                             <option value = "------" selected>------</option>
                                             <option value="수컷">수컷</option>
                                             <option value="암컷">암컷</option>
                                         </select>-->
                                         <!--                             <select class="ms-4" name="Gender" required="" id="id_Gender">-->
-                                        <input class="ms-5 me-1" type="radio" name="Gender" value="수컷" id="male">수컷
-                                        <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" id="female">암컷
+                                        <input class="ms-5 me-1" type="radio" name="Gender" value="수컷" id="male" required style="accent-color:darkseagreen;"><label for="male">수컷</label>
+                                        <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" id="female" required style="accent-color:darkseagreen;"><label for="female">암컷</label>
                                         <!-- <option value = "------" selected>------</option>
                                          <option value="수컷">수컷</option>
                                          <option value="암컷">암컷</option>
             </select>-->
                                         {%endif%}
                                         {%if field.label == "중성화"%}
-                                        <labl>중성화:</labl>
-                                        <input class="ms-5 me-1" type="radio" name="Neutering" required="" value="예" id="yes">O
-                                        <input class="ms-4 me-1" type="radio" name="Neutering" required="" value="아니오" id="no">X
+                                        <labl>중성화</labl>
+                                        <input class="me-1" type="radio" name="Neutering" required="" value="예" id="yes" style="margin-left: 33px; accent-color:darkseagreen;"><label for="yes">예</label>
+                                        <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="no" style="accent-color:darkseagreen;"><label for="no">아니오</label>
                                         <!--<select name="Neutering" required="" id="id_Neutering">
                                             <option value = "------" selected>------</option>
                                             <option value="예">예</option>
@@ -107,7 +107,7 @@
                                              <option value="아니오">아니오</option>
             </select>-->
                                         {%if field.label == "지역"%}
-                                        <labl>지역:</labl>
+                                        <labl>지역</labl>
                                         <select class="ms-5" name="Region" required="" id="id_Region">
                                             <option value="------" selected = "selected">------</option>
                                             <option value="강동구">강동구</option>
@@ -138,7 +138,7 @@
                                         </select>
                                         {%endif%}
                                         {%if field.label == "설명"%}
-                                        <labl>설명:</labl>
+                                        <labl class="align-top">설명</labl>
                                         <!--<textarea class="newCatInput ms-5" style="width: 300px; height: 90px;"></textarea>-->
                                         <!--<textarea name="Discribtion" cols="40" rows="10" required="" id="id_Discribtion"></textarea>-->
                                         <textarea name="Discribtion"class="newCatInput ms-5" style="width: 300px; height: 90px;" required="" id="id_Discribtion"></textarea>

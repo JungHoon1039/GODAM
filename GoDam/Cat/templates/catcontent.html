@@ -1,49 +1,129 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+{% extends 'base2.html' %}
 
-{% extends 'base.html' %}
+{% block title %}
+고양이를 담다
+{% endblock title %}
+
 {% block content %}
-<img src ="{{i.Catimage.url}}" width="100px" height="100px">
-이름:{{i.Catname}}
-나이:{{i.Catage}}
-중성화:{{i.Neutering}}
-지역:{{i.Region}}
-작성자:{{i.User.Username}}
-<div>
-    <input type="button" id="like" name="{{i.Catid}}" value="Like">
-    <p id="count-{{i.Catid}}">
-        좋아요{{i.Like_user.all.count}}개</p>
-</div>
-
-<!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
-{%if i.User.Userid == owner.Userid%}
-<button type="button" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
-<button type="button" onclick="showConfirm()">삭제</button>
-{%endif%}
-<div class="container">
+<div class="container" style="padding-top: 150px;">
+    <div class="row mb-4">
+        <h3 class="d-block d-flex justify-content-center mb-4">{{i.Catname}}</h3>
+        <div class="col-4 offset-8 gap-2 mb-2 d-flex justify-content-center">
+            <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
+            {%if i.User.Userid == owner.Userid%}
+            <button type="button" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
+            <button type="button" onclick="showConfirm()">삭제</button>
+            {%endif%}
+        </div>
+        <div class="col d-flex justify-content-center">
+            <div class="card mb-3 shadow-lg" style="max-width: 1000px; border: none;">
+                <div class="row g-0">
+                    <div class="col-md-6 my-auto ps-3">
+                        <img src="{{i.Catimage.url}}" class="img-fluid img-thumbnail rounded" alt="...">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush p-5">
+                                <li class="list-group-item">이름 : {{i.Catname}}</li>
+                                <li class="list-group-item">나이 : {{i.Catage}}</li>
+                                <li class="list-group-item">중성화 : {{i.Neutering}}</li>
+                                <li class="list-group-item">지역 : {{i.Region}}</li>
+                                <li class="list-group-item">작성자 : {{i.User.Username}}</li>
+                                <li class="list-group-item">
+                                    <input type="button" id="like" name="{{i.Catid}}" value="Like">
+                                    <p class="d-inline ms-2" id="count-{{i.Catid}}">
+                                        좋아요 {{i.Like_user.all.count}}개</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--댓글 작성-->
     <div class="row">
-        <div class="col-12">
+        <!--        <p class="offset-1 ps-5 mb-2">&nbsp;&nbsp;작성자 : {{ form.Usernum }}</p>-->
+        <div class="col d-flex justify-content-center">
             <form method="post">
                 {% csrf_token %}
-                {{form.as_p}}
-                <button type="submit">작성</button><br>
+                <p>
+                <div class="form-floating">
+                    <textarea class="form-control" id="id_Content" cols="129" name="Content" placeholder="Leave a comment here" style="height: 100px;" required></textarea>
+                    <label for="id_Content">댓글을 작성하세요&nbsp;<i class="fas fa-paw"></i></label>
+                </div>
+                </p>
+                <button class="float-end" type="submit" style="width: 86px;">댓글 작성</button>
             </form>
         </div>
     </div>
 </div>
+
+{% for comment in cat.board_set.all %}
 <div class="container">
     <div class="row">
-        <div class="col-12">
-        {% for comment in cat.board_set.all %}
-            작성자 : {{ comment.Usernum.Nickname }} <br>
-            댓글 : {{ comment.Content }} <br>
+        <div class="col">
+            <p>작성자 : {{ comment.Usernum.Nickname }}</p>
             {% if comment.Usernum.Userid == owner.Userid%}
-                <button type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글삭제</a></button>
+            <button type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글삭제</a></button>
             {% endif %}
-            <br>
-        {% endfor %}
+            댓글 : {{ comment.Content }}
         </div>
     </div>
 </div>
+{% endfor %}
+
+
+
+
+
+<!--<img src ="{{i.Catimage.url}}" width="100px" height="100px">-->
+<!--이름:{{i.Catname}}-->
+<!--나이:{{i.Catage}}-->
+<!--중성화:{{i.Neutering}}-->
+<!--지역:{{i.Region}}-->
+<!--작성자:{{i.User.Username}}-->
+<!--<div>-->
+<!--    <input type="button" id="like" name="{{i.Catid}}" value="Like">-->
+<!--    <p id="count-{{i.Catid}}">-->
+<!--        좋아요{{i.Like_user.all.count}}개</p>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)&ndash;&gt;-->
+<!--{%if i.User.Userid == owner.Userid%}-->
+<!--<button type="button" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>-->
+<!--<button type="button" onclick="showConfirm()">삭제</button>-->
+<!--{%endif%}-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--            <form method="post">-->
+<!--                {% csrf_token %}-->
+<!--                {{form.as_p}}-->
+<!--                <button type="submit">작성</button><br>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--        {% for comment in cat.board_set.all %}-->
+<!--            작성자 : {{ comment.Usernum.Nickname }} <br>-->
+<!--            댓글 : {{ comment.Content }} <br>-->
+<!--            {% if comment.Usernum.Userid == owner.Userid%}-->
+<!--                <button type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글삭제</a></button>-->
+<!--            {% endif %}-->
+<!--            <br>-->
+<!--        {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+{% endblock content %}
+
+{% block scripts %}
 <script>
     $("#like").click(function () { // .like 버튼을 클릭 감지
         var Catid = $(this).attr('name')
@@ -58,13 +138,12 @@
             },
         });
     })
-        function showConfirm(){
+    function showConfirm(){
         if(confirm("정말로 고양이를 삭제하겠습니까?"))
-    {
-        alert("고양이를 삭제했습니다");
-        window.location.href = '{%url "catdelete" i.Catid%}';
-    }
+        {
+            alert("고양이를 삭제했습니다");
+            window.location.href = '{%url "catdelete" i.Catid%}';
+        }
     }
 </script>
-
-{% endblock content %}
+{% endblock scripts %}
