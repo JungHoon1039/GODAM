@@ -54,7 +54,13 @@ def catall(req):
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
 
-       return render(req,'catall.html',{'cat': cat, 'form':form, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
+       so = req.GET.get('so', 'recent')
+       if so == 'recommend':
+           cat = Cat.objects.annotate(num_Like_user=Count('Like_user')).order_by('-num_Like_user', '-Catupload')
+       else:  # recent
+           cat = Cat.objects.order_by('-Catupload')
+
+       return render(req,'catall.html',{'cat': cat, 'form':form, 'so':so, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
 #404 에러 기능으로 그 고양이 정보 가져오기

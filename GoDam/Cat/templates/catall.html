@@ -19,14 +19,22 @@
             </div>
         </form>
 
-
-
         <div style="position: relative;">
+            <div class=" my-3 col-2">
+
+                <form id="getForm" method ="get" action ="{% url 'catlist' %}">
+                    <input type = "hidden" id = "page" name = "page" value = "{{ page }}">
+                    <input type = "hidden" id = "so" name = "so" value = "{{ so }}">
+                    <select>
+                        <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
+                        <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>좋아요순</option>
+                    </select>
+                </form>
+            </div>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-secondary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position:absolute; bottom:0; right:0; border-radius: 30px;">
                 고양이 등록
             </button>
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -135,12 +143,14 @@
             </div>
         </div>
 
+
         {%for i in posts %}
         <div class="col">
             <div class="card">
                 <img class="img-fluid" src ="{{i.Catimage.url}}">
                 <div class="card-body">
                     <h5 class="card-title text-center"><a href ="{%url 'cat' i.Catid%}">{{i.Catname}}</a></h5>
+                    <h5 id="count-{{i.Catid}}" style="text-align: center">좋아요{{i.Like_user.all.count}}개</h5>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 </div>
             </div>
@@ -174,6 +184,14 @@
 {% endblock content %}
 
 <!-- script -->
+
 {% block scripts %}
+<script>
+    $(".so").on('change', function(){
+        $("#so").val($(this).val());
+        $("#page").val(1);
+        $("#getForm").submit();
+    });
+</script>
 
 {% endblock scripts %}

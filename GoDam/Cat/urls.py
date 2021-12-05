@@ -8,4 +8,5 @@ urlpatterns = [
         path('cat/<int:Catid>/delete',views.catdelete,name="catdelete"),
         path('cat/<int:Catid>/<int:Boardid>', views.bd, name="bd"),
         path('cat/catlike',views.catlike,name="catlike"),
+        path('catlist', views.catall,name="catlist"),
 ]

@@ -21,7 +21,7 @@ class Cat(models.Model):
       Region = models.CharField(max_length=16, verbose_name='지역',choices=region)
       Discribtion = models.TextField(verbose_name='설명')
       User = models.ForeignKey("User.User", on_delete=models.CASCADE,db_column="user",verbose_name='등록유저')
-      Like_user = models.ManyToManyField('User.User',blank=True,related_name='Like_user')
+      Like_user = models.ManyToManyField('User.User',blank=True,related_name='Like_user',verbose_name='좋아요유저')
       Catupload = models.DateTimeField(auto_now_add=True, verbose_name='등록')
 
       def count_Like_user(self): # mysql로 치면 다대다로 연결된 Like_user group by and count(Like_user)해서 변수 지정
