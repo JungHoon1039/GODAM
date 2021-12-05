@@ -169,41 +169,25 @@ About Us
     </div>
 </div>
 
-<div id="fifth" class="box">
-    <div class="container h-100 d-flex justify-content-center">
-        <div class="row my-auto mx-1">
-            <div class="row mb-3" style="padding-top: 100px;">
-                <div id="title" class="" style="font-size: 85px; color: black;">'고담' 하실래요?<i
-                        class="fas fa-cat fs-1"></i></div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-10 col-md-12" style="font-size: 25px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
-                    고담에 가입하고
-                    항상 곁에 두는 스마트폰과 <br> 여러분의 pc에 우리 동네 고양이를 담아보세요!
-                </div>
-                <div class="my-5 p-5" style="box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px; background-image:url('{% static 'cat3.jpg' %}');" >
-                    <div class="login container h-100">
-                        <div class="row my-auto float-end me-5">
-                            <div style="width: 300px;">
-                                <form action="http://52.79.227.191:8000/user/logged" method="post">
-                                    {% csrf_token %}
-                                    <div class="input-group d-flex align-items-center justify-content-center">
-                                        <input class="form-control" type="text" id="member_id" name="id" placeholder="ID" required>
-                                    </div>
-                                    <div class="input-group d-flex align-items-center justify-content-center my-3">
-                                        <input class="form-control" type="password" id="member_pwd" name="pw" placeholder="Password" required>
-                                    </div>
-                                    <button type="submit" class="loginbtn btn btn-lg" style="width: 100%;">Login</button>
-                                    <p id="sign" class="text-center my-3" style="font-size: 16px;">Not a member? <a id="btnhover" href="./signup" style="color: #285e4f">Sign up now</a></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div id="fifth" class="box">-->
+<!--    <div class="container h-100 d-flex justify-content-center">-->
+<!--        <div class="row my-auto mx-1">-->
+<!--            <div class="row mb-3" style="padding-top: 100px;">-->
+<!--                <div id="title" class="" style="font-size: 85px; color: black;">'고담' 하실래요?<i-->
+<!--                        class="fas fa-cat fs-1"></i></div>-->
+<!--            </div>-->
+<!--            <div class="row mb-5">-->
+<!--                <div class="col-10 col-md-12" style="font-size: 25px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">-->
+<!--                    고담에 가입하고-->
+<!--                    항상 곁에 두는 스마트폰과 <br> 여러분의 pc에 우리 동네 고양이를 담아보세요!-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                -->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 {% endblock content %}
 
