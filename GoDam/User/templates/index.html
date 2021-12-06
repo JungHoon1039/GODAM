@@ -19,13 +19,13 @@ Home
                         </select>
                     </div>
                     <div class="col-5" style="float: left;">
-                        <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;" name='region' required>
-                            {% if region == null%}
-                            <option selected = "selected">{{login_member.Region}}</option>
-                            {%endif%}
-                            {% if region != null%}
-                            <option selected = "selected">{{region}}</option>
-                            {%endif%}
+                        <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;" id='region' name='region' required>
+<!--                            {% if region == null%}-->
+<!--                            <option selected = "selected">{{login_member.Region}}</option>-->
+<!--                            {%endif%}-->
+<!--                            {% if region != null%}-->
+<!--                            <option selected = "selected">{{region}}</option>-->
+<!--                            {%endif%}-->
                             <option value="강동구">강동구</option>
                             <option value="송파구">송파구</option>
                             <option value="강남구">강남구</option>
@@ -65,7 +65,12 @@ Home
 
 <!-- script -->
 {% block scripts %}
-
+<script>
+    var region = '{{region}}';
+    if(region !== ''){
+        document.getElementById("region").value = region;
+    }
+</script>
 {% endblock scripts %}
 
 

@@ -27,8 +27,8 @@
                     <option value="Catid" {% if so == 'Catid' %}selected{% endif %}>최신순</option>
                     <option value="Catage" {% if so == 'Catage' %}selected{% endif %}>나이순</option>
                 </select>-->
-                <select onchange="location = this.value;">
-                    <option selected="selected">{{sort}}</option>
+                <select id='array' onchange="location = this.value;">
+<!--                    <option selected="selected">{{sort}}</option>-->
                     <option value="?region={{region}}&sort=latest">최신순</option>
                     <option value="?region={{region}}&sort=like">좋아요순</option>
                 </select>
@@ -230,6 +230,12 @@
         $("#page").val(1);
         $("#getForm").submit();
     });
+</script>-->
+<script>
+    var array = '{{sort}}';
+    if(array !== ''){
+        document.getElementById("array").value = '?region={{region}}&sort={{sort}}';
+    }
 </script>
 
-{% endblock scripts %}-->
+{% endblock scripts %}
