@@ -6,6 +6,7 @@ import json
 from User.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponse
+from django.db.models import Count
 
 # Create your views here.
 #cat create
@@ -15,13 +16,22 @@ def catall(req):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
        #index 페이지에서 저장된 지역 값 가져오기
        region = req.GET.get('region')
+       sort = req.GET.get('sort', '')
        #최초 로그인시 고양이 내용을 사용자가 설정한 지역에만 팝업하도록 함
        if region is None:
           cat = Cat.objects.filter(Region = logged_member.Region)
           region = logged_member.Region
+          if sort == 'like':
+             sortcat = cat.annotate(count_Like_user=Count('Like_user')).order_by('-count_Like_user', '-Catupload') # annotate(num_Like_user=Count('Like_user'))
+          else:
+             sortcat = cat.order_by('-Catupload')
        #index페이지에서 지정한 주소로 고양이들을 팝업하게함
        else:
           cat = Cat.objects.filter(Region = region)
+          if sort == 'like':
+             sortcat = cat.annotate(count_Like_user=Count('Like_user')).order_by('-count_Like_user', '-Catupload') # annotate(num_Like_user=Count('Like_user'))
+          else:
+             sortcat = cat.order_by('-Catupload')
        #post 방식으로 폼을 가져온 경우
        if req.method == "POST":
          #내용물 가져오기
@@ -42,7 +52,7 @@ def catall(req):
        # pagination
 
        page = int(req.GET.get('page', 1))
-       paginator = Paginator(cat, 6)
+       paginator = Paginator(sortcat, 6)
        posts = paginator.get_page(page)
 
        page_numbers_range = 5
@@ -55,13 +65,13 @@ def catall(req):
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
 
-       so = req.GET.get('so', 'Catid')
-       if so == 'Catage':
-           cat = Cat.objects.order_by('-Catage', 'Catid') # annotate(num_Like_user=Count('Like_user'))
-       else:  # recent
-           cat = Cat.objects.order_by('Catid')
+       #sort = req.GET.get('sort', '')
+       #if sort == 'like':
+       #   cat.annotate(count_Like_user=Count('Like_user')).order_by('-count_Like_user', '-Catupload') # annotate(num_Like_user=Count('Like_user'))
+       #if sort == 'latest':
+       #   cat.order_by('-Catupload')
 
-       return render(req,'catall.html',{'cat': cat, 'form':form, 'region':region, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
+       return render(req,'catall.html',{'sort':sort,'sortcat': sortcat, 'form':form, 'region':region, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
 #404 에러 기능으로 그 고양이 정보 가져오기
