@@ -110,7 +110,7 @@ a#btnhover:hover {
     font-weight: 300;
 }
 
-/*------회원가입 페이지 signup.html------*/
+/*--회원가입 페이지 signup.html--*/
 .signupForm {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
@@ -136,10 +136,11 @@ tbody .editinput {
     border-radius: 5px;
 }
 
-tbody select {
+tbody td select {
     border: 1px solid rgba(128, 128, 128, 0.473);
     padding: 2px;
     font-size: 15px;
+    border-radius: 5px;
 }
 
 tbody .signupinput:focus,
@@ -205,7 +206,7 @@ tbody .editinput:focus {
     opacity: 0.8;
 }
 
-/*------info 페이지------*/
+/*--info 페이지--*/
 .info_form {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
@@ -273,7 +274,7 @@ tbody .editinput:focus {
     opacity: 0.8;
 }
 
-/*------회원정보변경 페이지 info_edit.html------*/
+/*--회원정보수정 페이지 info_edit.html--*/
 .info_edit,
 .pwd_edit {
     font-family: 'Noto Sans KR', sans-serif;

@@ -58,22 +58,43 @@
             </form>
         </div>
     </div>
-</div>
 
-{% for comment in cat.board_set.all %}
-<div class="container">
+    <!--댓글-->
     <div class="row">
+        {% for comment in cat.board_set.all %}
         <div class="col">
-            <p>작성자 : {{ comment.Usernum.Nickname }}</p>
+            <div class="chat" style="border: solid 1px darkslategray">
+                {{ comment.Content }}
+            </div>
+            <div class="d-inline">
+                {{ comment.Usernum.Nickname }}
+            </div>
             {% if comment.Usernum.Userid == owner.Userid%}
-            <button type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글삭제</a></button>
+            <button class="float-end" type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글 삭제</a></button>
             {% endif %}
-            댓글 : {{ comment.Content }}
         </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
 
+
+<!--{% for comment in cat.board_set.all %}-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col">-->
+<!--            <div class="chat" style="border: solid 1px darkslategray">-->
+<!--                {{ comment.Content }}-->
+<!--            </div>-->
+<!--            <div class="d-inline">-->
+<!--                {{ comment.Usernum.Nickname }}-->
+<!--            </div>-->
+<!--            {% if comment.Usernum.Userid == owner.Userid%}-->
+<!--            <button class="float-end" type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글 삭제</a></button>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--{% endfor %}-->
 
 
 
