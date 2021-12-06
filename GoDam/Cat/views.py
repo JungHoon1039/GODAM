@@ -16,7 +16,7 @@ def catall(req):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
        #index 페이지에서 저장된 지역 값 가져오기
        region = req.GET.get('region')
-       sort = req.GET.get('sort', '')
+       sort = req.GET.get('sort')
        #최초 로그인시 고양이 내용을 사용자가 설정한 지역에만 팝업하도록 함
        if region is None:
           cat = Cat.objects.filter(Region = logged_member.Region)
@@ -25,6 +25,7 @@ def catall(req):
              sortcat = cat.annotate(count_Like_user=Count('Like_user')).order_by('-count_Like_user', '-Catupload') # annotate(num_Like_user=Count('Like_user'))
           else:
              sortcat = cat.order_by('-Catupload')
+             sort = 'latest'
        #index페이지에서 지정한 주소로 고양이들을 팝업하게함
        else:
           cat = Cat.objects.filter(Region = region)
@@ -32,6 +33,7 @@ def catall(req):
              sortcat = cat.annotate(count_Like_user=Count('Like_user')).order_by('-count_Like_user', '-Catupload') # annotate(num_Like_user=Count('Like_user'))
           else:
              sortcat = cat.order_by('-Catupload')
+             sort = 'latest'
        #post 방식으로 폼을 가져온 경우
        if req.method == "POST":
          #내용물 가져오기
