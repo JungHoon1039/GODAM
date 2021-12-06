@@ -196,19 +196,19 @@
                 <p class="page">
                     {{ page }}
                     {% if posts.has_previous %}
-                    <a href="?page=1">&laquo;</a>
-                    <a href="?page={{ posts.previous_page_number}}">&lt;</a>
+                    <a href="?page=1&sort={{sort}}">&laquo;</a>
+                    <a href="?page={{ posts.previous_page_number}}&sort={{sort}}">&lt;</a>
                     {% endif %}
                     {% for page in paginator_range %}
                     {% if posts.number == page %}
                     <a class="current_page"> {{ page }}</a>
                     {% else %}
-                    <a href="?page={{ page }}">{{ page }}</a>
+                    <a href="?page={{ page }}&sort={{sort}}">{{ page }}</a>
                     {% endif %}
                     {% endfor %}
                     {% if posts.has_next %}
-                    <a href="?page={{ posts.next_page_number }}">&gt;</a>
-                    <a href="?page={{ posts.paginator.num_pages}}">&raquo;</a>
+                    <a href="?page={{ posts.next_page_number }}&sort={{sort}}">&gt;</a>
+                    <a href="?page={{ posts.paginator.num_pages}}&sort={{sort}}">&raquo;</a>
                     {% endif %}
                 </p>
             </div>
