@@ -7,6 +7,7 @@ from django.conf import settings
 def _get_upload_to(instance, filename):
     return 'images/%f.jpg' % time.time()
 
+
 class Cat(models.Model):
       Catid = models.AutoField(primary_key=True)
       Catimage = models.ImageField(upload_to=_get_upload_to, verbose_name='사진')
@@ -26,6 +27,7 @@ class Cat(models.Model):
 
       def count_Like_user(self): # mysql로 치면 다대다로 연결된 Like_user group by and count(Like_user)해서 변수 지정
           return self.Like_user.count()
+
 
 # Create your models here.
 
