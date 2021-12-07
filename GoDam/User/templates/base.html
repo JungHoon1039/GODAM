@@ -32,17 +32,19 @@
     <!-- title-->
     <title>고담 | {% block title %}{% endblock title %}</title>
 
-
 </head>
 
 <body>
     <!-- nav -->
-    <nav class="navbar navbar-light mx-4 my-3" style="position: fixed; z-index: 1;">
+    <nav class="navbar navbar-light mx-4 my-3 w-100" style="position: fixed; z-index: 1;">
         <div class="container-fluid">
             <a class="navbar-brand align-middle" href="#first">
                 <i class="fs-1 fas fa-paw"></i>
                 <span id="logo" class="" style="font-size: 35px;">고담</span>
             </a>
+            <div class="d-flex me-5">
+                <button type="button" class="btn btn-dark" onclick="location.href = 'http://52.79.227.191:8000/user/signup'">SignUp</button>
+            </div>
         </div>
     </nav>
 
