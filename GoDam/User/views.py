@@ -157,6 +157,8 @@ def password_edit_complete(req):
 #about us
 def about(req):
     return render (req, 'about.html')
+def aboutus(req):
+    return render (req, 'aboutus.html')
 #길고양이 지역 변경
 def index(req):
     logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
