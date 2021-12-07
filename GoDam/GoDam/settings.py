@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-vndjqjw3gt_!v*^y5gm26_qo91i(sldp%^u92uskb@y=m(el29
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.79.227.191']
+ALLOWED_HOSTS = ['52.79.227.191','godam.ga']
 
 
 # Application definition

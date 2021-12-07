@@ -41,6 +41,7 @@ def catall(req):
          #내용물 존재 유무 유효성 검사,확인되면 db저장
          if form.is_valid():
             #form.save(commit=false) 의미는 폼의 내용물을 저장하는데 바로 db에 저장하지 않음,그러니까 완전히 저장하기 전에 사전작업이 있다는 의미
+            new_cat = form.cleaned_data['Catage']
             new_cat = form.save(commit=False)
             #사전작업 = Cat.User 왜래필드를 User 세션에 투입
             new_cat.User = logged_member

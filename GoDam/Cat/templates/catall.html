@@ -27,7 +27,7 @@
                     <option value="Catid" {% if so == 'Catid' %}selected{% endif %}>최신순</option>
                     <option value="Catage" {% if so == 'Catage' %}selected{% endif %}>나이순</option>
                 </select>-->
-                <select id='array' onchange="location = this.value;">
+                <select class="form-select" id='array' onchange="location = this.value;">
 <!--                    <option selected="selected">{{sort}}</option>-->
                     <option value="?region={{region}}&sort=latest">최신순</option>
                     <option value="?region={{region}}&sort=like">좋아요순</option>
@@ -61,9 +61,13 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST" enctype="multipart/form-data" name="form">
                                 {% csrf_token %}
                                 <div class="modal-body">
+                                    {{ form.non_field_errors }}
+                                    {% for error in field.errors %}
+                                    <p>{{ error|escape }}</p>
+                                    {% endfor %}
                                     {%for field in form%}
                                     <p class="form_newCat">
                                         <labl for="{{ field.id_for_label }}" style="display:none">{{ field.label }}</labl>
@@ -73,44 +77,22 @@
                                         {%endif%}
                                         {%if field.label == "이름"%}
                                         <labl>이름</labl>
-                                        <input class="newCatInput ms-5" type="text" name="Catname" maxlength="64" required="" id="id_Catname">
+                                        <input class="newCatInput ms-5" type="text" name="Catname" maxlength="64" required="" pattern="^[a-zA-Z0-9!~@#$%^&*()_+-=\[\]{}<>:`?;'\\/,.&quot]+$" id="id_Catname">
                                         {%endif%}
                                         {%if field.label == "나이"%}
                                         <labl>나이</labl>
-                                        <input class="newCatInput ms-5" type="number" name="Catage" required="" id="id_Catage">
+                                        <input class="newCatInput ms-5" type="number" name="Catage" required="" id="id_Catage" min="0">
                                         {%endif%}
                                         {%if field.label == "성별"%}
                                         <labl>성별</labl>
-                                        <!--<select class="newcatInput" name="Gender" required="" id="id_Gender">
-                                            <option value = "------" selected>------</option>
-                                            <option value="수컷">수컷</option>
-                                            <option value="암컷">암컷</option>
-                                        </select>-->
-                                        <!--                             <select class="ms-4" name="Gender" required="" id="id_Gender">-->
                                         <input class="ms-5 me-1" type="radio" name="Gender" value="수컷" id="male" required style="accent-color:darkseagreen;"><label for="male">수컷</label>
                                         <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" id="female" required style="accent-color:darkseagreen;"><label for="female">암컷</label>
-                                        <!-- <option value = "------" selected>------</option>
-                                         <option value="수컷">수컷</option>
-                                         <option value="암컷">암컷</option>
-            </select>-->
                                         {%endif%}
                                         {%if field.label == "중성화"%}
                                         <labl>중성화</labl>
                                         <input class="me-1" type="radio" name="Neutering" required="" value="예" id="yes" style="margin-left: 33px; accent-color:darkseagreen;"><label for="yes">예</label>
                                         <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="no" style="accent-color:darkseagreen;"><label for="no">아니오</label>
-                                        <!--<select name="Neutering" required="" id="id_Neutering">
-                                            <option value = "------" selected>------</option>
-                                            <option value="예">예</option>
-                                            <option value="아니오">아니오</option>
-                                        </select>-->
                                         {%endif%}
-                                        <!--<select class="ms-2" name="Neutering" required="" id="id_Neutering">
-            <input class="ms-5 me-1" type="radio" name="Neutering" required="" value="예" id="id_Neutering">O
-            <input class="ms-4 me-1" type="radio" name="Neutering" required="" value="아니오" id="id_Neutering">X
-                                           <option value = "------" selected>------</option>
-                                              <option value="예">예</option>
-                                             <option value="아니오">아니오</option>
-            </select>-->
                                         {%if field.label == "지역"%}
                                         <labl>지역</labl>
                                         <select class="ms-5" name="Region" required="" id="id_Region">
@@ -144,8 +126,6 @@
                                         {%endif%}
                                         {%if field.label == "설명"%}
                                         <labl class="align-top">설명</labl>
-                                        <!--<textarea class="newCatInput ms-5" style="width: 300px; height: 90px;"></textarea>-->
-                                        <!--<textarea name="Discribtion" cols="40" rows="10" required="" id="id_Discribtion"></textarea>-->
                                         <textarea name="Discribtion"class="newCatInput ms-5" style="width: 300px; height: 90px;" required="" id="id_Discribtion"></textarea>
                                         {%endif%}
                                     </p>
@@ -153,7 +133,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn_newcat" id="btn_close" data-bs-dismiss="modal">취소</button>
-                                    <button type="submit" class="btn_newcat"  id="btn_save" onClick='alert("고양이 등록이 완료되었습니다");'>등록하기</button>
+                                    <button type="submit" class="btn_newcat" id="btn_save">등록하기</button>
                                 </div>
                             </form>
                         </div>
@@ -177,13 +157,15 @@
         <div class="col">
             <div class="card" style="box-shadow: 0px 0px 30px rgb(201, 199, 199);">
                 <a href ="{%url 'cat' i.Catid%}" style="color: black;">
-                <img class="img-fluid" src ="{{i.Catimage.url}}" style="height: 360px;">
-                <div class="card-body">
-                    <h4 class="card-title text-center my-2">{{i.Catname}}</h4>
-                    <p class="text-end" id="count-{{i.Catid}}"><i class="fas fa-heart"></i> {{i.Like_user.all.count}}개</p>
-                    <hr>
-                    <p class="card-text text-center" style="color: #888888">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
+                    <div style="overflow:hidden; margin:0 auto; height:360px;">
+                        <img class="img-fluid" src ="{{i.Catimage.url}}" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title text-center my-2">{{i.Catname}}</h4>
+                        <p class="text-end" id="count-{{i.Catid}}"><i class="fas fa-heart"></i> {{i.Like_user.all.count}}개</p>
+                        <hr>
+                        <p class="card-text text-center" style="color: #888888">{{i.Discribtion}}</p>
+                    </div>
                 </a>
             </div>
         </div>
@@ -191,27 +173,28 @@
     </div>
 
     <div class="row my-5">
-        <div class="col d-flex justify-content-center">
-            <div class="pagination">
-                <p class="page">
-                    {{ page }}
-                    {% if posts.has_previous %}
-                    <a href="?region={{region}}&page=1&sort={{sort}}">&laquo;</a>
-                    <a href="?region={{region}}&page={{ posts.previous_page_number}}&sort={{sort}}">&lt;</a>
+        <div class="col d-flex justify-content-center mb-5">
+            <nav>
+                <div class="pagination">
+                    <p class="page">
+                        {% if posts.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?region={{region}}&page=1&sort={{sort}}" style="color: #285e4f;"><i class="fas fa-angle-double-left"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="?region={{region}}&page={{ posts.previous_page_number}}&sort={{sort}}" style="color: #285e4f;"><i class="fas fa-angle-left"></i></a></li>
                     {% endif %}
                     {% for page in paginator_range %}
                     {% if posts.number == page %}
-                    <a class="current_page"> {{ page }}</a>
+                    <li class="page-item active"><a class="page-link" class="current_page" style="color: white; background-color: #285e4f; border: 0;">{{ page }}</a></li>
                     {% else %}
-                    <a href="?region={{region}}&page={{ page }}&sort={{sort}}">{{ page }}</a>
+                    <li class="page-item"><a class="page-link" href="?region={{region}}&page={{ page }}&sort={{sort}}" style="color: black;">{{ page }}</a></li>
                     {% endif %}
                     {% endfor %}
                     {% if posts.has_next %}
-                    <a href="?region={{region}}&page={{ posts.next_page_number }}&sort={{sort}}">&gt;</a>
-                    <a href="?region={{region}}&page={{ posts.paginator.num_pages}}&sort={{sort}}">&raquo;</a>
+                    <li class="page-item"><a class="page-link" href="?region={{region}}&page={{ posts.next_page_number }}&sort={{sort}}" style="color: #285e4f;"><i class="fas fa-angle-right"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="?region={{region}}&page={{ posts.paginator.num_pages}}&sort={{sort}}" style="color: #285e4f;"><i class="fas fa-angle-double-right"></i></a></li>
                     {% endif %}
-                </p>
-            </div>
+                    </p>
+                </div>
+            </nav>
         </div>
 
     </div>
@@ -221,16 +204,7 @@
 
 {% endblock content %}
 
-<!-- script -->
-
-<!--{% block scripts %}
-<script>
-    $(".so").on('change', function(){
-        $("#so").val($(this).val());
-        $("#page").val(1);
-        $("#getForm").submit();
-    });
-</script>-->
+{% block scripts %}
 <script>
     var array = '{{sort}}';
     if(array !== ''){
