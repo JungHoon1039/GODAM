@@ -110,7 +110,7 @@ a#btnhover:hover {
     font-weight: 300;
 }
 
-/*--회원가입 페이지 signup.html--*/
+/* 회원가입 페이지 signup.html */
 .signupForm {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
@@ -197,16 +197,13 @@ tbody .editinput:focus {
 }
 
 #join:hover {
-    /* border: 1px solid #1b3f36;
-    color: #1b3f36;
-    background-color: #fff; */
     border: none;
     background-color: #1b3f36;
     color: #fff;
     opacity: 0.8;
 }
 
-/*--info 페이지--*/
+/* info 페이지 info.html */
 .info_form {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
@@ -274,7 +271,7 @@ tbody .editinput:focus {
     opacity: 0.8;
 }
 
-/*--회원정보수정 페이지 info_edit.html--*/
+/* 회원정보수정 페이지 info_edit.html */
 .info_edit,
 .pwd_edit {
     font-family: 'Noto Sans KR', sans-serif;
@@ -318,7 +315,7 @@ tbody .editinput:focus {
     opacity: 0.8;
 }
 
-/*------회원가입완료 페이지 signup_com.html------*/
+/* 회원가입완료 페이지 signup_com.html */
 #com_row {
     position: absolute;
     top: 50%;
@@ -393,7 +390,7 @@ tbody .editinput:focus {
     width: 300px;
 }
 
-/*고양이 등록 모달*/
+/* 고양이 등록 Modal */
 .form_newCat {
     font-family: 'Noto Sans KR', sans-serif;
 }
@@ -405,12 +402,6 @@ p select {
     border: 1px solid rgba(128, 128, 128, 0.473);
     border-radius: 5px;
 }
-
-/*p select {*/
-/*    border: 1px solid rgba(128, 128, 128, 0.473);*/
-/*    padding: 3px;*/
-/*    font-size: 15px;*/
-/*}*/
 
 .newCatInput:focus,
 p select:focus {
@@ -453,4 +444,114 @@ p select:focus {
     opacity: 0.6;
 }
 
+/* 고양이 상세페이지 catcontent.html */
+.btn_content {
+    border-radius: 3px;
+    width: 55px;
+    height: 35px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
 
+#btn_edit {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#btn_edit:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}
+
+#btn_del {
+    border: 1px solid #1b3f36;
+    color: #1b3f36;
+    background-color: #fff;
+}
+
+#btn_del:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.6;
+}
+
+#like {
+    border-radius: 3px;
+    width: 45px;
+    height: 28px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#like:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+ }
+
+#btn_chat {
+    border-radius: 3px;
+    width: 80px;
+    height: 35px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#btn_chat:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}
+
+#btn_delchat {
+    border-radius: 3px;
+    width: 80px;
+    height: 35px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    border: 1px solid #1b3f36;
+    background-color: #fff;
+}
+
+#btn_delchat:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.6;
+}
+
+/* 고양이 정보수정페이지 catedit.html */
+#btn_saveEdit {
+    border-radius: 3px;
+    width: 150px;
+    height: 42px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+}
+
+#btn_saveEdit:hover {
+    border: none;
+    background-color: #1b3f36;
+    color: #fff;
+    opacity: 0.8;
+}

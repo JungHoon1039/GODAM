@@ -6,26 +6,26 @@
 
 {% block content %}
 
-<div class="container" style="padding-top: 150px;">
+<div class="container" style="padding-top: 150px; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
-        <h3 class="d-block d-flex justify-content-center mb-4">고양이 정보 수정</h3>
+        <p class="fs-3 d-block d-flex justify-content-center mb-4" style="font-weight: 500">고양이 정보 수정</p>
         <div class="col d-flex justify-content-center">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="card mb-3 shadow-lg" style="max-width: 1200px; border: none;">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-md-5 d-flex justify-content-center p-5">
+                <div class="card mb-3 shadow-lg" style="max-width: 1500px; border: none;">
+                    <div class="row g-0 align-items-center px-5">
+                        <div class="col-md-5 d-flex justify-content-center px-5">
                             {%for field in form%}
                             <p>
                                 <labl for="{{ field.id_for_label }}" style="display:none">{{ field.label }}</labl>
                                 {%if field.label == "사진"%}
-                                <labl class="">사진</labl>
-                                <input class="newCatInput ms-2" type="file" name="Catimage" accept="image/*" required="" id="id_Catimage" style="width: 215px">
+                                <labl class="ms-2 mb-2">사진</labl>
+                                <input class="newCatInput ms-1 ps-1" type="file" name="Catimage" accept="image/*" required="" id="id_Catimage" style="font-size:14px; width: 200px">
                                 {%endif%}
                             </p>
                             {%endfor%}
                         </div>
-                        <div class="col-md-7 px-5 py-3">
+                        <div class="col-md-7">
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
                                     {%for field in form%}
@@ -93,7 +93,7 @@
                                         {%endif%}
                                         {%if field.label == "설명"%}
                                         <labl class="align-top">설명</labl>
-                                        <textarea name="Discribtion"class="newCatInput ms-5" style="width: 300px; height: 90px;" required="" id="id_Discribtion">{{cat.Discribtion}}</textarea>
+                                        <textarea name="Discribtion"class="newCatInput ms-5" style="width: 220px; height: 80px;" required="" id="id_Discribtion">{{cat.Discribtion}}</textarea>
                                         {%endif%}
                                     </p>
                                     </li>
@@ -103,8 +103,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-3 d-flex justify-content-center">
-                    <button type="submit" onClick='alert("수정이 완료되었습니다");'>저장하기</button>
+                <div class="mt-5 d-flex justify-content-center" style="margin-bottom: 150px">
+                    <button type="submit" id="btn_saveEdit" onClick='alert("수정이 완료되었습니다");'>저장하기</button>
                 </div>
             </form>
         </div>

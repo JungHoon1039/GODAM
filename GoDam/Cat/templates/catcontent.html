@@ -6,14 +6,14 @@
 {% endblock title %}
 
 {% block content %}
-<div class="container" style="padding-top: 150px;">
+<div class="container" style="padding-top: 150px; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
-        <h3 class="d-block d-flex justify-content-center mb-4">{{i.Catname}}</h3>
+        <p class="fs-2 fw-bold font-monospace d-block d-flex justify-content-center mb-4">{{i.Catname}}</p>
         <div class="col-4 offset-8 gap-2 mb-2 d-flex justify-content-center">
             <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
             {%if i.User.Userid == owner.Userid%}
-            <button type="button" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
-            <button type="button" onclick="showConfirm()">삭제</button>
+            <button type="button" class="btn_content" id="btn_edit" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
+            <button type="button" class="btn_content" id="btn_del" onclick="showConfirm()">삭제</button>
             {%endif%}
         </div>
         <div class="col d-flex justify-content-center">
@@ -33,7 +33,8 @@
                                 <li class="list-group-item">
                                     <input type="button" id="like" name="{{i.Catid}}" value="Like">
                                     <p class="d-inline ms-2" id="count-{{i.Catid}}">
-                                        좋아요 {{i.Like_user.all.count}}개</p>
+                                        좋아요&nbsp;{{i.Like_user.all.count}}개</p>
+<!--                                    <i class="fas fa-heart"></i>-->
                                 </li>
                             </ul>
                         </div>
@@ -43,18 +44,18 @@
         </div>
     </div>
     <!--댓글 작성-->
-    <div class="row">
+    <div class="row mb-5">
         <!--        <p class="offset-1 ps-5 mb-2">&nbsp;&nbsp;작성자 : {{ form.Usernum }}</p>-->
         <div class="col d-flex justify-content-center">
             <form method="post">
                 {% csrf_token %}
                 <p>
                 <div class="form-floating">
-                    <textarea class="form-control" id="id_Content" cols="129" name="Content" placeholder="Leave a comment here" style="height: 100px;" required></textarea>
+                    <textarea class="form-control" id="id_Content" cols="120" name="Content" placeholder="Leave a comment here" style="height: 100px;" required></textarea>
                     <label for="id_Content">댓글을 작성하세요&nbsp;<i class="fas fa-paw"></i></label>
                 </div>
                 </p>
-                <button class="float-end" type="submit" style="width: 86px;">댓글 작성</button>
+                <button class="float-end" type="submit" id="btn_chat">댓글 작성</button>
             </form>
         </div>
     </div>
@@ -70,7 +71,9 @@
                 {{ comment.Usernum.Nickname }}
             </div>
             {% if comment.Usernum.Userid == owner.Userid%}
-            <button class="float-end" type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글 삭제</a></button>
+            <button class="float-end" type="button" id="btn_delchat">
+                <a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}" style="color: #1b3f36;">댓글 삭제</a>
+            </button>
             {% endif %}
         </div>
         {% endfor %}
