@@ -16,5 +16,6 @@ urlpatterns = [
         path('password_edit_com',views.password_edit_complete),
         path('about', views.about),
         path('aboutus', views.aboutus),
-        path('index', views.index)
+        path('index', views.index),
+        path('map', views.mapp),
 ]

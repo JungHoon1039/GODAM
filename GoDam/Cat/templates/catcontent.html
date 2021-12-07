@@ -6,9 +6,9 @@
 {% endblock title %}
 
 {% block content %}
-<div class="container" style="padding-top: 150px; font-family: 'Noto Sans KR', sans-serif;">
+<div class="container " style="padding: 150px 0 150px 0; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
-        <p class="fs-2 fw-bold font-monospace d-block d-flex justify-content-center mb-4">{{i.Catname}}</p>
+        <p class="fs-2 fw-bold d-block d-flex justify-content-center mb-4">{{i.Catname}}</p>
         <div class="col-4 offset-8 gap-2 mb-2 d-flex justify-content-center">
             <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
             {%if i.User.Userid == owner.Userid%}
@@ -19,7 +19,7 @@
         <div class="col d-flex justify-content-center">
             <div class="card mb-3 shadow-lg" style="max-width: 1000px; border: none;">
                 <div class="row g-0">
-                    <div class="col-md-6 my-auto ps-3">
+                    <div class="col-md-6 my-auto p-1">
                         <img src="{{i.Catimage.url}}" class="img-fluid img-thumbnail rounded" alt="...">
                     </div>
                     <div class="col-md-6">
@@ -50,35 +50,58 @@
             <form method="post">
                 {% csrf_token %}
                 <p>
-                <div class="form-floating">
+                <div class="form-floating chat_textarea">
                     <textarea class="form-control" id="id_Content" cols="120" name="Content" placeholder="Leave a comment here" style="height: 100px;" required></textarea>
-                    <label for="id_Content">댓글을 작성하세요&nbsp;<i class="fas fa-paw"></i></label>
+                    <label id="textarea_comment" for="id_Content">댓글을 작성하세요&nbsp;<i class="fas fa-paw"></i></label>
                 </div>
                 </p>
                 <button class="float-end" type="submit" id="btn_chat">댓글 작성</button>
             </form>
         </div>
     </div>
-
     <!--댓글-->
-    <div class="row">
-        {% for comment in cat.board_set.all %}
-        <div class="col">
-            <div class="chat" style="border: solid 1px darkslategray">
-                {{ comment.Content }}
+    {% for comment in cat.board_set.all %}
+        <div class="row mb-5 justify-content-center">
+            <div class="col p-0" style="max-width: 1000px;">
+                <div class="card">
+                    <div class="card-header">
+                        {{ comment.Usernum.Nickname }}
+                        <button class="float-end" type="button" id="btn_delchat" onclick="location.href='{% url 'bd' comment.Catnum.Catid comment.Boardid %}'">
+                            댓글 삭제
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="chat">
+                            {{ comment.Content }}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="d-inline">
-                {{ comment.Usernum.Nickname }}
-            </div>
-            {% if comment.Usernum.Userid == owner.Userid%}
-            <button class="float-end" type="button" id="btn_delchat">
-                <a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}" style="color: #1b3f36;">댓글 삭제</a>
-            </button>
-            {% endif %}
         </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
 </div>
+
+
+
+
+<!--댓글-->
+<!--{% for comment in cat.board_set.all %}-->
+<!--<div class="row mb-5 offset-1" style="border: 1px solid darkslategray; max-width: 1000px;">-->
+<!--    <div class="col">-->
+<!--        <div class="">-->
+<!--            {{ comment.Usernum.Nickname }}-->
+<!--        </div>-->
+<!--        {% if comment.Usernum.Userid == owner.Userid%}-->
+<!--        <button class="float-end" type="button" id="btn_delchat">-->
+<!--            <a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}" style="color: #1b3f36;">댓글 삭제</a>-->
+<!--        </button>-->
+<!--        {% endif %}-->
+<!--        <div class="chat">-->
+<!--            {{ comment.Content }}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--{% endfor %}-->
 
 
 <!--{% for comment in cat.board_set.all %}-->
