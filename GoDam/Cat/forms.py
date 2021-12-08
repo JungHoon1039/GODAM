@@ -15,9 +15,9 @@ class CatForm(ModelForm):
             Catage = cleaned_data.get('Catage')
             Catname = cleaned_data.get('Catname')
             if i.match(Catname):
-                raise ValidationError("특수문자를 제외한 고양이 이름을 입력하세요")
+                raise ValidationError("html 그만 지워, 많이 해먹었잖아")
             if Catage < 0:
-                raise ValidationError("유효한 고양이 나이를 입력하세요")
+                raise ValidationError("html 그만 지워, 많이 해먹었잖아")
 
 class BaseBulletinBoard(ModelForm):
    class Meta:

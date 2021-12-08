@@ -45,7 +45,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" name="form" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="modal-body">
                                 {%for field in form%}
@@ -57,11 +57,12 @@
                                     {%endif%}
                                     {%if field.label == "이름"%}
                                     <labl>이름</labl>
-                                    <input class="newCatInput ms-5" type="text" name="Catname" maxlength="64" required="" id="id_Catname">
+                                    <input class="newCatInput ms-5" type="text" name="Catname" maxlength="64" required="" pattern="^[0-9a-zA-Z가-힣]+$" id="id_Catname">
+                                    <div id="nameval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 고양이 이름을 입력하세요.</div>
                                     {%endif%}
                                     {%if field.label == "나이"%}
                                     <labl>나이</labl>
-                                    <input class="newCatInput ms-5" type="number" name="Catage" required="" id="id_Catage">
+                                    <input class="newCatInput ms-5" type="number" name="Catage" required="" min="0" id="id_Catage">
                                     {%endif%}
                                     {%if field.label == "성별"%}
                                     <labl>성별</labl>
@@ -113,7 +114,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn_newcat" id="btn_close" data-bs-dismiss="modal">취소</button>
-                                <button type="submit" class="btn_newcat"  id="btn_save" onClick='alert("고양이 등록이 완료되었습니다");'>등록하기</button>
+                                <button type="button" class="btn_newcat" id="btn_save" onclick='upload()'>등록하기</button>
                             </div>
                         </form>
                     </div>
@@ -174,6 +175,25 @@
     if(array !== ''){
         document.getElementById("array").value = '?region={{region}}&sort={{sort}}';
     }
+    function upload(){
+        var form = document.form;
+        //폼에대한 유효성 확인
+        if(!form.checkValidity()){
+            form.reportValidity();
+            return false;
+        }else{
+            alert("고양이 등록이 완료되었습니다")
+            form.submit();
+            return true;
+        }
+    }
+    $("#id_Catname").keyup(function() {
+        if (!$('#id_Catname')[0].validity.valid) {
+            $('#nameval').show();
+        } else {
+            $('#nameval').hide();
+        }
+    });
 </script>
 
 {% endblock scripts %}

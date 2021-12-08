@@ -9,7 +9,7 @@
     <div class="row mb-4">
         <p class="fs-3 d-block d-flex justify-content-center mb-4" style="font-weight: 500">고양이 정보 수정</p>
         <div class="col d-flex justify-content-center">
-            <form method="POST" enctype="multipart/form-data">
+            <form name="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="card mb-3 shadow-lg" style="max-width: 1500px; border: none;">
                     <div class="row g-0 align-items-center px-5">
@@ -33,11 +33,12 @@
                                         <labl for="{{ field.id_for_label }}" style="display:none">{{ field.label }}</labl>
                                         {%if field.label == "이름"%}
                                         <labl>이름</labl>
-                                        <input class="newCatInput ms-4" type="text" name="Catname" maxlength="64" required="" id="id_Catname" value="{{cat.Catname}}">
+                                        <input class="newCatInput ms-4" type="text" name="Catname" maxlength="64" required pattern="^[0-9a-zA-Z가-힣]+$" id="id_Catname" value="{{cat.Catname}}">
+                                        <div id="nameval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 고양이 이름을 입력하세요.</div>
                                         {%endif%}
                                         {%if field.label == "나이"%}
                                         <labl>나이</labl>
-                                        <input class="newCatInput ms-4" type="number" name="Catage" required="" id="id_Catage" value="{{cat.Catage}}">
+                                        <input class="newCatInput ms-4" type="number" name="Catage" required id="id_Catage" min="0"value="{{cat.Catage}}">
                                         {%endif%}
                                         {%if field.label == "성별"%}
                                         <labl>성별</labl>
@@ -93,10 +94,32 @@
                     </div>
                 </div>
                 <div class="mt-5 d-flex justify-content-center" style="margin-bottom: 150px">
-                    <button type="submit" id="btn_saveEdit" onClick='alert("수정이 완료되었습니다");'>저장하기</button>
+                    <button type="button" id="btn_saveEdit" onclick='upload()'>저장하기</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function upload(){
+        var form = document.form;
+        //폼에대한 유효성 확인
+        if(!form.checkValidity()){
+            form.reportValidity();
+            return false;
+        }else{
+            alert('수정이 완료 되었습니다')
+            form.submit();
+            return true;
+        }
+    }
+    $("#id_Catname").keyup(function() {
+        if (!$('#id_Catname')[0].validity.valid) {
+            $('#nameval').show();
+        } else {
+            $('#nameval').hide();
+        }
+    });
+</script>
 {% endblock content %}
