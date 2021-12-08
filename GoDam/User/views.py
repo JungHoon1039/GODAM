@@ -189,5 +189,7 @@ Id,Pw 정보를 받아 회원탈퇴 - Try문 활용
      logged_member = User.objects.filter(Userid=req.session.get('Userid'))
      return render (req, 'delete.html', {'login_member' : logged_member})
  """
+def ajax(req):
+   return render(req, 'ajax.html',{'id' : req.POST.get('opsel')})
 
 # Create your views here. 

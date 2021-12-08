@@ -18,4 +18,5 @@ urlpatterns = [
         path('aboutus', views.aboutus),
         path('index', views.index),
         path('map', views.mapp),
+        path('ajax', views.ajax),
 ]
