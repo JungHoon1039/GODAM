@@ -6,9 +6,7 @@
 회원가입
 {% endblock title %}
 
-
 {% block content %}
-
 <div class="box signupForm" style="padding-top: 110px">
     <div class="container signupTable">
         <form name="form" action="http://52.79.227.191:8000/user/signup_com" method="post">
@@ -117,10 +115,6 @@
         </form>
     </div>
 </div>
-
-
-
-
 {% endblock content %}
 
 <!-- script -->
@@ -237,19 +231,4 @@
 
 
 </script>
-<!--비밀번호 체크 -->
-<!--<script>
-    function pwdChk() {
-        var pw = document.getElementById('pw');
-        var check = document.getElementById('pwd');
-        if(check.value == pw.value) {
-            alert('비밀번호가 일치합니다');
-            return true;
-        }
-        else {
-            alert('비밀번호가 다릅니다');
-            return false;
-        }
-    }
-</script>-->
 {% endblock scripts %}

@@ -6,33 +6,21 @@
 Home
 {% endblock title %}
 
-
-
 {% block content %}
 <div class="box" id="search" style="background-image:url('{% static 'bg-cat.jpg' %}');">
     <div class="container position-absolute top-50 start-50 translate-middle" >
         <div class="row align-items-center mx-3">
-
             <div class="col-5 mt-5 mb-3" id="map" style="width:50%;height:350px;"></div>
-
-
             <form action = "http://52.79.227.191:8000/cat/allcat" method="get" style="display:inline-block;">
                 <div class="col-5 me-3" style="float: left;">
                     <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
                         <option selected>서울특별시</option>
                     </select>
                 </div>
-
                 <div class="col-5" style="float: left;">
                     {% csrf_token %}
                     <input type="hidden" name="csrfmiddlewaretoken">
                     <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;" id='region' name='region' required onchange="ajax()">
-                        <!--                            {% if region == null%}-->
-                        <!--                            <option selected = "selected">{{login_member.Region}}</option>-->
-                        <!--                            {%endif%}-->
-                        <!--                            {% if region != null%}-->
-                        <!--                            <option selected = "selected">{{region}}</option>-->
-                        <!--                            {%endif%}-->
                         <option value="강동구">강동구</option>
                         <option value="송파구">송파구</option>
                         <option value="강남구">강남구</option>
@@ -71,7 +59,6 @@ Home
 <!-- (37.51778178257904 , 126.88627839579165) 싹 캠퍼스 주소 '서울특별시 영등포구 선유로9길 30'-->
 <!--584931dffd2c5d22efb8759be2268b95    /   카카오맵 api js key-->
 {% endblock content %}
-
 
 <!-- script -->
 {% block scripts %}
@@ -128,9 +115,5 @@ Home
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-</script>
-<script>
-
 </script>
 {% endblock scripts %}

@@ -6,8 +6,6 @@
 회원정보 수정
 {% endblock title %}
 
-
-
 {% block content %}
 <div class="box info_edit" style="padding-top: 190px;">
     <div class="container">
@@ -95,11 +93,11 @@
                 </form>
             </div>
         </div>
-
     </div>
 </div>
+{% endblock content %}
 
-
+{% block scripts %}
 <script>
     function update(){
         var form = document.form;
@@ -129,4 +127,4 @@
         }
     });
 </script>
-{% endblock content %}
+{% endblock scripts %}

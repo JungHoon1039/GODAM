@@ -34,7 +34,6 @@
                                     <input type="button" id="like" name="{{i.Catid}}" value="Like">
                                     <p class="d-inline ms-2" id="count-{{i.Catid}}">
                                         좋아요&nbsp;{{i.Like_user.all.count}}개</p>
-<!--                                    <i class="fas fa-heart"></i>-->
                                 </li>
                             </ul>
                         </div>
@@ -45,7 +44,6 @@
     </div>
     <!--댓글 작성-->
     <div class="row mb-5">
-        <!--        <p class="offset-1 ps-5 mb-2">&nbsp;&nbsp;작성자 : {{ form.Usernum }}</p>-->
         <div class="col d-flex justify-content-center">
             <form method="post">
                 {% csrf_token %}
@@ -80,94 +78,6 @@
         </div>
     {% endfor %}
 </div>
-
-
-
-
-<!--댓글-->
-<!--{% for comment in cat.board_set.all %}-->
-<!--<div class="row mb-5 offset-1" style="border: 1px solid darkslategray; max-width: 1000px;">-->
-<!--    <div class="col">-->
-<!--        <div class="">-->
-<!--            {{ comment.Usernum.Nickname }}-->
-<!--        </div>-->
-<!--        {% if comment.Usernum.Userid == owner.Userid%}-->
-<!--        <button class="float-end" type="button" id="btn_delchat">-->
-<!--            <a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}" style="color: #1b3f36;">댓글 삭제</a>-->
-<!--        </button>-->
-<!--        {% endif %}-->
-<!--        <div class="chat">-->
-<!--            {{ comment.Content }}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--{% endfor %}-->
-
-
-<!--{% for comment in cat.board_set.all %}-->
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col">-->
-<!--            <div class="chat" style="border: solid 1px darkslategray">-->
-<!--                {{ comment.Content }}-->
-<!--            </div>-->
-<!--            <div class="d-inline">-->
-<!--                {{ comment.Usernum.Nickname }}-->
-<!--            </div>-->
-<!--            {% if comment.Usernum.Userid == owner.Userid%}-->
-<!--            <button class="float-end" type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글 삭제</a></button>-->
-<!--            {% endif %}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--{% endfor %}-->
-
-
-
-
-<!--<img src ="{{i.Catimage.url}}" width="100px" height="100px">-->
-<!--이름:{{i.Catname}}-->
-<!--나이:{{i.Catage}}-->
-<!--중성화:{{i.Neutering}}-->
-<!--지역:{{i.Region}}-->
-<!--작성자:{{i.User.Username}}-->
-<!--<div>-->
-<!--    <input type="button" id="like" name="{{i.Catid}}" value="Like">-->
-<!--    <p id="count-{{i.Catid}}">-->
-<!--        좋아요{{i.Like_user.all.count}}개</p>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)&ndash;&gt;-->
-<!--{%if i.User.Userid == owner.Userid%}-->
-<!--<button type="button" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>-->
-<!--<button type="button" onclick="showConfirm()">삭제</button>-->
-<!--{%endif%}-->
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col-12">-->
-<!--            <form method="post">-->
-<!--                {% csrf_token %}-->
-<!--                {{form.as_p}}-->
-<!--                <button type="submit">작성</button><br>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col-12">-->
-<!--        {% for comment in cat.board_set.all %}-->
-<!--            작성자 : {{ comment.Usernum.Nickname }} <br>-->
-<!--            댓글 : {{ comment.Content }} <br>-->
-<!--            {% if comment.Usernum.Userid == owner.Userid%}-->
-<!--                <button type="button"><a href="{% url 'bd' comment.Catnum.Catid comment.Boardid %}">댓글삭제</a></button>-->
-<!--            {% endif %}-->
-<!--            <br>-->
-<!--        {% endfor %}-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 {% endblock content %}
 
 {% block scripts %}

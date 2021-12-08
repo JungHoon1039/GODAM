@@ -1,7 +1,7 @@
 {% load static %}
 <!--about navbar-->
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
     <meta charset="utf-8" />
@@ -32,11 +32,9 @@
 
     <!-- 제이쿼리 -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-
 </head>
 
 <body>
-
 <header>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <div class="container-fluid">
@@ -71,63 +69,6 @@
         </div>
     </nav>
 </header>
-
-
-<!--<div class="header">-->
-<!--    <nav class="navbar navbar-light fixed-top mx-4 my-3">-->
-<!--        <div class="container-fluid">-->
-<!--            &lt;!&ndash;- 로고 &ndash;&gt;-->
-<!--            <a class="navbar-brand" href="#first">-->
-<!--                <i class="fs-1 fas fa-paw"></i>-->
-<!--                <span id="logo" class="" style="font-size: 35px;">고담</span>-->
-<!--            </a>-->
-<!--            &lt;!&ndash; 로고 끝 &ndash;&gt;-->
-<!--            <a class="navbar-brand ms-auto mr-1 me-5 mb-1 fw-bold" style="font-size: 17px;" href="http://52.79.227.191:8000/user/logout" target="_self" onClick='alert("로그아웃이 완료되었습니다");'>-->
-<!--                <kbd>Logout</kbd>-->
-<!--            </a>-->
-<!--            &lt;!&ndash; logout &ndash;&gt;-->
-<!--            <button class="navbar-toggler btn-sm btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"-->
-<!--                    aria-controls="offcanvasNavbar">-->
-
-<!--                <span class="navbar-toggler-icon"></span>-->
-<!--            </button>-->
-<!--            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="font-family: 'Montserrat', sans-serif;-->
-<!--    font-weight: 300;">-->
-<!--                <div class="offcanvas-header">-->
-<!--                    {% for user in login_member %}-->
-<!--                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">-->
-<!--                        {{ user.Nickname }} 님,<br>오늘도 즐거운 하루 되세요!</h5>-->
-<!--                    {% endfor %}-->
-<!--                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>-->
-<!--                </div>-->
-<!--                <div class="offcanvas-body">-->
-<!--                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link" href="#">About Us</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item dropdown">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"-->
-<!--                               data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                My page-->
-<!--                            </a>-->
-<!--                            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">-->
-<!--                                <li><a class="dropdown-item" href="http://52.79.227.191:8000/user/info" target="_self">내 정보</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#">내 동네 설정</a></li>-->
-<!--                                <li>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </nav>-->
-<!--    &lt;!&ndash; nav tab 끝&ndash;&gt;-->
-<!--</div>-->
-
 {% block content %}
 
 {% endblock content %}
@@ -136,5 +77,4 @@
 
 {% endblock scripts %}
 </body>
-
 </html>

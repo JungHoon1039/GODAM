@@ -28,10 +28,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static '../static/favicon.png' %}">
     <!--제이쿼리-->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
     <!-- title-->
     <title>고담 | {% block title %}{% endblock title %}</title>
-
 </head>
 
 <body>
@@ -43,11 +41,10 @@
                 <span id="logo" class="" style="font-size: 35px;">고담</span>
             </a>
             <div class="d-flex me-5">
-                <button type="button" class="btn btn-dark" onclick="location.href = 'http://52.79.227.191:8000/user/signup'">SignUp</button>
+                <button type="button" class="btn btn-dark" onclick="location.href = '{http://52.79.227.191:8000/user/signup}'">SignUp</button>
             </div>
         </div>
     </nav>
-
     {% block content %}
 
     {% endblock content %}
@@ -56,5 +53,4 @@
 
     {% endblock scripts %}
 </body>
-
 </html>

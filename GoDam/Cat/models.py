@@ -7,7 +7,6 @@ from django.conf import settings
 def _get_upload_to(instance, filename):
     return 'images/%f.jpg' % time.time()
 
-
 class Cat(models.Model):
       Catid = models.AutoField(primary_key=True)
       Catimage = models.ImageField(upload_to=_get_upload_to, verbose_name='사진')
@@ -28,9 +27,6 @@ class Cat(models.Model):
       def count_Like_user(self): # mysql로 치면 다대다로 연결된 Like_user group by and count(Like_user)해서 변수 지정
           return self.Like_user.count()
 
-
-# Create your models here.
-
 class Board(models.Model):
     Boardid = models.AutoField(primary_key=True)
     Catnum = models.ForeignKey("Cat", on_delete=models.CASCADE,db_column="cat", verbose_name='고양이')
@@ -38,3 +34,4 @@ class Board(models.Model):
     Content = models.TextField(verbose_name='내용')
     Writetime = models.DateTimeField(auto_now_add=True, verbose_name='시간')
 
+# Create your models here.

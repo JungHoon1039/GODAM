@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import CatForm, BaseBulletinBoard
-from .models import Cat, Board
-import os
-import json
-from User.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.db.models import Count
+from .models import Cat, Board
+from .forms import CatForm, BaseBulletinBoard
+from User.models import User
+import os, json
 
 # Create your views here.
 #cat create
@@ -68,12 +67,6 @@ def catall(req):
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
 
-       #sort = req.GET.get('sort', '')
-       #if sort == 'like':
-       #   cat.annotate(count_Like_user=Count('Like_user')).order_by('-count_Like_user', '-Catupload') # annotate(num_Like_user=Count('Like_user'))
-       #if sort == 'latest':
-       #   cat.order_by('-Catupload')
-
        return render(req,'catall.html',{'sort':sort,'sortcat': sortcat, 'form':form, 'region':region, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
@@ -105,8 +98,6 @@ def bd(req,Catid,Boardid):
           board.delete()
           return redirect('cat',Catid=cat.Catid)
 
-
-
 #404 에러 기능으로 가져온 고양이 정보 수정
 def catedit(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
@@ -136,6 +127,7 @@ def catdelete(req,Catid):
        else:
           cat.delete()
           return redirect(catall)
+
 #좋아요 +1 -1하기!
 def catlike(req):
     #cat objects 받는데 이미 ajax로 통해서 캣에 아이디로 받아옴, Catid로 저장

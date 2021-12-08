@@ -1,14 +1,13 @@
 from django.shortcuts import render, redirect
-from .models import User
 from django.core.exceptions import ObjectDoesNotExist
-import os, torch
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
-import re
 from django.contrib import messages # messages.warning(req, 'Your account expires in three days.')
 from django.http import HttpResponse # return HttpResponse('적고싶은내용')
+from .models import User
 from Cat.models import Cat
 from Cat.views import catall
+import os, torch, re
 
 
 
@@ -17,7 +16,7 @@ i = re.compile("[^a-zA-Z0-9!~@#$%^&*()_+-=\[\]\{\}<>:`?;'\ \/,.&quot]") #문자 
 p = re.compile("[^a-zA-Z0-9]")#문자 와 숫자가 아닐떄 영문/숫자 중 2가지 이상 조합 영문 숫자 최소 1개, 6~12자 이상
 n = re.compile("[^0-9a-zA-Z가-힣]")#영어숫자한글이 아닐때 (ex: 중국어 특수문자 사용금지)
 na = re.compile("[^가-힣]")#한글이 아닐때
-#유효한 저나버노가 아닐떄 그딴거 없음 정신분열 일어남 ㅈㅈ 걍 알아서 치셈
+
 #소문자 모색 초기작업
 ps = '[a-z]+'
 #얘는 숫자
@@ -73,7 +72,6 @@ def logged(req):
         logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
         if logged_member :
             req.session['Userid'] = req.POST.get('id')
-            #return render (req,'index.html', {'login_member' : logged_member})
             return redirect(catall)
         else :
             return render (req,'login.html', {'messages' : '로그인에 실패하셨습니다.'})
@@ -97,11 +95,13 @@ def member_delete_complete(req):
      del_user.delete()
      req.session.pop('Userid')
      return render(req,'delete_com.html')
+
 #정보 업데이트 변경
 def info_edit(req):
     #세션을 가져오는 이유: 각 redirect에서 definition 재실행하라고 요청을 하여 페이지 변환할때 세션을 그대로 남겨지길 위함(render로 html하면 세션이 남아있지 않음)
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
     return render(req, 'info_edit.html', {'login_member' : logged_member})
+
 #정보 업데이트 변경 확인
 def info_edit_complete(req):
     logged_member = User.objects.get(Userid=req.session.get('Userid'))
@@ -154,11 +154,13 @@ def password_edit_complete(req):
     else:
         messages.warning(req, '기존 비밀번호가 맞는지 확인하세요')
         return redirect (password_edit)
-#about us
+
+#about us - 로그인 한 경우 / 하지않은 경우
 def about(req):
     return render (req, 'about.html')
 def aboutus(req):
     return render (req, 'aboutus.html')
+
 #길고양이 지역 변경
 def index(req):
     logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
@@ -169,26 +171,6 @@ def index(req):
 def mapp(req):
     return render (req,'map.html')
 
-"""
-Id,Pw 정보를 받아 회원탈퇴 - Try문 활용
-        try:
-            del_user = User.objects.get(Userid=req.POST.get('del_id'), Password=req.POST.get('del_pw'))
-            if del_user:
-                del_user.delete()
-                return render(req, 'delete_com.html')
-        except ObjectDoesNotExist:
-            return redirect (member_delete)
-
- Index 페이지 - Login 페이지로 통합됌
- def index(req):
-     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-     return render (req, 'index.html', {'login_member' : logged_member})
-
- 회원탈퇴 페이지 - Info 페이지로 통합됌
- def member_delete(req):
-     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-     return render (req, 'delete.html', {'login_member' : logged_member})
- """
 def ajax(req):
    return render(req, 'ajax.html',{'id' : req.POST.get('opsel')})
 

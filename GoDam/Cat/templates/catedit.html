@@ -5,7 +5,6 @@
 {% endblock title %}
 
 {% block content %}
-
 <div class="container" style="padding-top: 150px; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
         <p class="fs-3 d-block d-flex justify-content-center mb-4" style="font-weight: 500">고양이 정보 수정</p>
@@ -44,21 +43,11 @@
                                         <labl>성별</labl>
                                         <input class="ms-4 me-1" type="radio" name="Gender" value="수컷" id="male" required style="accent-color:darkseagreen;"><label for="male">수컷</label>
                                         <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" id="female" required style="accent-color:darkseagreen;"><label for="female">암컷</label>
-                                        <!--            <select class="newcatInput" name="Gender" required="" id="id_Gender">-->
-                                        <!--                <option selected = "selected">{{cat.Gender}}</option>-->
-                                        <!--                <option value="수컷">수컷</option>-->
-                                        <!--                <option value="암컷">암컷</option>-->
-                                        <!--            </select>-->
                                         {%endif%}
                                         {%if field.label == "중성화"%}
                                         <labl>중성화</labl>
                                         <input class="me-1" type="radio" name="Neutering" required="" value="예" id="yes" style="margin-left: 10px; accent-color:darkseagreen;"><label for="yes">예</label>
                                         <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="no" style="accent-color:darkseagreen;"><label for="no">아니오</label>
-                                        <!--            <select name="Neutering" required="" id="id_Neutering">-->
-                                        <!--                <option selected = "selected">{{cat.Neutering}}</option>-->
-                                        <!--                <option value="예">예</option>-->
-                                        <!--                <option value="아니오">아니오</option>-->
-                                        <!--            </select>-->
                                         {%endif%}
                                         {%if field.label == "지역"%}
                                         <labl>지역</labl>
@@ -110,75 +99,4 @@
         </div>
     </div>
 </div>
-
-
-<!-- form customizing-->
-<!--<div>-->
-<!--    <form method="POST" enctype="multipart/form-data">-->
-<!--        {% csrf_token %}-->
-<!--            {%for field in form%}-->
-<!--        <p>-->
-<!--            <labl for="{{ field.id_for_label }}">{{ field.label }}</labl>-->
-<!--                {%if field.label == "사진"%}-->
-<!--                    <input type="file" name="Catimage" accept="image/*" required="" id="id_Catimage">-->
-<!--                {%endif%}-->
-<!--                {%if field.label == "이름"%}-->
-<!--                    <input type="text" name="Catname" maxlength="64" required="" id="id_Catname" value="{{cat.Catname}}">-->
-<!--                {%endif%}-->
-<!--                {%if field.label == "나이"%}-->
-<!--                    <input type="number" name="Catage" required="" id="id_Catage" value="{{cat.Catage}}">-->
-<!--                {%endif%}-->
-<!--                {%if field.label == "성별"%}-->
-<!--                <select class="newcatInput" name="Gender" required="" id="id_Gender">-->
-<!--                    <option selected = "selected">{{cat.Gender}}</option>-->
-<!--                    <option value="수컷">수컷</option>-->
-<!--                    <option value="암컷">암컷</option>-->
-<!--                </select>-->
-<!--                {%endif%}-->
-<!--                {%if field.label == "중성화"%}-->
-<!--                 <select name="Neutering" required="" id="id_Neutering">-->
-<!--                     <option selected = "selected">{{cat.Neutering}}</option>-->
-<!--                     <option value="예">예</option>-->
-<!--                     <option value="아니오">아니오</option>-->
-<!--                 </select>-->
-<!--                {%endif%}-->
-<!--                {%if field.label == "지역"%}-->
-<!--                    <select name="Region" required="" id="id_Region">-->
-<!--                        <option selected = "selected">{{cat.Region}}</option>-->
-<!--                        <option value="강동구">강동구</option>-->
-<!--                        <option value="송파구">송파구</option>-->
-<!--                        <option value="강남구">강남구</option>-->
-<!--                        <option value="서초구">서초구</option>-->
-<!--                        <option value="관악구">관악구</option>-->
-<!--                        <option value="동작구">동작구</option>-->
-<!--                        <option value="금천구">금천구</option>-->
-<!--                        <option value="영등포구">영등포구</option>-->
-<!--                        <option value="구로구">구로구</option>-->
-<!--                        <option value="양천구">양천구</option>-->
-<!--                        <option value="강서구">강서구</option>-->
-<!--                        <option value="마포구">마포구</option>-->
-<!--                        <option value="은평구">은평구</option>-->
-<!--                        <option value="서대문구">서대문구</option>-->
-<!--                        <option value="종로구">종로구</option>-->
-<!--                        <option value="중구">중구</option>-->
-<!--                        <option value="용산구">용산구</option>-->
-<!--                        <option value="강북구">강북구</option>-->
-<!--                        <option value="성북구">성북구</option>-->
-<!--                        <option value="동대문구">동대문구</option>-->
-<!--                        <option value="성동구">성동구</option>-->
-<!--                        <option value="도봉구">도봉구</option>-->
-<!--                        <option value="노원구">노원구</option>-->
-<!--                        <option value="중랑구">중랑구</option>-->
-<!--                        <option value="광진구">광진구</option>-->
-<!--                    </select>-->
-<!--                {%endif%}-->
-<!--                {%if field.label == "설명"%}-->
-<!--                <textarea name="Discribtion"class="newCatInput ms-5" style="width: 300px; height: 90px;" required="" id="id_Discribtion">{{cat.Discribtion}}</textarea>-->
-<!--                {%endif%}-->
-<!--            {%endfor%}-->
-<!--        </p>-->
-<!--            <button type="submit" onClick='alert("수정이 완료되었습니다");'>저장</button>-->
-<!--    </form>-->
-<!--</div>-->
-
 {% endblock content %}
