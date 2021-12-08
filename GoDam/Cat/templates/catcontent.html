@@ -9,14 +9,16 @@
 <div class="container " style="padding: 150px 0 150px 0; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
         <p class="fs-2 fw-bold d-block d-flex justify-content-center mb-4">{{i.Catname}}</p>
-        <div class="col-4 offset-8 gap-2 mb-2 d-flex justify-content-center">
-            <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
-            {%if i.User.Userid == owner.Userid%}
-            <button type="button" class="btn_content" id="btn_edit" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
-            <button type="button" class="btn_content" id="btn_del" onclick="showConfirm()">삭제</button>
-            {%endif%}
+        <div class="col-11 d-flex justify-content-end">
+            <div class="gap-2 mb-2 me-md-5">
+                <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
+                {%if i.User.Userid == owner.Userid%}
+                <button type="button" class="btn_content" id="btn_edit" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
+                <button type="button" class="btn_content" id="btn_del" onclick="showConfirm()">삭제</button>
+                {%endif%}
+            </div>
         </div>
-        <div class="col d-flex justify-content-center">
+        <div class="col-12 d-flex justify-content-center">
             <div class="card mb-3 shadow-lg" style="max-width: 1000px; border: none;">
                 <div class="row g-0">
                     <div class="col-md-6 my-auto p-1">
@@ -48,7 +50,7 @@
             <form method="post">
                 {% csrf_token %}
                 <p>
-                <div class="form-floating chat_textarea">
+                <div class="form-floating chat_textarea" style="max-width: 1000px;">
                     <textarea class="form-control" id="id_Content" cols="120" name="Content" placeholder="Leave a comment here" style="height: 100px;" required></textarea>
                     <label id="textarea_comment" for="id_Content">댓글을 작성하세요&nbsp;<i class="fas fa-paw"></i></label>
                 </div>
@@ -61,11 +63,11 @@
     {% for comment in cat.board_set.all %}
         <div class="row mb-5 justify-content-center">
             <div class="col p-0" style="max-width: 1000px;">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card shadow-sm" style="border: none">
+                    <div class="card-header fw-bold" style="background-color: lightblue; border: none">
                         {{ comment.Usernum.Nickname }}
                         <button class="float-end" type="button" id="btn_delchat" onclick="location.href='{% url 'bd' comment.Catnum.Catid comment.Boardid %}'">
-                            댓글 삭제
+                            삭제
                         </button>
                     </div>
                     <div class="card-body">
@@ -77,6 +79,28 @@
             </div>
         </div>
     {% endfor %}
+
+<!--    {% for comment in cat.board_set.all %}-->
+<!--    <div class="container" style="max-width: 1000px;">-->
+<!--        <div class="row">-->
+<!--            <div class="col comment">-->
+<!--                <p>{{ comment.Content }}</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="container mb-5" style="max-width: 1000px;">-->
+<!--        <div class="row">-->
+<!--            <div class="col-2 text-center pt-2">-->
+<!--                {{ comment.Usernum.Nickname }}-->
+<!--            </div>-->
+<!--            <div class="col-10 text-end pt-2">-->
+<!--                <button type="button" style="border-radius: 5px; color: #1b3f36;">삭제</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+
 </div>
 {% endblock content %}
 
