@@ -153,7 +153,8 @@ def password_edit_complete(req):
           return render (req,'password_edit_com.html')
     #안되면 리다이렉트(경고 메세지도 비밀번호 변경 페이지에 보내기)
     else:
-        messages.warning(req, '기존 비밀번호가 맞는지 확인하세요')
+        #messages.warning(req, '기존 비밀번호가 맞는지 확인하세요')
+        sweetify.warning(req,'기존 비밀번호가 맞는지 확인하세요')
         return redirect (password_edit)
 
 #about us - 로그인 한 경우 / 하지않은 경우
