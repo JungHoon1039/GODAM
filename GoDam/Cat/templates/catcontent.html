@@ -14,7 +14,7 @@
                 <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
                 {%if i.User.Userid == owner.Userid%}
                 <button type="button" class="btn_content" id="btn_edit" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
-                <button type="button" class="btn_content" id="btn_del" onclick="showConfirm()">삭제</button>
+                <button type="button" class="btn_content" id="btn_del" onclick="Confirm()">삭제</button>
                 {%endif%}
             </div>
         </div>
@@ -122,12 +122,27 @@
             },
         });
     })
-    function showConfirm(){
-        if(confirm("정말로 고양이를 삭제하겠습니까?"))
-        {
-            alert("고양이를 삭제했습니다");
-            window.location.href = '{%url "catdelete" i.Catid%}';
-        }
+    function Confirm() {
+        swal({
+            title: "",
+            text: "정말로 고양이를 삭제하겠습니까",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText : "아니오",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "네",
+            closeOnConfirm: false
+        }, function(){
+            swal({
+                    title: "",
+                    text: "고양이가 삭제 되었습니다",
+                    type: "success",
+                },
+                function(){
+                    window.location.href = '{%url "catdelete" i.Catid%}';
+                })
+        });
     }
+
 </script>
 {% endblock scripts %}

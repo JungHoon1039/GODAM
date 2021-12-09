@@ -8,6 +8,7 @@ from .models import User
 from Cat.models import Cat
 from Cat.views import catall
 import os, torch, re
+import sweetify
 
 
 

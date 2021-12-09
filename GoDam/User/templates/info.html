@@ -62,7 +62,8 @@
                     <div class="row justify-content-center">
                         <button type="button" class="info_btn me-2" id="change_userinfo" onclick ="location.href = 'http://52.79.227.191:8000/user/edit'">회원정보 수정</button>
                         <button type="button" class="info_btn me-2" id="change_pwd" onclick ="location.href = 'http://52.79.227.191:8000/user/password_edit'">비밀번호 변경</button>
-                        <button type="button" class="info_btn" id="delete_id" onClick=showConfirm()>회원탈퇴</button>
+                        <button type="button" class="info_btn" id="delete_id" onclick="Confirm()">회원탈퇴</button>
+                       <!-- <button onclick="Confirm();">Confirm</button>-->
                     </div>
                 </div>
             </div>
@@ -71,14 +72,72 @@
 {% endblock content %}
 
 {% block scripts %}
+    {% load sweetify %}
+    {% sweetify %}
 <script>
-    function showConfirm(){
-        if(confirm("정말로 회원 탈퇴 하시겠습니까?"))
-        {
-            alert("계정이 삭제 되었습니다");
-            window.location.href = 'http://52.79.227.191:8000/user/delete_com';
-        }
-    }
+   // function showConfirm(){
+   //     if(confirm("정말로 회원 탈퇴 하시겠습니까?"))
+   //     {
+    //        alert("계정이 삭제 되었습니다");
+   //         window.location.href = 'http://52.79.227.191:8000/user/delete_com';
+   //     }
+   //  }
+
+        //$("#confirm").click(function () {
+        //    Swal.fire({
+        //        title: '정말로 그렇게 하시겠습니까?',
+        //        text: "다시 되돌릴 수 없습니다. 신중하세요.",
+        //        icon: 'warning',
+        //        showCancelButton: true,
+        //        confirmButtonColor: '#3085d6',
+        //        cancelButtonColor: '#d33',
+        //        confirmButtonText: '승인',
+        //        cancelButtonText: '취소'
+        //    }).then((result) => {
+        //        if (result.isConfirmed) {
+        //            Swal.fire(
+        //                '승인이 완료되었습니다.',
+        //                '화끈하시네요~!',
+        //                'success'
+        //            )}
+        //    })
+        //});
+       var alert = function(msg, type) {
+       swal({
+           title : '',
+           text : msg,
+           type : type,
+           timer : 1500,
+           customClass : 'sweet-size',
+           showConfirmButton : false
+       });
+   }
+
+       var confirm = function(msg, title) {
+       swal({
+           title : title,
+           text : msg,
+           timer : 1500,
+           type : "warning",
+           showCancelButton : true,
+           confirmButtonClass : "btn-danger",
+           confirmButtonText : "예",
+           cancelButtonText : "아니오",
+           closeOnConfirm : false,
+           closeOnCancel : true
+       }, function(isConfirm) {
+           if (isConfirm) {
+               window.location.href = 'http://52.79.227.191:8000/user/delete_com';
+           }
+
+       });
+   }
+
+       function Confirm() {
+       confirm('', '정말로 회원 탈퇴 하시겠습니까?');
+   }
+
+
 </script>
 {% endblock scripts %}
 
