@@ -22,7 +22,7 @@
             <div class="card mb-3 shadow-lg" style="max-width: 1000px; border: none;">
                 <div class="row g-0">
                     <div class="col-md-6 my-auto p-1">
-                        <img src="{{i.Catimage.url}}" class="img-fluid img-thumbnail rounded" alt="...">
+                        <img src="{{i.Catimage.url}}" class="img-fluid p-2" style="border-radius: 15px;">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -67,14 +67,24 @@
         <div class="row mb-5 justify-content-center">
             <div class="col" style="max-width: 1000px;">
                 <div class="card shadow-sm pt-2" style="border: none; border-radius: 10px; background-color: rgba(255,255,255,0.9);">
-                    <div class="card-header ps-4" style="border: none; background-color:transparent; font-weight:500; font-size: 15px; ">
-                        {{ comment.Usernum.Nickname }}
-                        <button class="float-end" type="button" id="btn_delchat" onclick="location.href='{% url 'bd' comment.Catnum.Catid comment.Boardid %}'">
-                            삭제
-                        </button>
-                    </div>
+<!--                    <div class="card-header ps-4" style="border: none; background-color:transparent; font-weight:500; font-size: 15px; ">-->
+<!--                    </div>-->
                     <div class="card-body ps-5 pt-0 pb-3" style="color: gray; font-size: 14px;">
-                        <div class="chat">
+                        <div class="row">
+                            <div class="mt-2 col-10">
+                                <h5 style="color: black">
+                                    {{ comment.Usernum.Nickname }}
+                                </h5>
+                            </div>
+                            <div class="col-2">
+                                <button class="float-end" type="button" id="btn_delchat" onclick="location.href='{% url 'bd' comment.Catnum.Catid comment.Boardid %}'" style="border: none;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            </div>
+
+                        </div>
+
+                        <div class="chat me-4 mt-1">
                             {{ comment.Content }}
                         </div>
                     </div>
