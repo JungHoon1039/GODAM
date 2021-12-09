@@ -24,6 +24,7 @@ html,body {
     font-family: 'Black Han Sans', sans-serif;
 }
 
+/* base2,base3.html nav*/
 #base2_logo {
     color: black;
     font-family: 'Black Han Sans', sans-serif;
@@ -34,7 +35,24 @@ html,body {
 }
 
 #nav_base2 li a:hover {
-    color: slategrey;
+    /*text-decoration: underline solid #1b3f36;*/
+    /*text-underline-position: under;*/
+    border-bottom: 0.2rem solid #1b3f36;
+}
+
+/* base.html nav-dropdown */
+li > .dropdown-item:hover {
+    background-color: #1b3f36;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+li > .dropdown-item:focus {
+    background-color: #1b3f36;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
 }
 
 #title {
@@ -520,8 +538,8 @@ p select:focus {
 
 #btn_delchat {
     border-radius: 3px;
-    width: 80px;
-    height: 35px;
+    width: 60px;
+    height: 30px;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: 15px;
@@ -529,12 +547,12 @@ p select:focus {
     background-color: #fff;
 }
 
-#btn_delchat:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.6;
-}
+/*#btn_delchat:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.6;*/
+/*}*/
 
 /* 고양이 정보수정페이지 catedit.html */
 #btn_saveEdit {

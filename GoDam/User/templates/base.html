@@ -45,13 +45,13 @@
             <div class="d-flex me-5">
 <!--                <button type="button" class="btn btn-dark" onclick="location.href = '{http://52.79.227.191:8000/user/signup}'">SignUp</button>-->
                 <div class="btn-group dropstart">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border: none; background-color: transparent;">
                         <img src="{% static 'n-cat2.png' %}" alt="" width="35px;">
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="width: 80%;">
-                        <li><a class="dropdown-item" href="#">LOGIN</a></li>
-                        <li><a class="dropdown-item" href="#">SIGN UP</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="min-width:4rem; border: none; border-radius: 8px; background-color:rgba(255,255,255,0.9);">
+                        <li><a class="dropdown-item" href="http://52.79.227.191:8000/user/login">Login</a></li>
+                        <li><a class="dropdown-item" href="http://52.79.227.191:8000/user/signup">Sign Up</a></li>
                     </ul>
                 </div>
             </div>

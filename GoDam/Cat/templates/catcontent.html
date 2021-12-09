@@ -60,17 +60,20 @@
         </div>
     </div>
     <!--댓글-->
+    <div class="row justify-content-center">
+        <p class="fs-4 fw-bold" style="max-width: 1000px;">comments</p>
+    </div>
     {% for comment in cat.board_set.all %}
         <div class="row mb-5 justify-content-center">
-            <div class="col p-0" style="max-width: 1000px;">
-                <div class="card shadow-sm" style="border: none">
-                    <div class="card-header fw-bold" style="background-color: lightblue; border: none">
+            <div class="col" style="max-width: 1000px;">
+                <div class="card shadow-sm pt-2" style="border: none; border-radius: 10px; background-color: rgba(255,255,255,0.9);">
+                    <div class="card-header ps-4" style="border: none; background-color:transparent; font-weight:500; font-size: 15px; ">
                         {{ comment.Usernum.Nickname }}
                         <button class="float-end" type="button" id="btn_delchat" onclick="location.href='{% url 'bd' comment.Catnum.Catid comment.Boardid %}'">
                             삭제
                         </button>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ps-5 pt-0 pb-3" style="color: gray; font-size: 14px;">
                         <div class="chat">
                             {{ comment.Content }}
                         </div>
