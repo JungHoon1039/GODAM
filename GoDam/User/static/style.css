@@ -44,6 +44,11 @@ html,body {
     color: black;
 }
 
+@media(max-width: 575.98px) { #nav_base2 {
+    background-color: rgba(245, 245, 245, 0.85)
+} }
+
+
 #nav_base2 li a:hover {
     /*text-decoration: underline solid #1b3f36;*/
     /*text-underline-position: under;*/
