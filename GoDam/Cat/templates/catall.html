@@ -14,13 +14,14 @@
         </div>
     </div>
     <div class="row d-flex mb-2">
-        <div class="col-md-1 p-2 me-auto">
+        <div class="col-md-1 col-3 p-2 me-auto">
             <select class="form-select" id='array' onchange="location = this.value;">
                 <option value="?region={{region}}&sort=latest">최신순</option>
                 <option value="?region={{region}}&sort=like">좋아요순</option>
             </select>
         </div>
-        <div class="col-md-5 p-2">
+
+        <div class="col-9 col-md-5 p-2">
             <div class="ms-3" style="float: right;">
                 <form action = "{% url 'index' %}" method="get">
                     <input type="text" name="region" value="{{region}}" style="display:none">
@@ -28,11 +29,10 @@
                 </form>
             </div>
             <div style="float: right;">
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #1b3f36; color: white; font-size: 20px;">
-                고양이 등록
-            </button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #1b3f36; color: white; font-size: 20px;">
+                    고양이 등록
+                </button>
             </div>
         </div>
 
@@ -120,7 +120,7 @@
                     </div>
                 </div>
             </div>
-
+    </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {%for i in posts %}
         <div class="col">
