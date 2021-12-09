@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'User',
     'sweetify'
 ]
-SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

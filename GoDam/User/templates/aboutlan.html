@@ -1,0 +1,531 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- title -->
+{% block title %}
+About Us
+{% endblock title %}
+
+{% block content %}
+<div id="first" class="box">
+    <div class="container position-absolute top-50 start-50 translate-middle justify-content-center">
+        <div class="list">
+            <div class="up-on-scroll">
+                <div class="row my-auto mx-1">
+                    <div class="row mb-3" style="padding-top: 100px;">
+                        {% if lan == "ko"%}
+                        <div id="title" class="" style="font-size: 75px; color: black;">저희는 고담입니다<i
+                                class="fas fa-cat fs-1"></i>
+                        </div>
+                        {%endif%}
+                        {% if lan == "en"%}
+                        <div id="title" class="" style="font-size: 75px; color: black;">We are Godam<i
+                                class="fas fa-cat fs-1"></i>
+                        </div>
+                        <p style="color:black">Godam is an abbreviation word in Korean, means cat storing</p>
+                        {%endif%}
+                        {% if lan == "cn"%}
+                        <div id="title" class="" style="font-size: 75px; color: black;">我们是GODAM<i
+                                class="fas fa-cat fs-1"></i>
+                        </div>
+                        <p style="color:black">Godam是韩文缩略用语，意思是装猫</p>
+                        {%endif%}
+                    </div>
+                    <div class="row d-flex">
+                        <div class="col-md-5 me-auto mb-3" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            {% if lan == "ko"%}
+                            <div>우리 주위에 항상 가까이 있고,<br>
+                                자주 접하게 되는 스마트폰과 pc.<br>
+                                그리고 또 그만큼 우리가 관심을 가지지만<br>닿지 못하는 그대, 길냥이.<br><br>
+                                여러분의 스마트폰에, pc에 우리동네 길냥이들을<br>담아두고
+                                정보를 나눠보세요.<br><br>
+                                아주 귀엽고, 또 그만큼 편리한 서비스,<br>
+                                <span style="font-family: 'Black Han Sans', sans-serif; font-size: 50px; color: black;">'고담'</span> 이 함께합니다!
+                            </div>
+                            {%endif%}
+                            {% if lan == "en"%}
+                            <div>Electronic devices,<br>
+                                One of the most important part in our life.<br>
+                                Streetcat,<br>
+                                were loved a lot from us but hard to be treaten.<br><br>
+                                We will be glad to store street cats' and
+                                share many kinds of inforamtion around us.
+                                <br>
+                                One of the most cute and comfortable service:<br><br>
+                                <span style="font-family: 'Black Han Sans', sans-serif; font-size: 50px; color: black;">'Godam'</span> will stay together with you!
+                            </div>
+                            {%endif%}
+                            {% if lan == "cn"%}
+                            <div>在我们的周围,<br>
+                                非常轻易的接触许多电子产品.<br>
+                                而且，我们关心它，然而确难以关照它.<br>
+                                它，就是路猫.<br><br>
+                                我们可以利用我们的办法来装路猫的信息，<br>
+                                分享它们的日常生活.<br><br>
+                                不但可爱,而且非常舒适的服务,<br>
+                                <span style="font-family: 'Black Han Sans', sans-serif; font-size: 50px; color: black;">'装猫'</span>随你同行!
+                            </div>
+                            {%endif%}
+                        </div>
+                        <div class="col-md-5 text-end d-none d-md-block">
+                            <img style="box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;"
+                                 class="img-fluid"
+                                 src="{% static 'aboutcat.gif' %}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="second" class="box" style="background-color: white">
+    <div class="container position-absolute top-50 start-50 translate-middle justify-content-center">
+        <div class="list">
+            <div class="up-on-scroll">
+                <div class="row my-auto mx-1">
+                    <div class="row mb-3" style="padding-top: 50px;">
+                        {% if lan == "ko"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">고담은 무슨 일을 할까요?
+                        </div>
+                        {%endif%}
+                        {% if lan == "en"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">What's Godam doing?
+                        </div>
+                        {%endif%}
+                        {% if lan == "cn"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">装猫的服务
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="row mb-5">
+                        {% if lan == "ko"%}
+                        <div class="col-12 col-md-12 d-none d-sm-block" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            내가 돌보는 길냥이 혹은 외출냥이들을<br>
+                            휴대폰, pc에 담아 간편하게 확인할 수 있는
+                            서비스를 제공하고 있습니다.<br>
+                            <br>
+                            고담은 '고양이를 담다' 라는 뜻으로,
+                            늘 여러분의 가까이에 있는<br>
+                            pc와 스마트폰에 주위에 숨어있는
+                            길냥이들의 일상을 포착해보세요!
+                        </div>
+                        {%endif%}
+                        {% if lan == "en"%}
+                        <div class="col-12 col-md-12 d-none d-sm-block" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            Godam provide streetcats' information that<br>
+                            people stored with there own electrical devices.<br>
+                            <br>
+                            As we know the meaning of Godam,<br>
+                            we'd like to catch up with many street cats
+                            and share theirs daily life!
+                        </div>
+                        {%endif%}
+                        {% if lan == "cn"%}
+                        <div class="col-12 col-md-12 d-none d-sm-block" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            我们接收许多网友们提供的路猫信息，<br>
+                            分享给各地网友们看各种可爱的路猫.<br><br>
+                            欢迎各位爱猫网友们接触你们周围小猫咪，<br>
+                            收集它们的日常生活来分享给所有人看吧！
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="row d-none d-md-block">
+                        <div class="col-4 my-3" style="float: left;">
+                            <div class="card" style="border: 0; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <p class="card-text" style="color: black; font-size: 25px; font-family: 'Montserrat', sans-serif; font-weight: 300;">📸<br>
+                                        {% if lan == "ko"%}
+                                        <span style="font-weight: 700;">Step. 1<br>
+                                        우리동네 고양이<br>업로드</span>
+                                        {%endif%}
+                                        {% if lan == "en"%}
+                                        <span style="font-weight: 700;">Step. 1<br>
+                                        Cat<br>Upload</span>
+                                        {%endif%}
+                                        {% if lan == "cn"%}
+                                        <span style="font-weight: 700;">第一步<br>
+                                        上传<br>路猫</span>
+                                        {%endif%}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 my-3" style="float: left;">
+                            <div class="card" style="border: 0; font-size: 25px; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <p class="card-text" style="color: black; font-family: 'Montserrat', sans-serif; font-weight: 300;">💕<br>
+                                        {% if lan == "ko"%}
+                                        <span style="font-weight: 700;">Step. 2<br>
+                                        좋아요&댓글<br>남기기</span>
+                                        {%endif%}
+                                        {% if lan == "en"%}
+                                        <span style="font-weight: 700;">Step. 2<br>
+                                        Likes&<br>Comments</span>
+                                        {%endif%}
+                                        {% if lan == "cn"%}
+                                        <span style="font-weight: 700;">第二步<br>
+                                        点赞或<br>留言</span>
+                                        {%endif%}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 my-3" style="float: left;">
+                            <div class="card" style="border: 0; font-size: 25px; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <p class="card-text" style="color: black; font-family: 'Montserrat', sans-serif; font-weight: 300;">🐱<br>
+                                        {% if lan == "ko"%}
+                                        <span style="font-weight: 700;">Step. 3<br>
+                                        길냥이 우리동네<br>랜드마크화</span>
+                                        {%endif%}
+                                        {% if lan == "en"%}
+                                        <span style="font-weight: 700;">Step. 3<br>
+                                        being landmarkable at local</span>
+                                        {%endif%}
+                                        {% if lan == "cn"%}
+                                        <span style过程="font-weight: 700;">第三部<br>
+                                        进行<br>本地出名过程</span>
+                                        {%endif%}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-block d-sm-none">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" style="border: 0; font-size: 25px; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                                <div class="carousel-item active">
+                                    <div class="card">
+                                        <div class="card-body p-5">
+                                            <p class="card-text" style="color: black; font-size: 25px; font-family: 'Montserrat', sans-serif; font-weight: 300;">📸<br>
+                                                {% if lan == "ko"%}
+                                                <span style="font-weight: 700;">Step. 1<br>
+                                                우리동네 고양이<br>업로드</span>
+                                                {%endif%}
+                                                {% if lan == "en"%}
+                                                <span style="font-weight: 700;">Step. 1<br>
+                                                Cat<br>Upload</span>
+                                                {%endif%}
+                                                {% if lan == "cn"%}
+                                                <span style="font-weight: 700;">第一步<br>
+                                                上传<br>路猫</span>
+                                                {%endif%}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card">
+                                        <div class="card-body p-5">
+                                            <p class="card-text" style="color: black; font-size: 25px; font-family: 'Montserrat', sans-serif; font-weight: 300;">💕<br>
+                                                {% if lan == "ko"%}
+                                                <span style="font-weight: 700;">Step. 2<br>
+                                                    좋아요&댓글<br>남기기</span>
+                                                {%endif%}
+                                                {% if lan == "en"%}
+                                                <span style="font-weight: 700;">Step. 2<br>
+                                                    Likes&<br>Comments</span>
+                                                {%endif%}
+                                                {% if lan == "cn"%}
+                                                <span style="font-weight: 700;">第二步<br>
+                                                    点赞或<br>留言</span>
+                                                {%endif%}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card">
+                                        <div class="card-body p-5">
+                                            <p class="card-text" style="color: black; font-size: 25px; font-family: 'Montserrat', sans-serif; font-weight: 300;">🐱<br>
+                                                {% if lan == "ko"%}
+                                                <span style="font-weight: 700;">Step. 3<br>
+                                                길냥이 우리동네<br>랜드마크화</span>
+                                                {%endif%}
+                                                {% if lan == "en"%}
+                                                <span style="font-weight: 700;">Step. 3<br>
+                                                being landmarkable at local</span>
+                                                {%endif%}
+                                                {% if lan == "cn"%}
+                                                <span style过程="font-weight: 700;">第三部<br>
+                                                进行<br>本地出名过程</span>
+                                                {%endif%}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="third" class="box">
+    <div class="container position-absolute top-50 start-50 translate-middle justify-content-center">
+        <div class="list">
+            <div class="up-on-scroll">
+                <div class="row my-auto mx-1">
+                    <div class="row mb-3" style="padding-top: 50px;">
+                        {% if lan == "ko"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">고담에서 이것만은 지켜주세요<i
+                                class="fas fa-cat fs-1"></i>
+                        </div>
+                        {%endif%}
+                        {% if lan == "en"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">Please follow the instructions as shown below<i
+                                class="fas fa-cat fs-1"></i>
+                        </div>
+                        {%endif%}
+                        {% if lan == "cn"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">请遵守我们的规则<i
+                                class="fas fa-cat fs-1"></i>
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="row d-flex">
+                        {% if lan == "ko"%}
+                        <div id="caution-text" class="d-flex align-items-center col-12 col-md-6 me-auto mb-3" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            고담에서 사용되는 길냥이의 정보를 <br>악용하지 말아주세요.<br><br>
+                            고담은 많은 사람들이 소중하게 생각하는<br>
+                            동네 고양이들의 케어를 위한 서비스입니다.<br>
+                            특히 고양이 위치 정보를
+                            유출하지 않도록 유의해주세요.
+                        </div>
+                        {%endif%}
+                        {% if lan == "en"%}
+                        <div id="caution-text" class="d-flex align-items-center col-12 col-md-6 me-auto mb-3" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            Godam is purpose for people who are really care street cats in more precious and kindness way.<br>
+                            So it's unallowed to abuse our service.<br><br>
+                            Also,be careful of Cat's location leak in more detail.
+                        </div>
+                        {%endif%}
+                        {% if lan == "cn"%}
+                        <div id="caution-text" class="d-flex align-items-center col-12 col-md-6 me-auto mb-3" style="font-size: 23px; color: dimgrey; font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">
+                            装猫以针对爱惜路猫的网友们为主<br>
+                            所以，千万不要滥用我们的服务.<br><br>
+                            尤其是万万不可泄露路猫的详细地址！！
+                        </div>
+                        {%endif%}
+                        <div class="col-12 col-md-6 text-end d-none d-md-block">
+                            <img style="box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;"
+                                 class="img-fluid"
+                                 src="{% static 'aboutcat2.gif' %}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fourth" class="box" style="background-color: white">
+    <div class="container position-absolute top-50 start-50 translate-middle justify-content-center">
+        <div class="list">
+            <div class="up-on-scroll">
+                <div class="row my-auto mx-1">
+                    <div class="row mb-3" style="padding-top: 50px;">
+                        {% if lan == "ko"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">고담은 누가 만들었나요?
+                        </div>
+                        {%endif%}
+                        {% if lan == "en"%}
+                        </div>
+                        {%endif%}
+                        {% if lan == "cn"%}
+                        <div id="title" class="col-12 col-md-12" style="font-size: 75px; color: black;">我们创造了Godam
+                        </div>
+                        {%endif%}
+                    </div>
+                    <div class="row my-auto mt-3 d-flex justify-content-center d-none d-md-block" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300;">
+                        <div class="card ms-2 col-2 my-1" style="float: left; width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                            <img src="{% static 'JH.jpg' %}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center" style="color: black;">박정훈</h5>
+                                <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                            </div>
+                        </div>
+                        <div class="card ms-2 col-2 my-1" style="float: left; width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                            <img src="{% static 'HS.jpg' %}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center" style="color: black;">진현성</h5>
+                                <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                            </div>
+                        </div>
+                        <div class="card ms-2 col-2 my-1" style="float: left; width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                            <img src="{% static 'GY.jpg' %}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center" style="color: black;">백가연</h5>
+                                <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                            </div>
+                        </div>
+                        <div class="card ms-2 col-2 my-1" style="float: left; width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                            <img src="{% static 'SM.jpg' %}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center" style="color: black;">김소민</h5>
+                                <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                            </div>
+                        </div>
+                        <div class="card ms-2 col-2 my-1" style="float: left; width: 15rem; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                            <img src="{% static 'YB.jpg' %}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center" style="color: black;">육은별</h5>
+                                <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                            </div>
+                        </div>
+                        <!---- 카드----->
+                    </div>
+                    <div class="row d-block d-sm-none">
+                        <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" style="background-color: white; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; border: 0; font-size: 25px; box-shadow: 0px 0px 30px rgb(201, 199, 199); border-radius: 15px;">
+                                <div class="carousel-item active">
+                                    <div class="card mx-auto" style="width: 15rem; border: 0;">
+                                        <img src="{% static 'JH.jpg' %}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-center" style="color: black;">박정훈</h5>
+                                            <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card mx-auto" style="width: 15rem; border: 0;">
+                                        <img src="{% static 'HS.jpg' %}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-center" style="color: black;">진현성</h5>
+                                            <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card mx-auto" style="width: 15rem; border: 0;">
+                                        <img src="{% static 'GY.jpg' %}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-center" style="color: black;">백가연</h5>
+                                            <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card mx-auto" style="width: 15rem; border: 0;">
+                                        <img src="{% static 'SM.jpg' %}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-center" style="color: black;">김소민</h5>
+                                            <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="card mx-auto" style="width: 15rem; border: 0;">
+                                        <img src="{% static 'YB.jpg' %}" class="card-img-top img-fluid" alt="...">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title text-center" style="color: black;">육은별</h5>
+                                            <p class="card-text" style="color: black; font-size: 17px;">💻Web Developer</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="{%url 'aboutlan' %}" method="get">
+    <button name="ko">ko</button>
+    <button name="en">en</button>
+    <button name="cn">cn</button>
+</form>
+{% endblock content %}
+<!-- script -->
+{% block scripts %}
+<script type="text/javascript">
+    window.onload = function () {
+        var elm = ".box";
+        $(elm).each(function (index) {
+            // 개별적으로 Wheel 이벤트 적용
+            $(this).on("mousewheel DOMMouseScroll", function (e) {
+                e.preventDefault();
+                var delta = 0;
+                if (!event) event = window.event;
+                if (event.wheelDelta) {
+                    delta = event.wheelDelta / 120;
+                    if (window.opera) delta = -delta;
+                } else if (event.detail)
+                    delta = -event.detail / 3;
+                var moveTop = $(window).scrollTop();
+                var elmSelecter = $(elm).eq(index);
+                // 마우스휠을 위에서 아래로
+                if (delta < 0) {
+                    if ($(elmSelecter).next() != undefined) {
+                        try {
+                            moveTop = $(elmSelecter).next().offset().top;
+                        } catch (e) {
+                        }
+                    }
+                    // 마우스휠을 아래에서 위로
+                } else {
+                    if ($(elmSelecter).prev() != undefined) {
+                        try {
+                            moveTop = $(elmSelecter).prev().offset().top;
+                        } catch (e) {
+                        }
+                    }
+                }
+                // 화면 이동 0.3초(300)
+                $("html,body").stop().animate({
+                    scrollTop: moveTop + 'px'
+                }, {
+                    duration: 300, complete: function () {
+                    }
+                });
+            });
+        });
+    }
+
+    function isElementUnderBottom(elem, triggerDiff) {
+        const { top } = elem.getBoundingClientRect();
+        const { innerHeight } = window;
+        return top > innerHeight + (triggerDiff || 0);
+    }
+
+    function handleScroll() {
+        const elems = document.querySelectorAll('.up-on-scroll');
+        elems.forEach(elem => {
+            if (isElementUnderBottom(elem, -20)) {
+                elem.style.opacity = "0";
+                elem.style.transform = 'translateY(70px)';
+
+            } else {
+                elem.style.opacity = "1";
+                elem.style.transform = 'translateY(0px)';
+
+            }
+        })
+    }
+
+    window.addEventListener('scroll', handleScroll);
+</script>
+{% endblock scripts %}
+
+

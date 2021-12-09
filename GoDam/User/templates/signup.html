@@ -139,13 +139,20 @@
             form.reportValidity();
             return false;
         }else if(checked == false || pwc == false) {
-            alert("중복체크 또는 비밀번호가 일치하는지 확인하세요");
+            oh();
             return false;
             //폼전송
         }else if(checked == true && pwc == true){
             form.submit();
             return true;
         }
+    }
+    function oh() {
+        swal({
+            title: "중복체크 또는 비밀번호가 일치하는지 확인하세요",
+            type: "warning",
+            confirmButtonText: "네",
+        })
     }
     <!-- ajax로 이용한 아이디 체크-->
     function duplicate() {

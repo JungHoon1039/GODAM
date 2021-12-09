@@ -42,13 +42,29 @@
                                         {%endif%}
                                         {%if field.label == "성별"%}
                                         <labl>성별</labl>
+                                        {%if cat.Gender == "수컷" %}
+                                        <input class="ms-4 me-1" type="radio" name="Gender" value="수컷" id="male" required style="accent-color:darkseagreen;" checked><label for="male">수컷</label>
+                                        {%else%}
                                         <input class="ms-4 me-1" type="radio" name="Gender" value="수컷" id="male" required style="accent-color:darkseagreen;"><label for="male">수컷</label>
+                                        {%endif%}
+                                        {%if cat.Gender == "암컷" %}
+                                        <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" id="female" required style="accent-color:darkseagreen;" checked><label for="female">암컷</label>
+                                        {%else%}
                                         <input class="ms-3 me-1" type="radio" name="Gender" value="암컷" id="female" required style="accent-color:darkseagreen;"><label for="female">암컷</label>
+                                        {%endif%}
                                         {%endif%}
                                         {%if field.label == "중성화"%}
                                         <labl>중성화</labl>
+                                        {%if cat.Neutering == "예" %}
+                                        <input class="me-1" type="radio" name="Neutering" required="" value="예" id="yes" style="margin-left: 10px; accent-color:darkseagreen;" checked><label for="yes">예</label>
+                                        {%else%}
                                         <input class="me-1" type="radio" name="Neutering" required="" value="예" id="yes" style="margin-left: 10px; accent-color:darkseagreen;"><label for="yes">예</label>
+                                        {%endif%}
+                                        {%if cat.Neutering == "아니오" %}
+                                        <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="no" style="accent-color:darkseagreen;" checked><label for="no">아니오</label>
+                                        {%else%}
                                         <input class="ms-3 me-1" type="radio" name="Neutering" required="" value="아니오" id="no" style="accent-color:darkseagreen;"><label for="no">아니오</label>
+                                        {%endif%}
                                         {%endif%}
                                         {%if field.label == "지역"%}
                                         <labl>지역</labl>
@@ -102,17 +118,27 @@
 </div>
 
 <script>
+    var form = document.form;
     function upload(){
-        var form = document.form;
         //폼에대한 유효성 확인
         if(!form.checkValidity()){
             form.reportValidity();
             return false;
         }else{
-            alert('수정이 완료 되었습니다')
-            form.submit();
+            ah();
             return true;
         }
+    }
+    function ah() {
+        swal({
+            title: "수정이 완료 되었습니다",
+            type: "success",
+            timer : "10000",
+            confirmButtonText: "좋아요",
+        }, function(){
+            form.submit();
+            return true;
+        });
     }
     $("#id_Catname").keyup(function() {
         if (!$('#id_Catname')[0].validity.valid) {
