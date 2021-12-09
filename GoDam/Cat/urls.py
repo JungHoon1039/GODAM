@@ -2,11 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-        path('allcat',views.catall),
+        path('allcat',views.catall, name='allcat'),
         path('cat/<int:Catid>',views.cat,name="cat"),
         path('cat/<int:Catid>/edit',views.catedit,name="catedit"),
         path('cat/<int:Catid>/delete',views.catdelete,name="catdelete"),
         path('cat/<int:Catid>/<int:Boardid>', views.bd, name="bd"),
         path('cat/catlike',views.catlike,name="catlike"),
-        path('catlist', views.catall,name="catlist"),
 ]

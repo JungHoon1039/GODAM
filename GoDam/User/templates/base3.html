@@ -40,7 +40,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand ms-3 mt-2" id="base2_logo" href="http://52.79.227.191:8000/user/login">
+            <a class="navbar-brand ms-3 mt-2" id="base2_logo" href="{% url 'login' %}">
                 <i class="fs-1 fas fa-paw"></i>
                 <span class="" style="font-size: 35px;">고담</span>
             </a>
@@ -57,15 +57,15 @@
                         {% endfor %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-2" aria-current="page" href="http://52.79.227.191:8000/user/about">ABOUT</a>
+                        <a class="nav-link active me-2" aria-current="page" href="{% url 'about' %}">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-2" aria-current="page" href="http://52.79.227.191:8000/cat/allcat">CAT</a>
+                        <a class="nav-link active me-2" aria-current="page" href="{% url 'allcat' %}">CAT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-4" aria-current="page" href="http://52.79.227.191:8000/user/info">MY PAGE</a>
+                        <a class="nav-link active me-4" aria-current="page" href="{% url 'info' %}">MY PAGE</a>
                     </li>
-                    <button type="button" class="btn-lg me-4 p-0" style="width: 40px; border: none; background-color: transparent;" onclick="location.href = 'http://52.79.227.191:8000/user/logout'" onClick='alert("로그아웃이 완료되었습니다");'>
+                    <button type="button" class="btn-lg me-4 p-0" style="width: 40px; border: none; background-color: transparent;" onclick="location.href = '{% url 'logout' %}" onClick='alert("로그아웃이 완료되었습니다");'>
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </ul>

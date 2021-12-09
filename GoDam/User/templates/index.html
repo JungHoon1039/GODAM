@@ -10,7 +10,7 @@ Home
 <div class="box" id="search" style="background-image:url('{% static 'bg-cat.jpg' %}');">
     <div class="container position-absolute top-50 start-50 translate-middle" >
         <div class="row align-items-center mx-3">
-                <form action = "http://52.79.227.191:8000/cat/allcat" method="get" style="display:inline-block;">
+                <form action = "{% url 'allcat' %}" method="get" style="display:inline-block;">
                     <div class="col-5 me-3" style="float: left;">
                         <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
                             <option selected>서울특별시</option>

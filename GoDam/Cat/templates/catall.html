@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-5 p-2">
             <div class="ms-3" style="float: right;">
-                <form action = "http://52.79.227.191:8000/user/index" method="get">
+                <form action = "{% url 'index' %}" method="get">
                     <input type="text" name="region" value="{{region}}" style="display:none">
                     <button class="btn btn-outline-secondary" style="font-size: 20px">지역 변경</button>
                 </form>

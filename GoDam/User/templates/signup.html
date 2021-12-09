@@ -9,7 +9,7 @@
 {% block content %}
 <div class="box signupForm" style="padding-top: 110px">
     <div class="container position-absolute top-50 start-50 translate-middle signupTable">
-        <form name="form" action="http://52.79.227.191:8000/user/signup_com" method="post">
+        <form name="form" action="{% url 'signup_com' %}" method="post">
             {% csrf_token %}
                 <table class="table">
                     <p class=" d-flex justify-content-center" style="color:black; font-size: 26px; font-weight: 500;">회원가입</p>
@@ -109,7 +109,7 @@
                     </tbody>
                 </table>
                 <div class="row justify-content-center">
-                    <button class="btnSignup me-2" id="cancel" onclick ="location.href = 'http://52.79.227.191:8000/user/login'">취소</button>
+                    <button class="btnSignup me-2" id="cancel" onclick ="location.href = '{% url 'login' %}">취소</button>
                     <button class="btnSignup" id="join" type="button" onclick="check()">회원가입</button>
                 </div>
         </form>

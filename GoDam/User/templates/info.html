@@ -127,7 +127,7 @@
            closeOnCancel : true
        }, function(isConfirm) {
            if (isConfirm) {
-               window.location.href = 'http://52.79.227.191:8000/user/delete_com';
+               window.location.href = '{% url 'delete_com' %}';
            }
 
        });
