@@ -12,7 +12,7 @@
         <div class="col-11 d-flex justify-content-end">
             <div class="gap-2 mb-2 me-md-5">
                 <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
-                {%if i.User.Userid == owner.Userid%}
+                {%if i.User.Userid == login_member.Userid%}
                 <button type="button" class="btn_content" id="btn_edit" onclick="location.href ='{%url 'catedit' i.Catid%}'">수정</button>
                 <button type="button" class="btn_content" id="btn_del" onclick="Confirm()">삭제</button>
                 {%endif%}
