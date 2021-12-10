@@ -11,12 +11,12 @@ Home
     <div class="container position-absolute top-50 start-50 translate-middle" >
         <div class="row align-items-center mx-3">
                 <form action = "{% url 'allcat' %}" method="get" style="display:inline-block;">
-                    <div class="col-5 me-3" style="float: left;">
+                    <div class="col-5 me-2" style="float: left;">
                         <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
                             <option selected>서울특별시</option>
                         </select>
                     </div>
-                    <div class="col-5" style="float: left;">
+                    <div class="col-5 me-2" style="float: left;">
                         <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;" id='region' name='region' required>
                             <option value="강동구">강동구</option>
                             <option value="송파구">송파구</option>
@@ -45,7 +45,7 @@ Home
                             <option value="광진구">광진구</option>
                         </select>
                     </div>
-                    <div class="col-1 d-flex justify-content-center" style="float: left;">
+                    <div class="col-1 d-flex justify-content-center ms-2" style="float: left;">
                         <button class="btn btn-primary mb-3 btn-lg align-middle" style="border-radius: 30px; background-color: #1b3f36; border: none;"><i class="fas fa-arrow-right"></i></button>
                     </div>
                 </form>
