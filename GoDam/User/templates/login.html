@@ -45,7 +45,12 @@ Main
 {% block scripts %}
 {% if messages %}
 <script>
-    alert('{{ messages }}');
+    swal({
+        title: "{{messages}}",
+        type: "warning",
+        timer : "10000",
+        confirmButtonText: "네",
+    })
 </script>
 {% endif %}
 <script type="text/javascript">
