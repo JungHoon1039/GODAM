@@ -13,6 +13,7 @@ import os, json
 #모든 캣 보이게
 def catall(req):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       log_member = User.objects.filter(Userid=req.session.get('Userid'))
        #index 페이지에서 저장된 지역 값 가져오기
        region = req.GET.get('region')
        sort = req.GET.get('sort')
@@ -68,12 +69,13 @@ def catall(req):
            end_index = max_index
        paginator_range = paginator.page_range[start_index : end_index]
 
-       return render(req,'catall.html',{'sort':sort,'sortcat': sortcat, 'form':form, 'region':region, 'user':logged_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
+       return render(req,'catall.html',{'sort':sort,'sortcat': sortcat, 'form':form, 'region':region, 'login_member':log_member, 'posts':posts, 'page':page, 'paginator_range':paginator_range})
 
 
 #404 에러 기능으로 그 고양이 정보 가져오기
 def cat(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       log_member = User.objects.filter(Userid=req.session.get('Userid'))
        cat = get_object_or_404(Cat,pk=Catid)
        board = Board.objects.filter(Catnum=cat)
        if req.method == "POST":
@@ -84,10 +86,10 @@ def cat(req,Catid):
              Boardform.Catnum = cat
              Boardform.Usernum = logged_member
              Boardform.save()
-             return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : board})
+             return render(req,'catcontent.html',{'i':cat,'owner':logged_member,'login_member':log_member, 'form' : form,'cat' : cat, 'board' : board})
        else:
              form = BaseBulletinBoard()
-       return render(req,'catcontent.html',{'i':cat,'owner':logged_member, 'form' : form,'cat' : cat, 'board' : board})
+       return render(req,'catcontent.html',{'i':cat,'owner':logged_member,'login_member':log_member, 'form' : form,'cat' : cat, 'board' : board})
 
 def bd(req,Catid,Boardid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
@@ -102,11 +104,12 @@ def bd(req,Catid,Boardid):
 #404 에러 기능으로 가져온 고양이 정보 수정
 def catedit(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       log_member = User.objects.filter(Userid=req.session.get('Userid'))
        cat = get_object_or_404(Cat,pk=Catid)
        #백앤드 유효성 접근 허용여부
        if logged_member.Userid != cat.User.Userid:
        #이유는 모르겠는데 pathconverter 정의된 def는 리다이렉트 안됨 ㅠㅠ
-          return render(req,'catcontent.html',{'i':cat,'owner':logged_member})
+          return render(req,'catcontent.html',{'i':cat,'login_member':logged_member})
        else:
           if req.method == "POST":
           #instance는 저장된걸 의미한다
@@ -118,15 +121,16 @@ def catedit(req,Catid):
                 return redirect(catall)
           else:
                 form = CatForm()
-          return render(req,'catedit.html', {'form':form,'cat':cat})
+          return render(req,'catedit.html', {'form':form,'cat':cat,'login_member':log_member})
 
 #404 에러 기능으로 가져온 고양이 정보 삭제
 def catdelete(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       log_member = User.objects.filter(Userid=req.session.get('Userid'))
        cat = get_object_or_404(Cat,pk=Catid)
        #백앤드 유효성 접근 허용여부
        if logged_member.Userid != cat.User.Userid:
-          return render(req,'catcontent.html',{'i':cat,'owner':logged_member})
+          return render(req,'catcontent.html',{'i':cat,'login_member':log_member})
        else:
           cat.delete()
           return redirect(catall)

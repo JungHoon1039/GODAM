@@ -106,6 +106,7 @@ def info_edit(req):
 #정보 업데이트 변경 확인
 def info_edit_complete(req):
     logged_member = User.objects.get(Userid=req.session.get('Userid'))
+    log_member = User.objects.filter(Userid=req.session.get('Userid'))
     #새로 입력한 값을 임의 변수로 지정
     nick = req.POST.get('nick')
     phone = req.POST.get('phone')
@@ -123,7 +124,7 @@ def info_edit_complete(req):
         req.session['Nickname'] = req.POST.get('nick')
         req.session['phonenumber'] = req.POST.get('phone')
         req.session['Region'] = req.POST.get('region')
-        return render(req,"info_edit_com.html")
+        return render(req,"info_edit_com.html", {'login_member' : log_member})
 
 # 비밀번호 변경
 def password_edit(req):
@@ -167,15 +168,19 @@ def aboutlan(req):
         else:
             lan = "ko"
     return render (req, 'aboutlan.html', {'lan': lan})
+
 def aboutus(req):
-    return render (req, 'aboutus.html')
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+    return render (req, 'aboutus.html', {'login_member' : logged_member})
+
 def about(req):
-    return render (req, 'about.html')
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
+    return render (req, 'about.html', {'login_member' : logged_member})
 
 
 #길고양이 지역 변경
 def index(req):
-    logged_member = User.objects.filter(Userid=req.POST.get('id'),Password=req.POST.get('pw'))
+    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
     #allcat 페이지에서 저장 되어있는 지역값 가져오기(작은 폼이 있음)
     region = req.GET.get('region')
     return render (req,'index.html',{'login_member' : logged_member,'region':region})
