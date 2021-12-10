@@ -75,6 +75,7 @@ def catall(req):
 #404 에러 기능으로 그 고양이 정보 가져오기
 def cat(req,Catid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
+       log_member = User.objects.filter(Userid=req.session.get('Userid'))
        cat = get_object_or_404(Cat,pk=Catid)
        board = Board.objects.filter(Catnum=cat)
        if req.method == "POST":
@@ -85,10 +86,10 @@ def cat(req,Catid):
              Boardform.Catnum = cat
              Boardform.Usernum = logged_member
              Boardform.save()
-             return render(req,'catcontent.html',{'i':cat,'login_member':logged_member, 'form' : form,'cat' : cat, 'board' : board})
+             return render(req,'catcontent.html',{'i':cat,'owner':logged_member,'login_member':log_member, 'form' : form,'cat' : cat, 'board' : board})
        else:
              form = BaseBulletinBoard()
-       return render(req,'catcontent.html',{'i':cat,'login_member':logged_member, 'form' : form,'cat' : cat, 'board' : board})
+       return render(req,'catcontent.html',{'i':cat,'owner':logged_member,'login_member':log_member, 'form' : form,'cat' : cat, 'board' : board})
 
 def bd(req,Catid,Boardid):
        logged_member = User.objects.get(Userid=req.session.get('Userid'))
