@@ -7,8 +7,8 @@
 {% endblock title %}
 
 {% block content %}
-<div class="box signupForm" style="padding-top: 110px">
-    <div class="container position-absolute top-50 start-50 translate-middle signupTable">
+<div class="box signupForm" style="padding-top: 140px; margin-bottom: 120px;">
+    <div class="container signupTable">
         <form name="form" action="{% url 'signup_com' %}" method="post">
             {% csrf_token %}
                 <table class="table">

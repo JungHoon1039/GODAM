@@ -40,18 +40,20 @@ html,body {
     font-family: 'Black Han Sans', sans-serif;
 }
 
-#nav_base2 li a {
+#nav_base2 li a,
+#nav_base3 li a {
     color: black;
 }
 
-@media(max-width: 575.98px) { #nav_base2 {
+@media(max-width: 575.98px) {
+    #nav_base3 {
     background-color: rgba(245, 245, 245, 0.85)
-} }
+    }
+}
 
 
-#nav_base2 li a:hover {
-    /*text-decoration: underline solid #1b3f36;*/
-    /*text-underline-position: under;*/
+#nav_base2 li a:hover,
+#nav_base3 li a:hover {
     border-bottom: 0.2rem solid #1b3f36;
 }
 
@@ -587,4 +589,13 @@ p select:focus {
     background-color: #1b3f36;
     color: #fff;
     opacity: 0.8;
+}
+
+/*footer*/
+.footer_title:after {
+    content: '';
+    width: 35px;
+    border-bottom: 2px solid #D5AE7F;
+    margin: 10px 0;
+    display: block;
 }

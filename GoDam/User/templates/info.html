@@ -9,64 +9,65 @@
 {% block content %}
 {% for user in login_member %}
 <div class="box info_form">
-        <div class="container position-absolute top-50 start-50 translate-middle">
-            <div class="row" style="padding-top: 70px;">
-                <div class="col-md-8 offset-md-2 infoTable">
-                    <table class="table mb-4">
-                        <p class="mb-3 d-flex justify-content-center" style="color:black; font-size: 26px; font-weight: 500;">회원정보</p>
-                        <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td scope="row">아이디</td>
-                            <td style="font-weight: 400;">
-                                {{user.Userid}}
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">닉네임</td>
-                            <td style="font-weight: 400;">
-                                {{user.Nickname}}
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">이름</td>
-                            <td style="font-weight: 400;">{{user.Username}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">연락처</td>
-                            <td style="font-weight: 400;">{{user.phonenumber}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">거주지역</td>
-                            <td style="font-weight: 400;">{{user.Region}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="row justify-content-center">
-                        <button type="button" class="info_btn me-2" id="change_userinfo" onclick ="location.href = '{% url 'edit' %}'">회원정보 수정</button>
-                        <button type="button" class="info_btn me-2" id="change_pwd" onclick ="location.href = '{% url 'password_edit' %}'">비밀번호 변경</button>
-                        <button type="button" class="info_btn" id="delete_id" onclick="Confirm()">회원탈퇴</button>
-                       <!-- <button onclick="Confirm();">Confirm</button>-->
-                    </div>
+    <div class="container position-absolute top-50 start-50 translate-middle">
+        <div class="row" style="padding-top: 70px;">
+            <div class="col-md-8 offset-md-2 infoTable">
+                <table class="table mb-4">
+                    <p class="mb-3 d-flex justify-content-center" style="color:black; font-size: 26px; font-weight: 500;">회원정보</p>
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">아이디</td>
+                        <td style="font-weight: 400;">
+                            {{user.Userid}}
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">닉네임</td>
+                        <td style="font-weight: 400;">
+                            {{user.Nickname}}
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">이름</td>
+                        <td style="font-weight: 400;">{{user.Username}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">연락처</td>
+                        <td style="font-weight: 400;">{{user.phonenumber}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">거주지역</td>
+                        <td style="font-weight: 400;">{{user.Region}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row justify-content-center">
+                    <button type="button" class="info_btn me-2" id="change_userinfo" onclick ="location.href = '{% url 'edit' %}'">회원정보 수정</button>
+                    <button type="button" class="info_btn me-2" id="change_pwd" onclick ="location.href = '{% url 'password_edit' %}'">비밀번호 변경</button>
+                    <button type="button" class="info_btn" id="delete_id" onclick="Confirm()">회원탈퇴</button>
+                   <!-- <button onclick="Confirm();">Confirm</button>-->
                 </div>
             </div>
+        </div>
+    </div>
 </div>
 {% endfor %}
 {% endblock content %}
@@ -136,11 +137,5 @@
        function Confirm() {
        confirm('', '정말로 회원 탈퇴 하시겠습니까?');
    }
-
-
 </script>
 {% endblock scripts %}
-
-
-
-
