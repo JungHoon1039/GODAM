@@ -62,7 +62,7 @@
                         {% endfor %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-2" aria-current="page" href="{% url 'aboutus' %}">ABOUT</a>
+                        <a class="nav-link active me-2" aria-current="page" href="{% url 'about' %}">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active me-2" aria-current="page" href="{% url 'allcat' %}">CAT</a>
@@ -86,55 +86,58 @@
 
 {% endblock scripts %}
 
-    <!--footer-->
-    <footer>
-        <div class="container-fluid shadow-sm pt-2" style="background-color: #151414; color: #878787;">
-            <div class="row">
-                <div class="col text-center">
-                    <p >
-                        <i class="fs-3 fas fa-paw"></i>&nbsp;<span id="logo" style="font-size: 30px;">고담</span>
-                    </p>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-around">
-                <div class="col-md-3 mb-md-2 mb-4 d-none d-md-inline" id="footer_address">
-                    <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Address</div>
-                    <div class="pb-2" style="font-size: 13px;">
-                        <i class="fas fa-map-marker-alt me-2"></i> 서울특별시 영등포구 선유로9길 30 106동
-                    </div>
-                    <div class="pb-2" style="font-size: 13px;">
-                        <i class="fas fa-phone-alt me-3"></i>02-3667-7304
-                    </div>
-                    <div style="font-size: 13px;">
-                        <i class="far fa-envelope me-3"></i>sesac@sba.seoul.kr
-                    </div>
-                </div>
-                <div class="col-md-2 mb-md-2 d-none d-md-inline" id="footer_partners">
-                    <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Partners</div>
-                    <a class="d-block pb-1" href="#" style="color: #878787; font-size: 13px;">SSAC</a>
-                    <a class="d-block pb-1" href="#" style="color: #878787; font-size: 13px;">코딩온</a>
-                    <a href="#" style="color: #878787; font-size: 13px;">한국고양이보호협회</a>
-                </div>
-                <div class="col-md-2 mb-md-2">
-                    <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Follow</div>
-                    <div class="footer_icon d-inline" style="width: 40px;">
-                        <a href="" style="color: #878787;">
-                            <i class="fs-5 fab fa-instagram me-2"></i>
-                        </a>
-                        <a href="" style="color: #878787;">
-                            <i class="fs-5 fab fa-facebook-square me-2"></i>
-                        </a>
-                        <a href="" style="color: #878787;">
-                            <i class="fs-5 fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <hr >
-            <div class="row text-center m-0 p-0">
-                <p style="font-size: 13px;">Copyright &copy;2021 GODAM</p>
+<!--footer-->
+<footer>
+    <div class="container-fluid shadow-sm pt-2" style="background-color: #151414; color: #878787;">
+        <div class="row">
+            <div class="col text-center">
+                <p >
+                    <i class="fs-3 fas fa-paw"></i>&nbsp;<span id="logo" style="font-size: 30px;">고담</span>
+                </p>
             </div>
         </div>
-    </footer>
+        <div class="row d-flex justify-content-around">
+            <div class="col-md-3 mb-md-2 mb-4 d-none d-md-inline" id="footer_address">
+                <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Address</div>
+                <div class="pb-2" style="font-size: 13px;">
+                    <i class="fas fa-map-marker-alt me-2"></i> 서울특별시 영등포구 선유로9길 30 106동
+                </div>
+                <div class="pb-2" style="font-size: 13px;">
+                    <i class="fas fa-phone-alt me-3"></i>02-3667-7304
+                </div>
+                <div style="font-size: 13px;">
+                    <i class="far fa-envelope me-3"></i>sesac@sba.seoul.kr
+                </div>
+            </div>
+            <div class="col-md-2 mb-md-2 d-none d-md-inline" id="footer_partners">
+                <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Partners</div>
+                <a class="d-block pb-1" href="https://sesac.seoul.kr/common/greeting.do" style="color: #878787; font-size: 13px;">SSAC</a>
+                <a class="d-block pb-1" href="https://codingon.co.kr/#intro" style="color: #878787; font-size: 13px;">코딩온</a>
+                <a href="http://www.catcare.or.kr/" style="color: #878787; font-size: 13px;">한국고양이보호협회</a>
+            </div>
+            <div class="col-md-2 mb-md-2">
+                <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Follow</div>
+                <div class="footer_icon d-inline">
+                    <a href="" style="color: #878787;">
+                        <i class="fs-5 fab fa-instagram me-2"></i>
+                    </a>
+                    <a href="" style="color: #878787;">
+                        <i class="fs-5 fab fa-facebook-square me-2"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCIKXUtLN2DaDOiSkMmY03jQ" style="color: #878787;">
+                        <i class="fs-5 fab fa-youtube me-2"></i>
+                    </a>
+                    <a href="https://github.com/UngPang/Street-Cat" style="color: #878787;">
+                        <i class="fs-5 fab fa-github-square"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr >
+        <div class="row text-center m-0 p-0">
+            <p style="font-size: 13px;">Copyright &copy;2021 GODAM</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
