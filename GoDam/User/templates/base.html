@@ -38,9 +38,9 @@
 
 <body>
     <!-- nav -->
-    <nav class="navbar navbar-light mx-4 my-3 w-100" style="position: fixed; z-index: 1;">
+    <nav class="navbar navbar-light w-100 mx-3 my-2" style="position: fixed; z-index: 1;">
         <div class="container-fluid">
-            <a class="navbar-brand align-middle" href="{% url 'login' %}">
+            <a class="navbar-brand" href="{% url 'login' %}">
                 <i class="fs-1 fas fa-paw"></i>
                 <span id="logo" class="" style="font-size: 35px;">고담</span>
             </a>
@@ -94,7 +94,8 @@
                     <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Partners</div>
                     <a class="d-block pb-1" href="https://sesac.seoul.kr/common/greeting.do" style="color: #878787; font-size: 13px;">SSAC</a>
                     <a class="d-block pb-1" href="https://codingon.co.kr/#intro" style="color: #878787; font-size: 13px;">코딩온</a>
-                    <a href="http://www.catcare.or.kr/" style="color: #878787; font-size: 13px;">한국고양이보호협회</a>
+                    <a href="http://www.catcare.or.kr/" style="color: #878787; font-size: 13px;">
+                        <img src="{% static 'catcare.png' %}" alt="" class="me-1" style="width: 12px;">한국고양이보호협회</a>
                 </div>
                 <div class="col-md-2 mb-md-2">
                     <div class="footer_title pb-2" style="color: rgba(253, 239, 239, 0.6);">Follow</div>

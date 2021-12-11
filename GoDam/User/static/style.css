@@ -47,7 +47,7 @@ html,body {
 
 @media(max-width: 575.98px) {
     #nav_base3 {
-    background-color: rgba(245, 245, 245, 0.85)
+    background-color: rgba(245, 245, 245, 0.8)
     }
 }
 
@@ -515,24 +515,25 @@ p select:focus {
     opacity: 0.6;
 }
 
-#like {
-    border-radius: 3px;
-    width: 45px;
-    height: 28px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-}
+/*좋아요 버튼*/
+/*#like {*/
+/*    border-radius: 3px;*/
+/*    width: 45px;*/
+/*    height: 28px;*/
+/*    font-family: 'Noto Sans KR', sans-serif;*/
+/*    font-weight: 400;*/
+/*    font-size: 14px;*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*}*/
 
-#like:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
- }
+/*#like:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/* }*/
 
 #btn_chat {
     border-radius: 3px;
@@ -596,6 +597,6 @@ p select:focus {
     content: '';
     width: 35px;
     border-bottom: 2px solid #D5AE7F;
-    margin: 10px 0;
+    margin: 8px 0;
     display: block;
 }
