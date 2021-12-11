@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="box signupForm" style="padding-top: 140px; margin-bottom: 150px;">
-    <div class="container signupTable">
+    <div class="container signupTable" style="max-width: 900px;">
         <form name="form" action="{% url 'signup_com' %}" method="post">
             {% csrf_token %}
                 <table class="table">
