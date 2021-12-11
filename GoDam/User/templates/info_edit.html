@@ -10,7 +10,7 @@
 <div class="box info_edit" style="padding-top: 190px;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 infoEditTable">
+            <div class="col-lg-8 offset-lg-2 infoEditTable" style="min-width: 550px;">
                 <form name="form" action="{% url 'edit_com' %}" method="post">
                     {% csrf_token %}
                     <table class="table">
@@ -34,7 +34,7 @@
                         <tr>
                             <td>닉네임</td>
                             <td>
-                                <input type="text" class="editinput" id="nick" name="nick" size="30" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6" value="{{user.Nickname}}">
+                                <input type="text" class="editinput" id="nick" name="nick" required pattern="^[0-9a-zA-Z가-힣]+$" minlength="2" maxlength="6" value="{{user.Nickname}}">
                                 <div id="nickval" style="color:red; display:none; font-size: 13.5px">특수문자를 제외한 2~6자를 입력해주세요.</div>
                             </td>
                             <td></td>
@@ -43,7 +43,7 @@
                         <tr>
                             <td>연락처</td>
                             <td>
-                                <input type="text" class="editinput" id="phone" name="phone" size="30" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$" value="{{user.phonenumber}}">
+                                <input type="text" class="editinput" id="phone" name="phone" required pattern="^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$" value="{{user.phonenumber}}">
                                 <div id="phoneval" style="color:red; display:none; font-size: 13.5px">올바른 휴대폰 번호를 입력하세요. ( -없어도 무관 )</div>
                             </td>
                             <td></td>

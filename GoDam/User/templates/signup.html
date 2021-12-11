@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="box signupForm" style="padding-top: 140px; margin-bottom: 150px;">
-    <div class="container signupTable" style="max-width: 900px;">
+    <div class="container signupTable" style="max-width: 900px; min-width: 550px;">
         <form name="form" action="{% url 'signup_com' %}" method="post">
             {% csrf_token %}
                 <table class="table">
@@ -25,7 +25,7 @@
                             <input class="signupinput" type="text" name="id" id="id" placeholder="아이디" onchange="idchange(this)" style="margin-bottom: 6px;" required
                                    pattern="^[a-zA-Z0-9!~@#$%^&*()_+-=\[\]{}<>:`?;'\\/,.&quot]+$" minlength="6"
                                    maxlength="12">
-                            <button class="checked_id ms-1" type="button" id="checked"
+                            <button class="checked_id btn_sm ms-1" type="button" id="checked"
                                     onclick="duplicate()">중복확인</button>
                             <div id="none" style="color:mediumblue; display:none; font-size: 13.5px;">사용가능한 아이디 입니다.</div>
                             <div id="alex" style="color:red; display:none; font-size: 13.5px;">이미 사용중인 아이디 입니다.</div>
