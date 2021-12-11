@@ -11,3 +11,6 @@ https://godam.ga/user/login
 
 SSAC 3기 팀 프로젝트
 - 박정훈 김소민 진현성 육은별 백가연
+
+# Home
+<img width="1418" alt="스크린샷 2021-12-10 오전 9 18 22" src="https://user-images.githubusercontent.com/91243743/145690843-1ae3751b-5983-408a-a6c7-6e038d5a73d5.png">
