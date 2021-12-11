@@ -69,7 +69,6 @@
                                         {%if field.label == "지역"%}
                                         <labl>지역</labl>
                                         <select class="ms-4" name="Region" required="" id="id_Region">
-                                            <option selected = "selected">{{cat.Region}}</option>
                                             <option value="강남구">강남구</option>
                                             <option value="강동구">강동구</option>
                                             <option value="강북구">강북구</option>
@@ -116,7 +115,12 @@
         </div>
     </div>
 </div>
-
+<script>
+    var region = '{{cat.Region}}';
+    if(region !== ''){
+        document.getElementById("id_Region").value = region;
+    }
+</script>
 <script>
     var form = document.form;
     function upload(){
