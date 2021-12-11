@@ -1,5 +1,6 @@
 # GoDam
 고양이를 담다
+
 고담은 우리동네 고양이들을 확인하고 소통하는 사이트 입니다
 
 ![GoDam_QRCode](https://user-images.githubusercontent.com/91243743/145690888-dda2130b-7d34-4413-9a45-0a1a5d4bde05.jpg)
