@@ -140,15 +140,18 @@ def catlike(req):
     #cat objects 받는데 이미 ajax로 통해서 캣에 아이디로 받아옴, Catid로 저장
     logged_member = User.objects.get(Userid=req.session.get('Userid'))
     Catid = req.POST.get('Catid',None)
+    heart = req.POST.get('heart')
     cat = get_object_or_404(Cat,pk=Catid)
     #좋아요가 눌러졌다면 빼고
     if cat.Like_user.filter(Userid = logged_member.Userid).exists():
        cat.Like_user.remove(logged_member)
+       heart = "empty"
     #아니면 추가
     else:
        cat.Like_user.add(logged_member)
+       heart = "heart"
     #위에서 했던거 다시 ajax로 보내주기
-    context = {'likes_count':cat.count_Like_user()}
+    context = {'likes_count':cat.count_Like_user(),'heart':heart}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
 
