@@ -157,8 +157,9 @@ def password_edit_complete(req):
         messages.warning(req,'기존 비밀번호가 맞는지 확인하세요')
         return redirect (password_edit)
 
-#about us - 로그인 한 경우 / 하지않은 경우
-def aboutlan(req):
+#aboutus - 로그인 하지않은 경우 / about - 로그인 한 경우
+
+def aboutus(req):
     lan = "ko"
     if req.GET:
         if 'cn' in req.GET:
@@ -167,15 +168,19 @@ def aboutlan(req):
             lan = "en"
         else:
             lan = "ko"
-    return render (req, 'aboutlan.html', {'lan': lan})
-
-def aboutus(req):
-    logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-    return render (req, 'aboutus.html', {'login_member' : logged_member})
+    return render (req, 'aboutus.html', {'lan':lan})
 
 def about(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
-    return render (req, 'about.html', {'login_member' : logged_member})
+    lan = "ko"
+    if req.GET:
+        if 'cn' in req.GET:
+            lan = "cn"
+        elif "en" in req.GET:
+            lan = "en"
+        else:
+            lan = "ko"
+    return render (req, 'about.html', {'login_member' : logged_member,'lan':lan})
 
 
 #길고양이 지역 변경
