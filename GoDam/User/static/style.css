@@ -445,6 +445,7 @@ tbody .pwdinput:focus {
 }
 
 .newCatInput,
+.newCatTextarea,
 p select {
     font-size: 15px;
     padding: 4px;
@@ -453,6 +454,7 @@ p select {
 }
 
 .newCatInput:focus,
+.newCatTextarea:focus,
 p select:focus {
     outline: 1px solid lightsteelblue;
 }
@@ -494,6 +496,13 @@ p select:focus {
 }
 
 /* 고양이 상세페이지 catcontent.html */
+@media (max-width: 575.98px) {
+    div .btn_content {
+        font-size: 14px;
+        width: 60px;
+    }
+}
+
 .btn_content {
     border-radius: 3px;
     width: 55px;
@@ -526,28 +535,8 @@ p select:focus {
     border: none;
     background-color: #1b3f36;
     color: #fff;
-    opacity: 0.6;
+    opacity: 0.7;
 }
-
-/*좋아요 버튼*/
-/*#like {*/
-/*    border-radius: 3px;*/
-/*    width: 45px;*/
-/*    height: 28px;*/
-/*    font-family: 'Noto Sans KR', sans-serif;*/
-/*    font-weight: 400;*/
-/*    font-size: 14px;*/
-/*    border: none;*/
-/*    background-color: #1b3f36;*/
-/*    color: #fff;*/
-/*}*/
-
-/*#like:hover {*/
-/*    border: none;*/
-/*    background-color: #1b3f36;*/
-/*    color: #fff;*/
-/*    opacity: 0.8;*/
-/* }*/
 
 #btn_chat {
     border-radius: 3px;
@@ -579,14 +568,16 @@ p select:focus {
     background-color: #fff;
 }
 
-/*#btn_delchat:hover {*/
-/*    border: none;*/
-/*    background-color: #1b3f36;*/
-/*    color: #fff;*/
-/*    opacity: 0.6;*/
-/*}*/
-
 /* 고양이 정보수정페이지 catedit.html */
+@media (max-width: 575.98px) {
+    p .newCatInput {
+        width: 120px;
+    }
+    .newCatTextarea {
+        width: 170px;
+    }
+}
+
 #btn_saveEdit {
     border-radius: 3px;
     width: 150px;
