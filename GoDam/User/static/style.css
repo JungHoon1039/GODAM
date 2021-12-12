@@ -146,6 +146,18 @@ a#btnhover:hover {
 }
 
 /* 회원가입 페이지 signup.html */
+@media (max-width: 575.98px) {
+    tbody .signupinput {
+        width: 133px;
+    }
+    tbody .editinput {
+        width: 140px;
+    }
+    tbody .pwdinput {
+        width: 178px;
+    }
+}
+
 .signupForm {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
@@ -164,7 +176,8 @@ tr {
 }
 
 tbody .signupinput,
-tbody .editinput {
+tbody .editinput,
+tbody .pwdinput {
     font-size: 15px;
     padding: 3px;
     border: 1px solid rgba(128, 128, 128, 0.473);
@@ -180,7 +193,8 @@ tbody td select {
 
 tbody .signupinput:focus,
 tbody select:focus,
-tbody .editinput:focus {
+tbody .editinput:focus,
+tbody .pwdinput:focus {
     outline: 1px solid lightsteelblue;
 }
 
