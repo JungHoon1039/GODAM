@@ -17,7 +17,5 @@ urlpatterns = [
         path('about', views.about, name='about'),
         path('aboutus', views.aboutus, name='aboutus'),
         path('index', views.index, name='index'),
-        path('map', views.mapp, name='map'),
-        path('ajax', views.ajax, name='ajax'),
         path('aboutlan',views.aboutlan, name="aboutlan")
 ]

@@ -184,11 +184,5 @@ def index(req):
     #allcat 페이지에서 저장 되어있는 지역값 가져오기(작은 폼이 있음)
     region = req.GET.get('region')
     return render (req,'index.html',{'login_member' : logged_member,'region':region})
-    
-def mapp(req):
-    return render (req,'map.html')
-
-def ajax(req):
-   return render(req, 'ajax.html',{'id' : req.POST.get('opsel')})
 
 # Create your views here. 
