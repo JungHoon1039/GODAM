@@ -72,8 +72,29 @@ li > .dropdown-item:focus {
     border-radius: 5px;
 }
 
+/* 메인페이지 login.html */
 #title {
     font-family: 'Black Han Sans', sans-serif;
+    font-size: 90px;
+    color: black;
+}
+
+.slog {
+    z-index: 1;
+    font-family: 'Gamja Flower', sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    color: dimgrey;
+}
+
+@media (max-width: 575.98px) {
+    #title {
+        font-size: 80px;
+    }
+    .slog {
+        font-size: 29px;
+    }
+
 }
 
 #sign {
@@ -137,12 +158,6 @@ a#btnhover {
 
 a#btnhover:hover {
     color: yellowgreen;
-}
-
-.slog {
-    z-index: 1;
-    font-family: 'Gamja Flower', sans-serif;
-    font-weight: 300;
 }
 
 /* 회원가입 페이지 signup.html */
@@ -232,12 +247,12 @@ tbody .pwdinput:focus {
     background-color: #fff;
 }
 
-#cancel:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.6;
-}
+/*#cancel:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.6;*/
+/*}*/
 
 #join {
     border: none;
@@ -245,12 +260,12 @@ tbody .pwdinput:focus {
     color: #fff;
 }
 
-#join:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#join:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 /* info 페이지 info.html */
 .info_form {
@@ -278,18 +293,26 @@ tbody .pwdinput:focus {
     font-size: 16px;
 }
 
+@media (max-width: 575.98px) {
+    .info_btn {
+        width: 105px;
+        height: 35px;
+        font-size: 13px;
+    }
+}
+
 #change_userinfo {
     border: 1px solid #1b3f36;
     color: #1b3f36;
     background-color: #fff;
 }
 
-#change_userinfo:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.6;
-}
+/*#change_userinfo:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.6;*/
+/*}*/
 
 #change_pwd {
     border: 1px solid #1b3f36;
@@ -297,12 +320,12 @@ tbody .pwdinput:focus {
     background-color: #fff;
 }
 
-#change_pwd:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.6;
-}
+/*#change_pwd:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.6;*/
+/*}*/
 
 #delete_id {
     border: none;
@@ -310,15 +333,12 @@ tbody .pwdinput:focus {
     color: #fff;
 }
 
-#delete_id:hover {
-    /* border: 1px solid #1b3f36;
-    color: #1b3f36;
-    background-color: #fff; */
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#delete_id:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 /* 회원정보수정 페이지 info_edit.html */
 .info_edit,
@@ -355,14 +375,14 @@ tbody .pwdinput:focus {
     color: #fff;
 }
 
-#btn_infoEdit:hover,
-#btn_pwdEdit:hover,
-#btn_newcat:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#btn_infoEdit:hover,*/
+/*#btn_pwdEdit:hover,*/
+/*#btn_newcat:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 /* 회원가입완료 페이지 signup_com.html */
 #com_row {
@@ -388,6 +408,22 @@ tbody .pwdinput:focus {
     font-family: 'Gamja Flower', sans-serif;
 }
 
+@media (max-width: 575.98px) {
+    #com_icon {
+        font-size: 40px;
+    }
+
+    #com_h4 {
+        font-size: 33px;
+        padding-bottom: 20px;
+    }
+
+    #com_p {
+        font-size: 36px;
+        margin-top: 10px;
+    }
+}
+
 #com_p2 {
     font-size: 26.5px;
     color: gray;
@@ -402,12 +438,11 @@ tbody .pwdinput:focus {
     font-size: 20px;
 }
 
-#com_loginbtn:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#com_loginbtn:hover {*/
+/*    border: none;*/
+/*    background-color: rgba(27, 63, 54, 0.9);*/
+/*    color: #fff;*/
+/*}*/
 
 #com_a {
     color:whitesmoke;
@@ -434,10 +469,22 @@ tbody .pwdinput:focus {
 }
 
 /* About us 페이지 */
-
 .title {
     width: 300px;
 }
+
+.about_title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 73px;
+    color: black;
+}
+
+@media (max-width: 575.98px) {
+    .about_title {
+        font-size: 60px;
+    }
+}
+
 
 /* 고양이 등록 Modal */
 .form_newCat {
@@ -475,12 +522,12 @@ p select:focus {
     color: #fff;
 }
 
-#btn_save:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#btn_save:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 #btn_close {
     border: 1px solid #1b3f36;
@@ -488,12 +535,12 @@ p select:focus {
     background-color: #fff;
 }
 
-#btn_close:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.6;
-}
+/*#btn_close:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.6;*/
+/*}*/
 
 /* 고양이 상세페이지 catcontent.html */
 @media (max-width: 575.98px) {
@@ -518,12 +565,12 @@ p select:focus {
     color: #fff;
 }
 
-#btn_edit:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#btn_edit:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 #btn_del {
     border: 1px solid #1b3f36;
@@ -531,12 +578,12 @@ p select:focus {
     background-color: #fff;
 }
 
-#btn_del:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.7;
-}
+/*#btn_del:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.7;*/
+/*}*/
 
 #btn_chat {
     border-radius: 3px;
@@ -550,12 +597,12 @@ p select:focus {
     color: #fff;
 }
 
-#btn_chat:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#btn_chat:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 #btn_delchat {
     border-radius: 3px;
@@ -575,6 +622,14 @@ p select:focus {
     }
     .newCatTextarea {
         width: 170px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 576px) {
+    .newCatTextarea {
+        width: 200px;
+        height: 70px;
     }
 }
 
@@ -590,12 +645,12 @@ p select:focus {
     color: #fff;
 }
 
-#btn_saveEdit:hover {
-    border: none;
-    background-color: #1b3f36;
-    color: #fff;
-    opacity: 0.8;
-}
+/*#btn_saveEdit:hover {*/
+/*    border: none;*/
+/*    background-color: #1b3f36;*/
+/*    color: #fff;*/
+/*    opacity: 0.8;*/
+/*}*/
 
 /*footer*/
 .footer_title:after {
@@ -604,4 +659,22 @@ p select:focus {
     border-bottom: 2px solid #D5AE7F;
     margin: 8px 0;
     display: block;
+}
+
+#footer_partners a,
+.footer_icon a {
+    color: #878787;
+}
+
+#footer_partners a:hover,
+.footer_icon a:hover {
+    color: #887456;
+}
+
+.lan {
+    color: #878787;
+}
+
+.footer_lan > .lan:hover {
+    color: rgb(242,242,242);
 }

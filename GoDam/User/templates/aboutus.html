@@ -1,4 +1,4 @@
-<!--로그인 후-->
+<!--로그인 전-->
 {% extends 'base.html' %}
 {% load static %}
 
@@ -15,18 +15,18 @@ About Us
                 <div class="row my-auto mx-1">
                     <div class="row mb-3" style="padding-top: 100px;">
                         {% if lan == "ko"%}
-                        <div id="title" class="" style="font-size: 73px; color: black;">저희는 고담입니다<i
-                                class="fas fa-cat fs-1"></i>
+                        <div id="about_title" class="about_title">저희는 고담입니다
+                            <i class="fas fa-cat fs-1"></i>
                         </div>
                         {%endif%}
                         {% if lan == "en"%}
-                        <div id="title" class="" style="font-size: 73px; color: black;">We are Godam<i
+                        <div class="about_title">We are Godam<i
                                 class="fas fa-cat fs-1"></i>
                         </div>
                         <p style="color:black">Godam is an abbreviation word in Korean, means storing cat in people's mind</p>
                         {%endif%}
                         {% if lan == "cn"%}
-                        <div id="title" class="" style="font-size: 73px; color: black;">我们是GODAM<i
+                        <div class="about_title">我们是GODAM<i
                                 class="fas fa-cat fs-1"></i>
                         </div>
                         <p style="color:black">Godam是韩文缩略用语，意思是装猫</p>
@@ -87,15 +87,15 @@ About Us
                 <div class="row my-auto mx-1">
                     <div class="row mb-3" style="padding-top: 50px;">
                         {% if lan == "ko"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">고담은 무슨 일을 할까요?
+                        <div class="about_title col-12 col-md-12">고담은 무슨 일을 할까요?
                         </div>
                         {%endif%}
                         {% if lan == "en"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">What's Godam doing?
+                        <div class="about_title col-12 col-md-12">What's Godam doing?
                         </div>
                         {%endif%}
                         {% if lan == "cn"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">装猫的服务
+                        <div class="about_title col-12 col-md-12">装猫的服务
                         </div>
                         {%endif%}
                     </div>
@@ -274,17 +274,17 @@ About Us
                 <div class="row my-auto mx-1">
                     <div class="row mb-3" style="padding-top: 50px;">
                         {% if lan == "ko"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">이것만은 지켜주세요<i
+                        <div class="about_title col-12 col-md-12">이것만은 지켜주세요<i
                                 class="fas fa-cat fs-1"></i>
                         </div>
                         {%endif%}
                         {% if lan == "en"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">Please follow the instructions as shown below<i
+                        <div class="about_title col-12 col-md-12">Please follow the instructions as shown below<i
                                 class="fas fa-cat fs-1"></i>
                         </div>
                         {%endif%}
                         {% if lan == "cn"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">请遵守我们的规则<i
+                        <div class="about_title col-12 col-md-12">请遵守我们的规则<i
                                 class="fas fa-cat fs-1"></i>
                         </div>
                         {%endif%}
@@ -332,15 +332,15 @@ About Us
                 <div class="row my-auto mx-1">
                     <div class="row mb-3" style="padding-top: 50px;">
                         {% if lan == "ko"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">누가 만들었나요?
+                        <div class="about_title col-12 col-md-12">누가 만들었나요?
                         </div>
                         {%endif%}
                         {% if lan == "en"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">Who created Godam?
+                        <div class="about_title col-12 col-md-12">Who created Godam?
                         </div>
                         {%endif%}
                         {% if lan == "cn"%}
-                        <div id="title" class="col-12 col-md-12" style="font-size: 73px; color: black;">我们创造了Godam
+                        <div class="about_title col-12 col-md-12">我们创造了Godam
                         </div>
                         {%endif%}
                     </div>
