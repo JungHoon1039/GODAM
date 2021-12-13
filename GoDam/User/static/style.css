@@ -678,3 +678,10 @@ p select:focus {
 .footer_lan > .lan:hover {
     color: rgb(242,242,242);
 }
+
+@media (max-width: 575.98px) {
+    #footer_last {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+}
