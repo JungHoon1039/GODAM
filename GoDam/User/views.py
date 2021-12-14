@@ -7,8 +7,10 @@ from django.http import HttpResponse # return HttpResponse('적고싶은내용')
 from .models import User
 from Cat.models import Cat
 from Cat.views import catall
-import os, torch, re
-import sweetify
+import os, torch, re, json
+import sweetify, requests, googlemaps
+
+
 
 
 
@@ -187,7 +189,25 @@ def about(req):
 def index(req):
     logged_member = User.objects.filter(Userid=req.session.get('Userid'))
     #allcat 페이지에서 저장 되어있는 지역값 가져오기(작은 폼이 있음)
-    region = req.GET.get('region')
-    return render (req,'index.html',{'login_member' : logged_member,'region':region})
+    regions = req.GET.get('region')
+
+    # ip 확인
+    x_forwarded_for = req.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = req.META.get('REMOTE_ADDR')
+
+    # 해당 ip의 접속 정보 확인
+    url = 'http://ip-api.com/json/'+ip
+    data = requests.get(url)
+    res = data.json()
+
+    # 구글에서 해당좌표의 주소 확인
+    gmaps = googlemaps.Client(key='AIzaSyBqQxnSSewN9AdoPJpF24OB-sIoSHtLSKc')
+    reverse_geocode_result = gmaps.reverse_geocode((res.get("lat"),res.get("lon")), language='ko')
+    locate = reverse_geocode_result[0]['formatted_address']
+
+    return render (req,'index.html',{'login_member' : logged_member,'region':regions,'locate':locate})
 
 # Create your views here. 

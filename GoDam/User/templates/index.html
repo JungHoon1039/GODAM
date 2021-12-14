@@ -10,6 +10,7 @@ Home
 <div class="box" id="search" style="background-image:url('{% static 'index02.png' %}');">
     <div class="container" style="padding-top: 170px;">
         <div class="row align-items-center ms-lg-5">
+            <div style="color: black; background-color: white" >현재 접속한 장소 : {{locate}}</div>
             <form class="ms-lg-4" action = "{% url 'allcat' %}" method="get" style="display:inline-block;">
                 <div class="offset-1 col-4 me-2" style="float: left;">
                     <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">

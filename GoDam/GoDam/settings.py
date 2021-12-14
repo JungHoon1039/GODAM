@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Cat',
     'User',
-    'sweetify'
+    'sweetify',
+    'googlemaps',
 ]
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert'
 
