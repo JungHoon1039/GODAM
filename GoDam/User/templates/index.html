@@ -7,10 +7,15 @@ Home
 {% endblock title %}
 
 {% block content %}
+<style>
+    #map_wrap {position:relative;width:100%;height:350px;}
+    #title1 {font-weight:bold;display:block;color: black;font-size: 10px}
+    #hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;margin-left: 5px;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;color: black;font-size: 10px}}
+</style>
 <div class="box" id="search" style="background-image:url('{% static 'index02.png' %}');">
     <div class="container" style="padding-top: 170px;">
         <div class="row align-items-center ms-lg-5">
-            <div style="color: black; background-color: white" >현재 접속한 장소 : {{locate}}</div>
             <form class="ms-lg-4" action = "{% url 'allcat' %}" method="get" style="display:inline-block;">
                 <div class="offset-1 col-4 me-2" style="float: left;">
                     <select class="search-form form-select form-select-lg mb-3" style="border-radius: 30px;">
@@ -52,7 +57,12 @@ Home
             </form>
         </div>
         <div class="row align-items-center justify-content-center mt-3 px-3" style="margin-bottom: 100px;">
-            <div class="col-10 shadow-lg" id="map" style="width:90%; height:350px; border-radius: 20px;"></div>
+            <div id="map_wrap">
+                <div id="map" class="col-10 shadow-lg" style="width:100%;height:350px;position:relative;overflow:hidden;border-radius: 20px;"></div>
+                <div id="hAddr">
+                    <span id="title1">접속한 ip의 위치</span>
+                    <span id="centerAddr"></span>
+                </div>
         </div>
     </div>
 </div>
@@ -105,16 +115,6 @@ Home
                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                 map.setCenter(coords);
             }
-        // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-        var mapTypeControl = new kakao.maps.MapTypeControl();
-
-        // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-        // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-        map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-        var zoomControl = new kakao.maps.ZoomControl();
-        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
         });
     }
 </script>
@@ -131,7 +131,7 @@ Home
 
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();
-
+    
     // 주소로 좌표를 검색합니다
     geocoder.addressSearch(shows, function(result, status) {
 
@@ -155,16 +155,6 @@ Home
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
         }
-    // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-    var mapTypeControl = new kakao.maps.MapTypeControl();
-
-    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-    // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-    var zoomControl = new kakao.maps.ZoomControl();
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     });
 </script>
 {% endblock scripts %}
