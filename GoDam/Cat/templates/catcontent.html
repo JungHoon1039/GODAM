@@ -8,7 +8,9 @@
 {% block content %}
 <div class="container " style="padding: 150px 0 150px 0; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
-        <p class="fs-2 fw-bold d-block d-flex justify-content-center mb-4">{{i.Catname}}</p>
+        <p class="d-block d-flex justify-content-center mb-4" style="font-family: 'Gamja Flower', cursive; font-size:45px;">
+            <span style="font-weight: 300;">내 이름은</span>&nbsp; <span style="font-weight: 700;">{{i.Catname}}</span>
+        </p>
         <div class="col-11 d-flex justify-content-end">
             <div class="gap-2 mb-2 me-md-5">
                 <!-- 작성자가 본인 컨텐츠를 확인할경우 버튼 보이게 하기(프론트앤드 유효성)-->
@@ -19,18 +21,20 @@
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <div class="card mb-3 shadow-lg" style="max-width: 1000px; border: none;">
+            <div class="card mb-3 shadow-lg" style="max-width: 1000px; border: none; border-radius: 15px;">
                 <div class="row g-0">
-                    <div class="col-md-6 my-auto p-1">
-                        <img src="{{i.Catimage.url}}" class="img-fluid p-2" style="border-radius: 15px;">
+                    <div class="col-md-6 my-auto p-3">
+                        <img src="{{i.Catimage.url}}" class="img-fluid p-2" style="border-radius: 20px;">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
                             <ul class="list-group list-group-flush p-5">
                                 <li class="list-group-item">이름 : {{i.Catname}}</li>
                                 <li class="list-group-item">나이 : {{i.Catage}}</li>
+                                <li class="list-group-item">성별 : {{i.Gender}}</li>
                                 <li class="list-group-item">중성화 : {{i.Neutering}}</li>
                                 <li class="list-group-item">지역 : {{i.Region}}</li>
+                                <li class="list-group-item">설명 : {{i.Catname}}는 {{i.Discribtion}}</li>
                                 <li class="list-group-item">작성자 : {{i.User.Nickname}}</li>
                                 <li class="list-group-item">
 <!--                                    <input type="button" id="like" name="{{i.Catid}}" value="Like">-->
@@ -69,7 +73,7 @@
     </div>
     <!--댓글-->
     <div class="row justify-content-center">
-        <p class="fs-4 fw-bold" style="max-width: 1000px;">comments</p>
+        <p class="fs-4 fw-bold" style="max-width: 1000px;">Comments</p>
     </div>
     {% for comment in cat.board_set.all %}
         <div class="row mb-5 justify-content-center">

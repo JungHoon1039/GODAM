@@ -7,11 +7,11 @@
 {% block content %}
 <div class="container" style="padding-top: 150px; font-family: 'Noto Sans KR', sans-serif;">
     <div class="row mb-4">
-        <p class="fs-3 d-block d-flex justify-content-center mb-4" style="font-weight: 500">고양이 정보 수정</p>
+        <p class="fs-3 d-block d-flex justify-content-center mb-4" style="font-weight: 600">고양이 정보 수정</p>
         <div class="col d-flex justify-content-center">
             <form name="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="card mb-3 shadow-lg" style="max-width: 1500px; border: none;">
+                <div class="card mb-3 shadow-lg" style="max-width: 1500px; border: none; border-radius: 10px;">
                     <div class="row g-0 align-items-center px-5">
                         <div class="col-md-5 d-flex justify-content-center px-5 mt-5 mt-lg-0" id="photo">
                             {%for field in form%}
