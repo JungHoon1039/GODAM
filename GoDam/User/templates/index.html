@@ -9,12 +9,12 @@ Home
 {% block content %}
 <style>
     #map_wrap {position:relative;width:100%;height:350px;}
-    #title1 {font-weight:bold;display:block;color: black;font-size: 10px}
+    #ttl {font-weight:bold;display:block;color: black;font-size: 10px}
     #hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;margin-left: 5px;}
     #centerAddr {display:block;margin-top:2px;font-weight: normal;color: black;font-size: 10px}}
 </style>
 <div class="box" id="search" style="background-image:url('{% static 'index02.png' %}');">
-    <div class="container" style="padding-top: 170px;">
+    <div class="container position-absolute top-50 start-50 translate-middle" style="padding-top: 170px;">
         <div class="row align-items-center ms-lg-5">
             <form class="ms-lg-4" action = "{% url 'allcat' %}" method="get" style="display:inline-block;">
                 <div class="offset-1 col-4 me-2" style="float: left;">
@@ -57,12 +57,13 @@ Home
             </form>
         </div>
         <div class="row align-items-center justify-content-center mt-3 px-3" style="margin-bottom: 100px;">
-            <div id="map_wrap">
-                <div id="map" class="col-10 shadow-lg" style="width:100%;height:350px;position:relative;overflow:hidden;border-radius: 20px;"></div>
+            <div id="map_wrap" class="col-10">
+                <div id="map" class="shadow-lg" style="width:100%;height:350px;overflow:hidden;border-radius: 20px;"></div>
                 <div id="hAddr">
-                    <span id="title1">접속한 ip의 위치</span>
+                    <span id="ttl">접속한 ip의 위치</span>
                     <span id="centerAddr">{{locate}}</span>
                 </div>
+            </div>
         </div>
     </div>
 </div>
