@@ -13,6 +13,8 @@ https://godam.ga/user/login
 3. SQLite DB
 4. Bootstrap
 
+2021년 12월 진행
+
 SSAC 3기 팀 프로젝트
 - 박정훈 김소민 진현성 육은별 백가연
 
