@@ -9,7 +9,7 @@ https://godam.ga/user/login
 
 사용기술
 1. AWS 서버 구축 https 적용
-2. Django apache
+2. Django
 3. SQLite DB
 4. Bootstrap
 
